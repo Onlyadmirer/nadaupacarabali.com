@@ -12,11 +12,12 @@ import {
 import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 function Mobile() {
-  const waLink = "https://wa.me/6285119309088";
   const [scrolled, setScrolled] = useState(false);
+  const pathName = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,14 +69,28 @@ function Mobile() {
             <SheetDescription className='sr-only'>Menu</SheetDescription>
           </SheetHeader>
           <div className='flex flex-col pt-12 h-full gap-12 tracking-wider text-neutral-200 font-outfit font-medium text-lg items-center w-full'>
-            {navLinks.map((nav) => (
-              <Link key={nav.name} href={nav.path} className=' w-fit relative'>
-                <p className='text-neutral-200 uppercase  transition-all duration-300'>
-                  {nav.name}
-                </p>
-                <span className='absolute -bottom-1 h-px bg-neutral-300 transition-all duration-300 w-full'></span>
-              </Link>
-            ))}
+            {navLinks.map((nav) => {
+              const isActive =
+                nav.path === "/"
+                  ? pathName === "/"
+                  : pathName.startsWith(nav.path);
+              return (
+                <Link
+                  key={nav.name}
+                  href={nav.path}
+                  className=' w-fit relative'
+                >
+                  <p
+                    className={` uppercase  transition-all duration-300 ${isActive ? "text-[#d58058]" : "text-neutral-200"}`}
+                  >
+                    {nav.name}
+                  </p>
+                  <span
+                    className={`absolute -bottom-1 h-px  transition-all duration-300 w-full ${isActive ? "w-full bg-[#d58058]" : "bg-neutral-300"}`}
+                  ></span>
+                </Link>
+              );
+            })}
 
             {/* <Link
               href={waLink}

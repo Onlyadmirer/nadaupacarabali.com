@@ -5,43 +5,42 @@ export default function PreviewGallery() {
   // Array gambar dengan tambahan konfigurasi 'className' untuk ukuran Bento Grid
   const previewImages = [
     {
-      src: "/images/gallery-1.jpg",
+      src: "/images/gallery-preview/IMG_4079.JPG",
       alt: "Highlight Pementasan 1",
       // Gambar 1: Besar (Persegi/Landscape besar) - Mengambil 2 kolom & 2 baris
       className: "col-span-2 row-span-2",
     },
     {
-      src: "/images/gallery-2.jpg",
+      src: "/images/gallery-preview/IMG_4192.JPG",
       alt: "Highlight Pementasan 2",
       // Gambar 2: Kecil (Persegi) - Mengambil 1 kolom & 1 baris
       className: "col-span-1 row-span-1",
     },
     {
-      src: "/images/gallery-3.jpg",
+      src: "/images/gallery-preview/IMG_4463.JPG",
       alt: "Highlight Pementasan 3",
       // Gambar 3: Tinggi (Portrait) - Mengambil 1 kolom & 2 baris (memanjang ke bawah)
       className: "col-span-1 row-span-2",
     },
     {
-      src: "/images/gallery-4.jpg",
+      src: "/images/gallery-preview/IMG_4505.JPG",
       alt: "Highlight Pementasan 4",
       // Gambar 4: Kecil (Persegi) - Mengambil 1 kolom & 1 baris (mengisi bawah gambar 2)
       className: "col-span-1 row-span-1",
     },
     {
-      src: "/images/gallery-5.jpg",
+      src: "/images/gallery-preview/IMG_4544.JPG",
       alt: "Highlight Pementasan 5",
       // Gambar 5: Lebar (Landscape) - Mengambil 2 kolom & 1 baris
       className: "col-span-2 row-span-1",
     },
     {
-      src: "/images/gallery-6.jpg",
+      src: "/images/gallery-preview/IMG_4609.JPG",
       alt: "Highlight Pementasan 6",
       // Gambar 6: Lebar (Landscape) - Mengambil 2 kolom & 1 baris
       className: "col-span-2 row-span-1",
     },
   ];
-
   return (
     <section className='py-24 bg-neutral-950'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
@@ -76,16 +75,16 @@ export default function PreviewGallery() {
           {previewImages.map((image, index) => (
             <div
               key={index}
-              // className dari array disisipkan ke sini
-              className={`group relative w-full h-full overflow-hidden rounded-md bg-neutral-900 ${image.className}`}
+              className={`group relative w-full h-full overflow-hidden rounded-md ${image.className}`}
             >
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                className='object-cover transition-transform duration-700 ease-in-out group-hover:scale-110 group-hover:opacity-80'
+                priority
+                className='object-cover w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-105'
               />
-              <div className='absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500'></div>
+              <div className='absolute inset-0 bg-black/30'></div>
             </div>
           ))}
         </div>

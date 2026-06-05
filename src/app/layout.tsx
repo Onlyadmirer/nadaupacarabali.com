@@ -8,6 +8,7 @@ import {
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import MenuBar from "@/components/layouts/menubar/MenuBar";
+import Footer from "@/components/layouts/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -53,7 +54,10 @@ export default function RootLayout({
     >
       <body className='min-h-full flex flex-col'>
         <MenuBar />
-        {children}
+        <main className="flex-1">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

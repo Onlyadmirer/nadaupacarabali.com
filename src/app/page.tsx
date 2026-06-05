@@ -12,15 +12,13 @@ export default function Home() {
   return (
     <div className='min-h-screen bg-neutral-950 text-neutral-50 font-sans selection:bg-amber-900 selection:text-white'>
       <section className='relative h-screen flex flex-col justify-center items-center text-center px-4'>
-        <div>
-          <Image
-            src='/images/hero.jpg'
-            alt='Pementasan Seni Bali'
-            fill
-            className='w-full h-full object-cover'
-          />
-          <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/90' />
-        </div>
+        <Image
+          src='/images/gallery-preview/IMG_4079.JPG'
+          alt='Pementasan Seni Bali'
+          fill
+          className='w-full h-full object-[49%_20%] object-cover'
+        />
+        <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/90' />
         <div className='z-20 max-w-4xl mx-auto flex flex-col items-center mt-16'>
           <span className='uppercase font-sans text-sm md:text-base tracking-wide font-semibold text-[#f09a73]'>
             Balinese Creative-Cultural Service
