@@ -67,7 +67,7 @@ export default function ServiceCategories() {
               </div>
 
               {/* Overlay gelap agar teks tetap terbaca */}
-              <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/40 md:to-black/30 transition-opacity duration-500 group-hover:opacity-90'></div>
+              <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/60 to-black/40 md:to-black/30 transition-opacity duration-500 group-hover:opacity-90'></div>
 
               {/* Konten Teks */}
               <div className='relative z-10 p-4 md:p-8 w-full'>
