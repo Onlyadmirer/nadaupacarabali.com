@@ -43,7 +43,9 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
           </div>
 
           {/* Title + Description */}
-          <div className={`flex flex-col space-y-10 relative ${!isEven ? "lg:order-1" : ""}`}>
+          <div
+            className={`flex flex-col space-y-10 relative ${!isEven ? "lg:order-1" : ""}`}
+          >
             {/* Large Background Numbering */}
             <div
               className={`absolute -top-8 lg:-top-16 ${isEven ? "-left-4 lg:-left-8" : "-right-4 lg:-right-8"} text-[8rem] lg:text-[12rem] font-cormorant-garamond font-bold text-[#f09a73] opacity-[0.08] select-none pointer-events-none leading-none`}
@@ -87,10 +89,7 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
               {section.items && (
                 <ul className='space-y-4 font-cormorant-garamond text-neutral-300 font-light'>
                   {section.items.map((item, itemIdx) => (
-                    <li
-                      key={itemIdx}
-                      className='flex items-start group/item'
-                    >
+                    <li key={itemIdx} className='flex items-start group/item'>
                       <span className='text-[#b27457] mr-4 mt-1 text-sm transform transition-transform group-hover/item:scale-125'>
                         ✦
                       </span>
@@ -106,10 +105,10 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
           <div
             className={`flex items-center justify-center ${service.sections.length % 2 === 0 ? "lg:col-span-2" : ""}`}
           >
-            <Link href={`/catalog#${service.id}`}>
+            <Link href={`/catalog#${service.id}`} className='w-full'>
               <Button
                 variant='outline'
-                className='font-outfit border-[#d58058]/50 text-[#d58058] hover:bg-[#d58058] hover:text-white rounded-none px-12 py-7 text-sm lg:text-base tracking-[0.2em] uppercase transition-all duration-300 backdrop-blur-sm bg-transparent'
+                className='font-outfit border-[#d58058]/50 text-[#d58058] hover:bg-[#d58058] hover:text-white rounded-none w-full px-12 py-7 text-sm lg:text-base tracking-[0.2em] uppercase transition-all duration-300 backdrop-blur-sm bg-transparent'
               >
                 Lihat Katalog Pertunjukan
               </Button>
