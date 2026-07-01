@@ -1,6 +1,18 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import SalamPendiri from "./components/SalamPendiri";
 import { image } from "@/constants/images";
+
+export const metadata: Metadata = {
+  title: "Tentang Kami | Nada Upacara Bali",
+  description:
+    "Mengenal lebih dekat Nada Upacara Bali — cultural performance house yang menghadirkan seni pertunjukan tradisional Bali secara sakral, emosional, dan profesional.",
+  openGraph: {
+    title: "Tentang Kami | Nada Upacara Bali",
+    description:
+      "Mengenal lebih dekat Nada Upacara Bali — cultural performance house yang menghadirkan seni pertunjukan tradisional Bali.",
+  },
+};
 
 export default function AboutPage() {
   return (
