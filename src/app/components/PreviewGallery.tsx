@@ -1,35 +1,36 @@
+import { image } from "@/constants/images";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function PreviewGallery() {
   const previewImages = [
     {
-      src: "https://res.cloudinary.com/drldcq7wa/image/upload/v1782903144/IMG_4079_yzlbz3.jpg",
+      src: image.aboutBg,
       alt: "Highlight Pementasan 1",
       className: "col-span-2 row-span-2",
     },
     {
-      src: "https://res.cloudinary.com/drldcq7wa/image/upload/v1782903144/IMG_4192_s9byjw.jpg",
+      src: image.img5,
       alt: "Highlight Pementasan 2",
       className: "col-span-1 row-span-1",
     },
     {
-      src: "https://res.cloudinary.com/drldcq7wa/image/upload/v1782903146/IMG_4463_fkvxgo.jpg",
+      src: image.img3,
       alt: "Highlight Pementasan 3",
       className: "col-span-1 row-span-2",
     },
     {
-      src: "https://res.cloudinary.com/drldcq7wa/image/upload/v1782903145/IMG_4505_ne3oxb.jpg",
+      src: image.img4,
       alt: "Highlight Pementasan 4",
       className: "col-span-1 row-span-1",
     },
     {
-      src: "https://res.cloudinary.com/drldcq7wa/image/upload/v1782903146/IMG_4544_iyveey.jpg",
+      src: image.img2,
       alt: "Highlight Pementasan 5",
       className: "col-span-2 row-span-1",
     },
     {
-      src: "https://res.cloudinary.com/drldcq7wa/image/upload/v1782903146/IMG_4609_uu2bkp.jpg",
+      src: image.homeBg,
       alt: "Highlight Pementasan 6",
       className: "col-span-2 row-span-1",
     },
