@@ -1,5 +1,4 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -8,6 +7,17 @@ import ServiceCategories from "./components/ServiceCategories";
 import FeaturedPerformances from "./components/FeaturedPerformances";
 import PreviewGallery from "./components/PreviewGallery";
 import { image } from "@/constants/images";
+
+export const metadata: Metadata = {
+  title: "Nada Upacara Bali | Balinese Creative-Cultural Service",
+  description:
+    "Cultural performance house yang menghadirkan pengalaman budaya Bali secara sakral, emosional, dan profesional — seni pertunjukan tradisional Bali.",
+  openGraph: {
+    title: "Nada Upacara Bali | Balinese Creative-Cultural Service",
+    description:
+      "Cultural performance house yang menghadirkan pengalaman budaya Bali secara sakral, emosional, dan profesional.",
+  },
+};
 
 export default function Home() {
   return (
