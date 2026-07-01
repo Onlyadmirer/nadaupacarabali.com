@@ -8,12 +8,12 @@ export default function AboutPage() {
       <section className='relative h-screen flex flex-col justify-center items-center text-center px-4 mb-24'>
         <div className='absolute inset-0 z-0'>
           <Image
-            src='/images/gallery-preview/IMG_4609.JPG'
+            src='https://res.cloudinary.com/drldcq7wa/image/upload/v1782903144/IMG_4079_yzlbz3.jpg'
             alt='Nada Upacara Bali Team'
             fill
-            className='object-cover object-center'
+            className='w-full h-full object-[49%_20%] object-cover'
           />
-          <div className='absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/50 to-neutral-950/90' />
+          <div className='absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/30 to-neutral-950/90' />
         </div>
         <div className='relative z-10 max-w-4xl mx-auto flex flex-col items-center mt-24'>
           <span className='text-[#d58058] font-outfit uppercase tracking-[0.2em] text-sm font-semibold mb-4'>
