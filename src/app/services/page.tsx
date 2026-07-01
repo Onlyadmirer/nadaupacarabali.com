@@ -87,7 +87,7 @@ export default function ServicesPage() {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <Button className='font-outfit bg-[#d58058] hover:bg-[#b27457] text-white rounded-none px-12 py-7 text-sm lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(213,128,88,0.2)] hover:shadow-[0_0_30px_rgba(213,128,88,0.4)]'>
+            <Button className='font-outfit bg-[#d58058] hover:bg-[#b27457] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(213,128,88,0.2)] hover:shadow-[0_0_30px_rgba(213,128,88,0.4)]'>
               Hubungi Kami Sekarang
             </Button>
           </Link>
