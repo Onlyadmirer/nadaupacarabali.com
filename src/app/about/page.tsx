@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SalamPendiri from "./components/SalamPendiri";
+import { image } from "@/constants/images";
 
 export default function AboutPage() {
   return (
@@ -8,7 +9,7 @@ export default function AboutPage() {
       <section className='relative h-screen flex flex-col justify-center items-center text-center px-4 mb-24'>
         <div className='absolute inset-0 z-0'>
           <Image
-            src='https://res.cloudinary.com/drldcq7wa/image/upload/v1782903144/IMG_4079_yzlbz3.jpg'
+            src={image.aboutBg}
             alt='Nada Upacara Bali Team'
             fill
             className='w-full h-full object-[49%_20%] object-cover'
