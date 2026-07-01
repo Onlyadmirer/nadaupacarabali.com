@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import SalamPendiri from "./components/SalamPendiri";
+import { image } from "@/constants/images";
+
+export const metadata: Metadata = {
+  title: "Tentang Kami | Nada Upacara Bali",
+  description:
+    "Mengenal lebih dekat Nada Upacara Bali — cultural performance house yang menghadirkan seni pertunjukan tradisional Bali secara sakral, emosional, dan profesional.",
+  openGraph: {
+    title: "Tentang Kami | Nada Upacara Bali",
+    description:
+      "Mengenal lebih dekat Nada Upacara Bali — cultural performance house yang menghadirkan seni pertunjukan tradisional Bali.",
+  },
+};
 
 export default function AboutPage() {
   return (
@@ -8,12 +21,12 @@ export default function AboutPage() {
       <section className='relative h-screen flex flex-col justify-center items-center text-center px-4 mb-24'>
         <div className='absolute inset-0 z-0'>
           <Image
-            src='/images/gallery-preview/IMG_4609.JPG'
+            src={image.aboutBg}
             alt='Nada Upacara Bali Team'
             fill
-            className='object-cover object-center'
+            className='w-full h-full object-[49%_20%] object-cover'
           />
-          <div className='absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/50 to-neutral-950/90' />
+          <div className='absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/30 to-neutral-950/90' />
         </div>
         <div className='relative z-10 max-w-4xl mx-auto flex flex-col items-center mt-24'>
           <span className='text-[#d58058] font-outfit uppercase tracking-[0.2em] text-sm font-semibold mb-4'>

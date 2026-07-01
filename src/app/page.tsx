@@ -1,5 +1,4 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -7,13 +6,25 @@ import Link from "next/link";
 import ServiceCategories from "./components/ServiceCategories";
 import FeaturedPerformances from "./components/FeaturedPerformances";
 import PreviewGallery from "./components/PreviewGallery";
+import { image } from "@/constants/images";
+
+export const metadata: Metadata = {
+  title: "Nada Upacara Bali | Balinese Creative-Cultural Service",
+  description:
+    "Cultural performance house yang menghadirkan pengalaman budaya Bali secara sakral, emosional, dan profesional — seni pertunjukan tradisional Bali.",
+  openGraph: {
+    title: "Nada Upacara Bali | Balinese Creative-Cultural Service",
+    description:
+      "Cultural performance house yang menghadirkan pengalaman budaya Bali secara sakral, emosional, dan profesional.",
+  },
+};
 
 export default function Home() {
   return (
     <div className='min-h-screen bg-neutral-950 text-neutral-50 font-sans selection:bg-amber-900 selection:text-white'>
       <section className='relative h-screen flex flex-col justify-center items-center text-center px-4'>
         <Image
-          src='/images/gallery-preview/IMG_4079.JPG'
+          src={image.homeBg}
           alt='Pementasan Seni Bali'
           fill
           className='w-full h-full object-[49%_20%] object-cover'

@@ -1,43 +1,37 @@
+import { image } from "@/constants/images";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function PreviewGallery() {
-  // Array gambar dengan tambahan konfigurasi 'className' untuk ukuran Bento Grid
   const previewImages = [
     {
-      src: "/images/gallery-preview/IMG_4079.JPG",
+      src: image.aboutBg,
       alt: "Highlight Pementasan 1",
-      // Gambar 1: Besar (Persegi/Landscape besar) - Mengambil 2 kolom & 2 baris
       className: "col-span-2 row-span-2",
     },
     {
-      src: "/images/gallery-preview/IMG_4192.JPG",
+      src: image.img5,
       alt: "Highlight Pementasan 2",
-      // Gambar 2: Kecil (Persegi) - Mengambil 1 kolom & 1 baris
       className: "col-span-1 row-span-1",
     },
     {
-      src: "/images/gallery-preview/IMG_4463.JPG",
+      src: image.img3,
       alt: "Highlight Pementasan 3",
-      // Gambar 3: Tinggi (Portrait) - Mengambil 1 kolom & 2 baris (memanjang ke bawah)
       className: "col-span-1 row-span-2",
     },
     {
-      src: "/images/gallery-preview/IMG_4505.JPG",
+      src: image.img4,
       alt: "Highlight Pementasan 4",
-      // Gambar 4: Kecil (Persegi) - Mengambil 1 kolom & 1 baris (mengisi bawah gambar 2)
       className: "col-span-1 row-span-1",
     },
     {
-      src: "/images/gallery-preview/IMG_4544.JPG",
+      src: image.img2,
       alt: "Highlight Pementasan 5",
-      // Gambar 5: Lebar (Landscape) - Mengambil 2 kolom & 1 baris
       className: "col-span-2 row-span-1",
     },
     {
-      src: "/images/gallery-preview/IMG_4609.JPG",
+      src: image.homeBg,
       alt: "Highlight Pementasan 6",
-      // Gambar 6: Lebar (Landscape) - Mengambil 2 kolom & 1 baris
       className: "col-span-2 row-span-1",
     },
   ];

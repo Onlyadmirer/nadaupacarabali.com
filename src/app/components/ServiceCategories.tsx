@@ -1,39 +1,9 @@
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { serviceCategories } from "@/constants/services";
 
 export default function ServiceCategories() {
-  // Data layanan sesuai dengan pilar utama perusahaan
-  const services = [
-    {
-      title: "Upacara Adat & Keagamaan",
-      description:
-        "Menghadirkan musik dan pertunjukan sakral yang sesuai pakem untuk melengkapi kesakralan prosesi adat.",
-      image: "/images/services/upacara-adat.jpg",
-      link: "/layanan",
-    },
-    {
-      title: "Bali Wedding Performance",
-      description:
-        "Sajian musik dan tarian elegan untuk mendukung suasana khidmat pada pernikahan adat maupun resepsi modern.",
-      image: "/images/services/wedding.jpg",
-      link: "/layanan",
-    },
-    {
-      title: "Corporate & International Event",
-      description:
-        "Menghadirkan kekayaan seni budaya Bali dalam format yang elegan, terstruktur, dan siap panggung.",
-      image: "/images/services/international-events.png",
-      link: "/layanan",
-    },
-    {
-      title: "Cultural Workshop & Education",
-      description:
-        "Program interaktif untuk memperkenalkan budaya Bali secara langsung kepada masyarakat dan tamu internasional.",
-      image: "/images/services/edukasi-budaya.jpg",
-      link: "/layanan",
-    },
-  ];
 
   return (
     <section className='py-24 bg-linear-to-b from-black via-neutral-950 to-[#1a1105]'>
@@ -50,7 +20,7 @@ export default function ServiceCategories() {
 
         {/* Grid Cards 2x2 */}
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8'>
-          {services.map((service, index) => (
+          {serviceCategories.map((service, index) => (
             <Link
               key={index}
               href={service.link}

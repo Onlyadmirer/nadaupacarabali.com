@@ -12,7 +12,7 @@ const leftNavItems = [
 ];
 
 const rightNavItems = [
-  { href: "/performance-katalog", label: "KATALOG" },
+  { href: "/catalog", label: "CATALOG" },
   { href: "/gallery", label: "GALLERY" },
   { href: "/blog", label: "BLOG" },
   { href: "/contact", label: "CONTACT" },

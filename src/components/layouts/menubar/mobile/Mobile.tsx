@@ -33,7 +33,7 @@ function Mobile() {
     { name: "home", path: "/" },
     { name: "about us", path: "/about" },
     { name: "service & experience", path: "/service" },
-    { name: "katalog", path: "/katalog" },
+    { name: "catalog", path: "/catalog" },
     { name: "gallery", path: "/gallery" },
     { name: "blog", path: "/blog" },
     { name: "contact", path: "/contact" },
