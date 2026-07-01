@@ -32,7 +32,7 @@ function Mobile() {
   const navLinks = [
     { name: "home", path: "/" },
     { name: "about us", path: "/about" },
-    { name: "service & experience", path: "/service" },
+    { name: "service & experience", path: "/services" },
     { name: "catalog", path: "/catalog" },
     { name: "gallery", path: "/gallery" },
     { name: "blog", path: "/blog" },
