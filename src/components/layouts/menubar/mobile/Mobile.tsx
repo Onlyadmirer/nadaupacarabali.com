@@ -55,6 +55,7 @@ function Mobile() {
           <Button
             variant='ghost'
             size={"icon-lg"}
+            type='button'
             className='cursor-pointer hover:bg-transparent z-50'
           >
             <Menu className='w-full h-full scale-150 text-[#d58058]' />
