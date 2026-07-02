@@ -7,28 +7,34 @@ export default function FeaturedPerformances() {
   // Data 3 pertunjukan unggulan (Featured)
   const featured = [
     {
+      id: "sang-pajegan",
       title: "Sang Pajegan",
       category: "The Sacred Solo Mask Dance",
+      categoryId: "topeng-sakral",
       description:
         "Pertunjukan solo dramatis yang menjelajahi tiga wajah utama budaya Bali melalui tarian topeng sakral.",
       image: "/images/featured/sang-pajegan.png",
-      link: "/catalog",
+      link: "/catalog#sang-pajegan",
     },
     {
+      id: "prabangkara-hanoman",
       title: "Prabangkara Hanoman",
       category: "Tari Pengiring Pengantin",
+      categoryId: "tari-tradisional",
       description:
         "Tarian solo dinamis yang membawakan karakter suci dan kuat untuk membuka jalur prosesi mempelai.",
       image: "/images/featured/prabangkara-hanoman.png",
-      link: "/catalog",
+      link: "/catalog#prabangkara-hanoman",
     },
     {
+      id: "wayang-peteng",
       title: "Wayang Peteng Tradisi",
       category: "Wayang Kulit Klasik Bali",
+      categoryId: "wayang",
       description:
         "Pertunjukan wayang dengan kelir dan lampu damar yang menghadirkan suasana magis khas Bali.",
       image: "/images/featured/wayang-peteng.png",
-      link: "/catalog",
+      link: "/catalog#wayang-peteng-tradisi",
     },
   ];
 

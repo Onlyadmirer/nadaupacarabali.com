@@ -15,9 +15,12 @@ function waMessage(item: CatalogItem): string {
 
 export default function CatalogCard({ item }: CatalogCardProps) {
   return (
-    <div className='group relative bg-neutral-900/40 border border-neutral-800/60 rounded-xl overflow-hidden hover:border-[#d58058]/30 transition-all duration-500'>
+    <div
+      id={item.id}
+      className='group relative bg-neutral-900/40 border border-neutral-800/60 rounded-xl overflow-hidden hover:border-[#d58058]/30 transition-all duration-500'
+    >
       {/* Image */}
-      <div className='relative aspect-[16/10] w-full overflow-hidden'>
+      <div className='relative aspect-16/10 w-full overflow-hidden'>
         <Image
           src={item.image}
           alt={item.title}

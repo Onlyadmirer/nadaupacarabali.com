@@ -9,6 +9,8 @@ export default function CatalogGrid() {
     if (typeof window === "undefined") return "all";
     const hash = window.location.hash.replace("#", "");
     if (hash) {
+      const matchedItem = catalogData.find((item) => item.id === hash);
+      if (matchedItem) return "all";
       const matched = catalogCategories.find((cat) => cat.serviceId === hash);
       if (matched) return matched.id;
     }
@@ -16,11 +18,29 @@ export default function CatalogGrid() {
   });
 
   useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      const matchedItem = catalogData.find((item) => item.id === hash);
+      if (matchedItem) {
+        requestAnimationFrame(() => {
+          document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+    }
+
     const onHashChange = () => {
       const hash = window.location.hash.replace("#", "");
       if (hash) {
-        const matched = catalogCategories.find((cat) => cat.serviceId === hash);
-        if (matched) setActiveFilter(matched.id);
+        const matchedItem = catalogData.find((item) => item.id === hash);
+        if (matchedItem) {
+          setActiveFilter("all");
+          setTimeout(() => {
+            document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 150);
+        } else {
+          const matched = catalogCategories.find((cat) => cat.serviceId === hash);
+          if (matched) setActiveFilter(matched.id);
+        }
       }
     };
     window.addEventListener("hashchange", onHashChange);
