@@ -5,16 +5,26 @@ import { catalogData, catalogCategories } from "@/constants/catalog";
 import CatalogCard from "./CatalogCard";
 
 export default function CatalogGrid() {
-  const [activeFilter, setActiveFilter] = useState<string>("all");
-
-  useEffect(() => {
+  const [activeFilter, setActiveFilter] = useState<string>(() => {
+    if (typeof window === "undefined") return "all";
     const hash = window.location.hash.replace("#", "");
     if (hash) {
       const matched = catalogCategories.find((cat) => cat.serviceId === hash);
-      if (matched) {
-        setActiveFilter(matched.id);
-      }
+      if (matched) return matched.id;
     }
+    return "all";
+  });
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        const matched = catalogCategories.find((cat) => cat.serviceId === hash);
+        if (matched) setActiveFilter(matched.id);
+      }
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
   const filteredItems = useMemo(() => {
