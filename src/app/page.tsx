@@ -63,7 +63,7 @@ export default function Home() {
           src={image.homeBg}
           alt='Pementasan Seni Bali'
           fill
-          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+          sizes='(max-width: 768px) 100vw 80vw'
           className='w-full h-full object-[49%_20%] object-cover'
         />
         <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/90' />

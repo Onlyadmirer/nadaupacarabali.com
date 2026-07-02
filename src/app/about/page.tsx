@@ -24,7 +24,7 @@ export default function AboutPage() {
             src={image.aboutBg}
             alt='Nada Upacara Bali Team'
             fill
-            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            sizes='(max-width: 768px) 100vw 80vw'
             className='w-full h-full object-[49%_20%] object-cover'
           />
           <div className='absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/30 to-neutral-950/90' />

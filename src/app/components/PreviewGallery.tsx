@@ -75,7 +75,7 @@ export default function PreviewGallery() {
                 src={image.src}
                 alt={image.alt}
                 fill
-                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                sizes='(max-width: 768px) 100vw 80vw'
                 priority
                 className='object-cover w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-105'
               />

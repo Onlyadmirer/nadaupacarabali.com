@@ -64,7 +64,7 @@ function Desktop() {
           src={"/logo/logo.png"}
           alt='nada-upacara-bali-logo'
           fill
-          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+          sizes='(max-width: 768px) 100vw 80vw'
           className='w-full h-full bg-cover'
         ></Image>
       </div>

@@ -31,7 +31,7 @@ export default function ServiceCategories() {
                   src={service.image}
                   alt={service.title}
                   fill
-                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                  sizes='(max-width: 768px) 100vw 80vw'
                   className='object-cover transition-transform duration-500 ease-in-out group-hover:scale-110'
                 />
               </div>

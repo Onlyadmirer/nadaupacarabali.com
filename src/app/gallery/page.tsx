@@ -25,7 +25,7 @@ export default function GalleryPage() {
             src={"/images/services/international-events.png"}
             alt='Galeri Nada Upacara Bali'
             fill
-            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            sizes='(max-width: 768px) 100vw 80vw'
             className='w-full h-full object-[49%_20%] object-cover'
             priority
           />

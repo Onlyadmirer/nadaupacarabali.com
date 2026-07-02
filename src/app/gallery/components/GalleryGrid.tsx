@@ -10,13 +10,15 @@ export default function GalleryGrid() {
 
   const onPrev = useCallback(() => {
     setLightboxIndex((prev) =>
-      prev !== null ? (prev - 1 + galleryImages.length) % galleryImages.length : null
+      prev !== null
+        ? (prev - 1 + galleryImages.length) % galleryImages.length
+        : null,
     );
   }, []);
 
   const onNext = useCallback(() => {
     setLightboxIndex((prev) =>
-      prev !== null ? (prev + 1) % galleryImages.length : null
+      prev !== null ? (prev + 1) % galleryImages.length : null,
     );
   }, []);
 
@@ -28,7 +30,7 @@ export default function GalleryGrid() {
           <button
             key={index}
             onClick={() => setLightboxIndex(index)}
-            className='group relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-neutral-900/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d58058]'
+            className='group relative aspect-4/3 w-full overflow-hidden rounded-lg bg-neutral-900/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d58058]'
           >
             <Image
               src={img.src}
