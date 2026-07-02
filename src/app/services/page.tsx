@@ -47,7 +47,7 @@ export default function ServicesPage() {
           <div className='flex justify-center mb-8'>
             <div className='w-24 h-px bg-linear-to-r from-transparent via-[#d58058] to-transparent'></div>
           </div>
-          <p className='font-cormorant-garamond md:max-w-4xl mx-auto text-lg md:text-xl text-neutral-300 leading-relaxed font-light'>
+          <p className='font-outfit md:max-w-4xl mx-auto text-lg md:text-xl text-neutral-300 leading-relaxed font-light'>
             Menghadirkan seni pertunjukan tradisional Bali dengan standar
             profesionalisme, ketepatan waktu, dan pelayanan premium untuk
             berbagai kebutuhan acara Anda.

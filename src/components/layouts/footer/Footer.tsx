@@ -78,10 +78,10 @@ export default function Footer() {
               <li className='flex items-start gap-3 text-neutral-400 font-outfit text-sm'>
                 <Mail className='w-5 h-5 text-[#d58058] shrink-0' />
                 <a
-                  href='mailto:info@nadaupacarabali.com'
+                  href='mailto:nadaupacarabali@gmail.com'
                   className='hover:text-[#d58058] transition-colors'
                 >
-                  info@nadaupacarabali.com
+                  nadaupacarabali@gmail.com
                 </a>
               </li>
               <li className='flex items-start gap-3 text-neutral-400 font-outfit text-sm leading-relaxed'>
@@ -98,7 +98,7 @@ export default function Footer() {
             </h4>
             <div className='flex gap-4'>
               <a
-                href='https://instagram.com'
+                href='https://www.instagram.com/nadaupacarabali/'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-[#d58058] hover:border-[#d58058] hover:text-white transition-all duration-300'
@@ -106,7 +106,7 @@ export default function Footer() {
                 <FaInstagram className='w-4 h-4' />
               </a>
               <a
-                href='https://youtube.com'
+                href='https://www.youtube.com/@NadaUpacaraBali'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-[#d58058] hover:border-[#d58058] hover:text-white transition-all duration-300'
