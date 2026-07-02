@@ -4,7 +4,6 @@ import Link from "next/link";
 import { serviceCategories } from "@/constants/services";
 
 export default function ServiceCategories() {
-
   return (
     <section className='py-24 bg-linear-to-b from-black via-neutral-950 to-[#1a1105]'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
@@ -32,6 +31,7 @@ export default function ServiceCategories() {
                   src={service.image}
                   alt={service.title}
                   fill
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                   className='object-cover transition-transform duration-500 ease-in-out group-hover:scale-110'
                 />
               </div>
