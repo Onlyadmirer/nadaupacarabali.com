@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
-import { FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 
 const quickLinks = [
   { href: "/", label: "Home", className: "cols-start-1 row-start-1" },
@@ -112,6 +112,14 @@ export default function Footer() {
                 className='w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-[#d58058] hover:border-[#d58058] hover:text-white transition-all duration-300'
               >
                 <FaYoutube className='w-4 h-4' />
+              </a>
+              <a
+                href='https://www.tiktok.com/@nadaupacarabali'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='w-10 h-10 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-[#d58058] hover:border-[#d58058] hover:text-white transition-all duration-300'
+              >
+                <FaTiktok className='w-4 h-4' />
               </a>
             </div>
           </div>
