@@ -32,6 +32,7 @@ export default function GalleryGrid() {
         {galleryImages.map((img, index) => (
           <StaggerItem
             key={index}
+            onClick={() => setLightboxIndex(index)}
             className='group relative aspect-4/3 w-full overflow-hidden rounded-lg bg-neutral-900/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d58058]'
           >
             <Image

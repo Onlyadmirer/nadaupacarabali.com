@@ -29,4 +29,6 @@ export const galleryImages: GalleryImage[] = [
   { src: "/images/catalog/widyadari-panggih.png", alt: "Tari Widyadari Panggih", category: "Tari" },
   { src: "/images/featured/sang-pajegan.png", alt: "Sang Pajegan Solo Mask Dance", category: "Topeng" },
   { src: "/images/featured/prabangkara-hanoman.png", alt: "Prabangkara Hanoman Tari Solo", category: "Tari" },
+  { src: "/images/services/upacara-adat.jpg", alt: "Upacara Adat", category: "Upacara" },
+  { src: "/images/services/wedding.jpg", alt: "Wedding", category: "Upacara" },
 ];

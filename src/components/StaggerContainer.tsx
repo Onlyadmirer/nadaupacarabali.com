@@ -45,10 +45,11 @@ export default function StaggerContainer({
 export function StaggerItem({
   children,
   className,
+  ...props
 }: {
   children: React.ReactNode;
   className?: string;
-}) {
+} & React.ComponentPropsWithoutRef<typeof motion.div>) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -65,6 +66,7 @@ export function StaggerItem({
       }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={className}
+      {...props}
     >
       {children}
     </motion.div>
