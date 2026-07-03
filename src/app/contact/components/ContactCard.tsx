@@ -27,7 +27,7 @@ export default function ContactCard({
         {title}
       </h2>
 
-      <p className='font-cormorant-garamond text-neutral-400 text-lg leading-relaxed mb-6 flex-1'>
+      <p className='font-outfit text-neutral-400 text-lg leading-relaxed mb-6 flex-1'>
         {description}
       </p>
 
