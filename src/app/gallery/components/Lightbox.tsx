@@ -39,10 +39,10 @@ export default function Lightbox({
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
+    document.body.classList.add("overflow-hidden");
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
+      document.body.classList.remove("overflow-hidden");
     };
   }, [handleKeyDown]);
 

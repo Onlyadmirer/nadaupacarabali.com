@@ -27,7 +27,7 @@ export default function BlogPage() {
             src={image.img7}
             alt='Blog Nada Upacara Bali'
             fill
-            sizes='(max-width: 768px) 100vw 80vw'
+            sizes='100vw'
             className='object-cover w-full h-full object-[50%_20%]'
             priority
           />

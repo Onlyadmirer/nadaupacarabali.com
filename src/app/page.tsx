@@ -63,8 +63,9 @@ export default function Home() {
           src={image.homeBg}
           alt='Pementasan Seni Bali'
           fill
-          sizes='(max-width: 768px) 100vw 80vw'
+          sizes='100vw'
           className='w-full h-full object-[49%_20%] object-cover'
+          priority
         />
         <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/90' />
         <div className='z-20 max-w-4xl mx-auto flex flex-col items-center mt-16'>
@@ -101,12 +102,14 @@ export default function Home() {
             className='w-full aspect-video'
             src={`https://www.youtube.com/embed/-yp5DuntO9c`}
             allowFullScreen
+            loading='lazy'
+            title='Video Profile Nada Upacara Bali'
           />
         </div>
         <div className='flex flex-col flex-1 gap-4 p-6 py-10 md:px-24'>
-          <h1 className='text-3xl tracking-wide font-cormorant-garamond'>
+          <h2 className='text-3xl tracking-wide font-cormorant-garamond'>
             TENTANG <span className='text-[#d58058]'>KAMI</span>
-          </h1>
+          </h2>
           <p className='font-cormorant-garamond text-lg'>
             Kami percaya bahwa seni tidak hanya untuk dilestarikan, tapi juga
             dihormati. Filosofi kami sederhana, setiap nada dan gerak harus

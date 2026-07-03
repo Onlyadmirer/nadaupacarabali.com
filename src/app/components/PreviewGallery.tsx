@@ -75,8 +75,7 @@ export default function PreviewGallery() {
                 src={image.src}
                 alt={image.alt}
                 fill
-                sizes='(max-width: 768px) 100vw 80vw'
-                priority
+                sizes='(max-width: 768px) 50vw, 25vw'
                 className='object-cover w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-105'
               />
               <div className='absolute inset-0 bg-black/30'></div>

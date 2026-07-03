@@ -68,8 +68,8 @@ function Mobile() {
           showCloseButton={true}
         >
           <SheetHeader>
-            <SheetTitle></SheetTitle>
-            <SheetDescription className='sr-only'>Menu</SheetDescription>
+            <SheetTitle className='sr-only'>Menu Navigasi</SheetTitle>
+            <SheetDescription className='sr-only'>Menu navigasi Nada Upacara Bali</SheetDescription>
           </SheetHeader>
           <div className='flex flex-col pt-12 h-full gap-12 tracking-wider text-neutral-200 font-outfit font-medium text-lg items-center w-full'>
             {navLinks.map((nav) => {

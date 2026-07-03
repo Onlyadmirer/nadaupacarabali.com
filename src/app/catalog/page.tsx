@@ -26,7 +26,7 @@ export default function CatalogPage() {
             src={image.img5}
             alt='Katalog Pertunjukan Nada Upacara Bali'
             fill
-            sizes='(max-width: 768px) 100vw 80vw'
+            sizes='100vw'
             className='object-cover'
             priority
           />

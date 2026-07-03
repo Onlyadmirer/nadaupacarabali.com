@@ -47,11 +47,11 @@ function Desktop() {
               href={item.href}
               className='group w-fit relative'
             >
-              <p
+              <span
                 className={` uppercase group-hover:text-[#b27457] transition-all duration-300 ${isActive ? "text-[#b27457]" : "text-neutral-300"}`}
               >
                 {item.label}
-              </p>
+              </span>
               <span
                 className={`absolute left-1/2 -translate-x-1/2 ease-in-out -bottom-1 h-px w-0 bg-[#b27457] transition-all duration-300 group-hover:w-full ${isActive ? "w-full" : ""}`}
               ></span>
@@ -81,11 +81,11 @@ function Desktop() {
               href={item.href}
               className='group w-fit relative'
             >
-              <p
+              <span
                 className={` uppercase group-hover:text-[#b27457] transition-all duration-300 ${isActive ? "text-[#b27457]" : "text-neutral-300"}`}
               >
                 {item.label}
-              </p>
+              </span>
               <span
                 className={`absolute left-1/2 -translate-x-1/2 ease-in-out -bottom-1 h-px w-0 bg-[#b27457] transition-all duration-300 group-hover:w-full ${isActive ? "w-full" : ""}`}
               ></span>
