@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Syarat & Ketentuan | Nada Upacara Bali",
@@ -80,7 +81,7 @@ export default function TermsOfServicePage() {
   return (
     <main className='min-h-screen bg-neutral-950 text-neutral-50 relative overflow-hidden'>
       {/* Hero */}
-      <section className='relative pt-32 pb-20 md:pb-28 px-6 border-b border-neutral-800/60'>
+      <Reveal><section className='relative pt-32 pb-20 md:pb-28 px-6 border-b border-neutral-800/60'>
         <div
           className='absolute inset-0 -z-10 pointer-events-none'
           style={{
@@ -103,10 +104,10 @@ export default function TermsOfServicePage() {
             dan ketentuan yang berlaku.
           </p>
         </div>
-      </section>
+      </section></Reveal>
 
       {/* Content */}
-      <section className='py-16 md:py-24 px-6'>
+      <Reveal><section className='py-16 md:py-24 px-6'>
         <div className='container mx-auto max-w-4xl'>
           <div className='space-y-12'>
             {sections.map((section, index) => (
@@ -159,7 +160,7 @@ export default function TermsOfServicePage() {
             </p>
           </div>
         </div>
-      </section>
+      </section></Reveal>
     </main>
   );
 }

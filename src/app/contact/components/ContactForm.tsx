@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { contactInfo } from "@/constants/contact";
+import Reveal from "@/components/Reveal";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className='container mx-auto px-6 py-12 max-w-7xl'>
+    <Reveal><section className='container mx-auto px-6 py-12 max-w-7xl'>
       <div className='max-w-3xl mx-auto'>
         <div className='text-center mb-12'>
           <h2 className='font-libre-baskerville italic text-4xl lg:text-5xl mb-4 text-[#f09a73]'>
@@ -128,6 +129,6 @@ export default function ContactForm() {
           </Button>
         </form>
       </div>
-    </section>
+    </section></Reveal>
   );
 }

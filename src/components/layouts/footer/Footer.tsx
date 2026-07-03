@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Mail, Phone } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const quickLinks = [
   { href: "/", label: "Home", className: "cols-start-1 row-start-1" },
@@ -31,7 +32,7 @@ export default function Footer() {
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12'>
           {/* Brand Section */}
-          <div className='flex flex-col gap-6 lg:pr-4'>
+          <Reveal><div className='flex flex-col gap-6 lg:pr-4'>
             <div className='h-16 w-16 overflow-hidden relative'>
               <Image
                 src='/logo/logo.png'
@@ -45,10 +46,10 @@ export default function Footer() {
               Cultural performance house yang menghadirkan pengalaman budaya
               Bali secara sakral, emosional, dan profesional.
             </p>
-          </div>
+          </div></Reveal>
 
           {/* Quick Links */}
-          <div>
+          <Reveal delay={0.1}><div>
             <h3 className='text-neutral-200 font-outfit uppercase tracking-widest text-sm mb-6 font-semibold'>
               Quick Links
             </h3>
@@ -63,10 +64,10 @@ export default function Footer() {
                 </Link>
               ))}
             </div>
-          </div>
+          </div></Reveal>
 
           {/* Contact Info */}
-          <div>
+          <Reveal delay={0.2}><div>
             <h3 className='text-neutral-200 font-outfit uppercase tracking-widest text-sm mb-6 font-semibold'>
               Contact Us
             </h3>
@@ -89,10 +90,10 @@ export default function Footer() {
                 <span>Denpasar, Bali, Indonesia</span>
               </li>
             </ul>
-          </div>
+          </div></Reveal>
 
           {/* Social Media */}
-          <div>
+          <Reveal delay={0.3}><div>
               <h3 className='text-neutral-200 font-outfit uppercase tracking-widest text-sm mb-6 font-semibold'>
               Follow Us
             </h3>
@@ -125,7 +126,7 @@ export default function Footer() {
                 <svg className='w-4 h-4' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' strokeLinecap='round' strokeLinejoin='round'><path d='M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5'/></svg>
               </a>
             </div>
-          </div>
+          </div></Reveal>
         </div>
 
         {/* Bottom Bar */}

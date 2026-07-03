@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { servicesData } from "@/constants/services";
 import { image } from "@/constants/images";
 import ServiceCard from "./components/ServiceCard";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Layanan Kami | Nada Upacara Bali",
@@ -37,7 +38,7 @@ export default function ServicesPage() {
         </div>
 
         {/* Content */}
-        <div className='relative z-10 max-w-4xl mx-auto flex flex-col items-center'>
+        <Reveal className='relative z-10 max-w-4xl mx-auto flex flex-col items-center'>
           <div className='mb-4'>
             <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#d58058] font-semibold'>
               Pilar Layanan
@@ -54,7 +55,7 @@ export default function ServicesPage() {
             profesionalisme, ketepatan waktu, dan pelayanan premium untuk
             berbagai kebutuhan acara Anda.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* Services List */}
@@ -65,7 +66,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
+      <Reveal><section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
         <div
           className='absolute inset-0 -z-10 pointer-events-none'
           style={{
@@ -94,7 +95,7 @@ export default function ServicesPage() {
             </Button>
           </Link>
         </div>
-      </section>
+      </section></Reveal>
     </main>
   );
 }

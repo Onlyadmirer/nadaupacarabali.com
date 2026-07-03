@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import SalamPendiri from "./components/SalamPendiri";
 import { image } from "@/constants/images";
+import Reveal from "@/components/Reveal";
+import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 
 export const metadata: Metadata = {
   title: "Tentang Kami | Nada Upacara Bali",
@@ -31,7 +33,7 @@ export default function AboutPage() {
           />
           <div className='absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/30 to-neutral-950/90' />
         </div>
-        <div className='relative z-10 max-w-4xl mx-auto flex flex-col items-center mt-24'>
+        <Reveal className='relative z-10 max-w-4xl mx-auto flex flex-col items-center mt-24'>
           <span className='text-[#d58058] font-outfit uppercase tracking-[0.2em] text-sm font-semibold mb-4'>
             Mengenal Lebih Dekat
           </span>
@@ -41,13 +43,13 @@ export default function AboutPage() {
           <p className='text-[#ffffff] tracking-[0.3em] text-xs md:text-sm uppercase mb-4 font-semibold'>
             {"• Sakral • Penuh Rasa • Profesional •"}
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* Main Content Sections */}
       <div className=' mx-auto flex flex-col gap-24'>
-        {/* Section 2: Sejarah & Filosofi */}
-        <section className='max-w-4xl px-6 mx-auto text-center'>
+          {/* Section 2: Sejarah & Filosofi */}
+        <Reveal><section className='max-w-4xl px-6 mx-auto text-center'>
           <h2 className='text-sm font-outfit font-semibold tracking-[0.2em] text-[#d58058] uppercase mb-4'>
             Sejarah & Filosofi
           </h2>
@@ -73,11 +75,11 @@ export default function AboutPage() {
               profesional.&quot;
             </p>
           </div>
-        </section>
+        </section></Reveal>
 
-        <SalamPendiri />
+        <Reveal><SalamPendiri /></Reveal>
         {/* Section 3: Keunikan Kami */}
-        <section className='max-w-7xl px-6 mx-auto'>
+        <Reveal><section className='max-w-7xl px-6 mx-auto'>
           <div className='text-center mb-12'>
             <h2 className='text-sm font-outfit font-semibold tracking-[0.2em] text-[#d58058] uppercase mb-4'>
               Keunikan Kami
@@ -87,8 +89,8 @@ export default function AboutPage() {
             </h3>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-            <div className='group bg-neutral-900/40 border border-neutral-800/60 p-8 rounded-lg hover:bg-neutral-900 hover:border-[#d58058]/50 transition-all duration-500'>
+          <StaggerContainer className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+            <StaggerItem><div className='group bg-neutral-900/40 border border-neutral-800/60 p-8 rounded-lg hover:bg-neutral-900 hover:border-[#d58058]/50 transition-all duration-500'>
               <div className='text-4xl font-libre-baskerville text-neutral-700 group-hover:text-[#d58058] transition-colors duration-500 mb-6'>
                 01
               </div>
@@ -99,9 +101,9 @@ export default function AboutPage() {
                 Memadukan nilai budaya tradisional Bali yang luhur dengan etika
                 kerja dan manajemen modern yang sistematis.
               </p>
-            </div>
+            </div></StaggerItem>
 
-            <div className='group bg-neutral-900/40 border border-neutral-800/60 p-8 rounded-lg hover:bg-neutral-900 hover:border-[#d58058]/50 transition-all duration-500'>
+            <StaggerItem><div className='group bg-neutral-900/40 border border-neutral-800/60 p-8 rounded-lg hover:bg-neutral-900 hover:border-[#d58058]/50 transition-all duration-500'>
               <div className='text-4xl font-libre-baskerville text-neutral-700 group-hover:text-[#d58058] transition-colors duration-500 mb-6'>
                 02
               </div>
@@ -112,9 +114,9 @@ export default function AboutPage() {
                 Kami menjaga kualitas mulai dari kerapian penampilan, tata
                 busana panggung, hingga ketepatan waktu hadir.
               </p>
-            </div>
+            </div></StaggerItem>
 
-            <div className='group bg-neutral-900/40 border border-neutral-800/60 p-8 rounded-lg hover:bg-neutral-900 hover:border-[#d58058]/50 transition-all duration-500'>
+            <StaggerItem><div className='group bg-neutral-900/40 border border-neutral-800/60 p-8 rounded-lg hover:bg-neutral-900 hover:border-[#d58058]/50 transition-all duration-500'>
               <div className='text-4xl font-libre-baskerville text-neutral-700 group-hover:text-[#d58058] transition-colors duration-500 mb-6'>
                 03
               </div>
@@ -125,9 +127,9 @@ export default function AboutPage() {
                 Fokus pelestarian budaya kami sajikan dengan gaya elegan yang
                 tetap relevan dan memukau di acara masa kini.
               </p>
-            </div>
-          </div>
-        </section>
+            </div></StaggerItem>
+          </StaggerContainer>
+        </section></Reveal>
       </div>
     </div>
   );

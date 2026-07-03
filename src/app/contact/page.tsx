@@ -7,6 +7,8 @@ import { image } from "@/constants/images";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import dynamic from "next/dynamic";
 import ContactCard from "./components/ContactCard";
+import Reveal from "@/components/Reveal";
+import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 
 
 const ContactForm = dynamic(() => import("./components/ContactForm"), {
@@ -56,7 +58,7 @@ export default function ContactPage() {
           <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/90' />
         </div>
 
-        <div className='relative z-10 max-w-4xl mx-auto flex flex-col items-center'>
+        <Reveal className='relative z-10 max-w-4xl mx-auto flex flex-col items-center'>
           <div className='mb-4'>
             <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#d58058] font-semibold'>
               Kontak
@@ -72,13 +74,13 @@ export default function ContactPage() {
             Kami siap mendengarkan kebutuhan Anda. Diskusikan acara,
             pertunjukan, atau kolaborasi seni bersama tim Nada Upacara Bali.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* Contact Cards */}
       <section className='container mx-auto px-6 py-12 max-w-7xl'>
-        <div className='grid md:grid-cols-2 gap-8'>
-          <ContactCard
+        <StaggerContainer className='grid md:grid-cols-2 gap-8'>
+          <StaggerItem><ContactCard
             icon={<Phone className='w-6 h-6' />}
             title='WhatsApp'
             description={`Hubungi kami langsung via WhatsApp untuk respons cepat. Tim kami siap membantu ${contactInfo.hours.toLowerCase()}.`}
@@ -87,8 +89,8 @@ export default function ContactPage() {
               href: contactInfo.whatsapp,
               external: true,
             }}
-          />
-          <ContactCard
+          /></StaggerItem>
+          <StaggerItem><ContactCard
             icon={<Mail className='w-6 h-6' />}
             title='Email'
             description='Kirimkan pertanyaan atau proposal kerja sama melalui email. Kami akan merespon dalam 1x24 jam.'
@@ -97,8 +99,8 @@ export default function ContactPage() {
               href: `mailto:${contactInfo.email}`,
               external: true,
             }}
-          />
-          <ContactCard
+          /></StaggerItem>
+          <StaggerItem><ContactCard
             icon={<MapPin className='w-6 h-6' />}
             title='Lokasi'
             description='Berbasis di Denpasar, Bali. Kami siap tampil di berbagai venue di seluruh Bali dan luar daerah.'
@@ -107,8 +109,8 @@ export default function ContactPage() {
               href: "https://maps.google.com/?q=Denpasar+Bali+Indonesia",
               external: true,
             }}
-          />
-          <ContactCard
+          /></StaggerItem>
+          <StaggerItem><ContactCard
             icon={<Send className='w-6 h-6' />}
             title='Sosial Media'
             description='Ikuti perjalanan seni kami melalui media sosial untuk update pertunjukan dan kegiatan terbaru.'
@@ -117,12 +119,12 @@ export default function ContactPage() {
               href: contactInfo.social.instagram,
               external: true,
             }}
-          />
-        </div>
+          /></StaggerItem>
+        </StaggerContainer>
       </section>
 
       {/* Social Media Links */}
-      <section className='container mx-auto px-6 py-12 max-w-7xl'>
+      <Reveal><section className='container mx-auto px-6 py-12 max-w-7xl'>
         <div className='flex flex-wrap items-center justify-center gap-6'>
           <span className='font-outfit uppercase tracking-[0.2em] text-xs text-neutral-400'>
             Ikuti Kami
@@ -190,13 +192,13 @@ export default function ContactPage() {
             </a>
           </div>
         </div>
-      </section>
+      </section></Reveal>
 
       {/* Contact Form */}
       <ContactForm />
 
       {/* Map Section */}
-      <section className='container mx-auto px-6 py-12 max-w-5xl'>
+      <Reveal><section className='container mx-auto px-6 py-12 max-w-5xl'>
         <div className='mb-8 text-center'>
           <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#d58058] font-semibold'>
             Lokasi
@@ -221,10 +223,10 @@ export default function ContactPage() {
             className='w-full h-full'
           />
         </div>
-      </section>
+      </section></Reveal>
 
       {/* CTA Section */}
-      <section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
+      <Reveal><section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
         <div
           className='absolute inset-0 -z-10 pointer-events-none'
           style={{
@@ -254,7 +256,7 @@ export default function ContactPage() {
             </Button>
           </Link>
         </div>
-      </section>
+      </section></Reveal>
     </main>
   );
 }

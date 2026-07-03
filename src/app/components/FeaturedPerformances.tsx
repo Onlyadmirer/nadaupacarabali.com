@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 
 export default function FeaturedPerformances() {
   // Data 3 pertunjukan unggulan (Featured)
@@ -61,10 +62,9 @@ export default function FeaturedPerformances() {
         </div>
 
         {/* 3-Column Grid Layout */}
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
+        <StaggerContainer className='grid grid-cols-1 md:grid-cols-3 gap-8'>
           {featured.map((item, index) => (
-            <Link
-              key={index}
+            <StaggerItem key={index}><Link
               href={item.link}
               className='group block relative h-96 w-full overflow-hidden rounded-lg'
             >
@@ -99,9 +99,9 @@ export default function FeaturedPerformances() {
                   </p>
                 </div>
               </div>
-            </Link>
+            </Link></StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

@@ -6,6 +6,7 @@ import { blogData } from "@/constants/blog";
 import { ChevronLeft } from "lucide-react";
 import BlogContent from "./components/BlogContent";
 import { notFound } from "next/navigation";
+import Reveal from "@/components/Reveal";
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -69,11 +70,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </Link>
         </div>
 
-        <BlogContent post={post} />
+        <Reveal><BlogContent post={post} /></Reveal>
       </section>
 
       {/* CTA Section */}
-      <section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
+      <Reveal><section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
         <div
           className='absolute inset-0 -z-10 pointer-events-none'
           style={{
@@ -102,7 +103,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </Button>
           </Link>
         </div>
-      </section>
+      </section></Reveal>
     </main>
   );
 }

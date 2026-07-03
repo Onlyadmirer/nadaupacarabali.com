@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { catalogData, catalogCategories } from "@/constants/catalog";
 import CatalogCard from "./CatalogCard";
+import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 
 export default function CatalogGrid() {
   const [activeFilter, setActiveFilter] = useState<string>(() => {
@@ -93,11 +94,11 @@ export default function CatalogGrid() {
 
       {/* Grid */}
       {filteredItems.length > 0 ? (
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'>
+        <StaggerContainer className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'>
           {filteredItems.map((item) => (
-            <CatalogCard key={item.id} item={item} />
+            <StaggerItem key={item.id}><CatalogCard item={item} /></StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       ) : (
         <div className='text-center py-20'>
           <p className='font-cormorant-garamond text-neutral-500 text-lg'>

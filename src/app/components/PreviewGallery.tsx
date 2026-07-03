@@ -1,6 +1,7 @@
 import { image } from "@/constants/images";
 import Image from "next/image";
 import Link from "next/link";
+import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 
 export default function PreviewGallery() {
   const previewImages = [
@@ -65,9 +66,9 @@ export default function PreviewGallery() {
           - auto-rows-[150px] md:auto-rows-[250px]: Mengunci tinggi 1 baris. 
             Jika elemen memiliki 'row-span-2', tingginya otomatis jadi 2x lipat.
         */}
-        <div className='grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] md:auto-rows-[250px] gap-2 md:gap-4'>
+        <StaggerContainer className='grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] md:auto-rows-[250px] gap-2 md:gap-4'>
           {previewImages.map((image, index) => (
-            <div
+            <StaggerItem
               key={index}
               className={`group relative w-full h-full overflow-hidden rounded-md ${image.className}`}
             >
@@ -79,9 +80,9 @@ export default function PreviewGallery() {
                 className='object-cover w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-105'
               />
               <div className='absolute inset-0 bg-black/30'></div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
 
         {/* Tombol ke halaman Gallery utuh (Khusus mobile) */}
         <div className='mt-10 flex justify-center md:hidden'>

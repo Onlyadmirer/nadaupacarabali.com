@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import type { Service } from "@/constants/services";
+import Reveal from "@/components/Reveal";
 
 interface ServiceCardProps {
   service: Service;
@@ -12,7 +13,7 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
   const isEven = index % 2 === 0;
 
   return (
-    <div
+    <Reveal><div
       id={service.id}
       className={`py-24 lg:py-36 relative ${isEven ? "bg-neutral-900/30" : "bg-transparent"}`}
     >
@@ -106,16 +107,13 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
             className={`flex items-center justify-center ${service.sections.length % 2 === 0 ? "lg:col-span-2" : ""}`}
           >
             <Link href={`/catalog#${service.id}`} className='w-full'>
-              <Button
-                variant='outline'
-                className='font-outfit border-[#d58058]/50 text-[#d58058] hover:bg-[#d58058] hover:text-white rounded-none w-full px-12 py-7 text-sm lg:text-base tracking-[0.2em] uppercase transition-all duration-300 backdrop-blur-sm bg-transparent'
-              >
+              <Button className='font-outfit bg-[#a05530] hover:bg-[#7a3f20] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(160,85,48,0.2)] hover:shadow-[0_0_30px_rgba(122,63,32,0.4)]'>
                 Lihat Katalog Pertunjukan
               </Button>
             </Link>
           </div>
         </div>
       </div>
-    </div>
+    </div></Reveal>
   );
 }

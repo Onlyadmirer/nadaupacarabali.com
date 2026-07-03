@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { blogData } from "@/constants/blog";
 import { image } from "@/constants/images";
 import BlogCard from "./components/BlogCard";
+import Reveal from "@/components/Reveal";
+import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 
 export const metadata: Metadata = {
   title: "Blog | Nada Upacara Bali",
@@ -35,7 +37,7 @@ export default function BlogPage() {
           <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/90' />
         </div>
 
-        <div className='relative z-10 max-w-4xl mx-auto flex flex-col items-center'>
+        <Reveal className='relative z-10 max-w-4xl mx-auto flex flex-col items-center'>
           <div className='mb-4'>
             <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#d58058] font-semibold'>
               Blog
@@ -51,20 +53,20 @@ export default function BlogPage() {
             Jelajahi wawasan seputar seni dan budaya tradisional Bali — dari
             filosofi gamelan, tari sakral, hingga panduan pernikahan adat.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* Blog Grid */}
       <section className='container mx-auto px-6 py-12 max-w-7xl'>
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        <StaggerContainer className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {blogData.map((post) => (
-            <BlogCard key={post.id} post={post} />
+            <StaggerItem key={post.id}><BlogCard post={post} /></StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </section>
 
       {/* CTA Section */}
-      <section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
+      <Reveal><section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
         <div
           className='absolute inset-0 -z-10 pointer-events-none'
           style={{
@@ -93,7 +95,7 @@ export default function BlogPage() {
             </Button>
           </Link>
         </div>
-      </section>
+      </section></Reveal>
     </main>
   );
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { image } from "@/constants/images";
 import CatalogGrid from "./components/CatalogGrid";
+import Reveal from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Katalog Pertunjukan | Nada Upacara Bali",
@@ -34,7 +35,7 @@ export default function CatalogPage() {
           <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/90' />
         </div>
 
-        <div className='relative z-10 max-w-4xl mx-auto flex flex-col items-center'>
+        <Reveal className='relative z-10 max-w-4xl mx-auto flex flex-col items-center'>
           <div className='mb-4'>
             <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#d58058] font-semibold'>
               Katalog Pertunjukan
@@ -51,14 +52,14 @@ export default function CatalogPage() {
             sakral, wayang klasik, hingga tarian elegan — lengkap dengan
             informasi paket dan harga.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* Catalog Grid with Filter */}
       <CatalogGrid />
 
       {/* CTA Section */}
-      <section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
+      <Reveal><section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
         <div
           className='absolute inset-0 -z-10 pointer-events-none'
           style={{
@@ -87,7 +88,7 @@ export default function CatalogPage() {
             </Button>
           </Link>
         </div>
-      </section>
+      </section></Reveal>
     </main>
   );
 }

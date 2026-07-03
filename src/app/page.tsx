@@ -11,6 +11,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { image } from "@/constants/images";
+import Reveal from "@/components/Reveal";
+import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 
 const ServiceCategories = dynamic(
   () => import("./components/ServiceCategories"),
@@ -122,7 +124,7 @@ export default function Home() {
           fetchPriority='high'
         />
         <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/90' />
-        <div className='z-20 max-w-4xl mx-auto flex flex-col items-center mt-16'>
+        <Reveal className='z-20 max-w-4xl mx-auto flex flex-col items-center mt-16'>
           <span className='uppercase font-sans text-sm md:text-base tracking-wide font-semibold text-[#f09a73]'>
             Balinese Creative-Cultural Service
           </span>
@@ -132,11 +134,11 @@ export default function Home() {
           <p className='text-[#ffffff] tracking-[0.3em] text-xs md:text-sm uppercase mb-4 font-semibold'>
             {"• Sakral • Penuh Rasa • Profesional •"}
           </p>
-        </div>
+        </Reveal>
       </section>
 
       {/* 3. TENTANG KAMI SECTION (Singkat & Elegan) */}
-      <section className='py-24 px-6 md:px-12 max-w-5xl mx-auto text-center'>
+      <Reveal><section className='py-24 px-6 md:px-12 max-w-5xl mx-auto text-center'>
         <h2 className='text-3xl text-neutral-200 md:text-4xl font-cormorant-garamond uppercase  mb-8'>
           Tradisi Bertemu <span className='text-[#d58058]'>Elegansi</span>
         </h2>
@@ -148,9 +150,9 @@ export default function Home() {
           serta memperkuat positioning sebagai premium Balinese
           Creative-Cultural Service.
         </p>
-      </section>
+      </section></Reveal>
 
-      <section className='flex mt-8 flex-col md:flex-row bg-neutral-900 justify-center items-center'>
+      <Reveal><section className='flex mt-8 flex-col md:flex-row bg-neutral-900 justify-center items-center'>
         <div className='flex-2 w-full'>
           <iframe
             className='w-full aspect-video'
@@ -180,14 +182,14 @@ export default function Home() {
             </Button>
           </Link>
         </div>
-      </section>
+      </section></Reveal>
 
       <ServiceCategories />
       <FeaturedPerformances />
       <PreviewGallery />
 
       {/* Alur Pemesanan */}
-      <section className='relative py-24 overflow-hidden'>
+      <Reveal><section className='relative py-24 overflow-hidden'>
         <div
           className='absolute inset-0 -z-10 pointer-events-none'
           style={{
@@ -211,12 +213,12 @@ export default function Home() {
           </div>
 
           {/* Steps Grid */}
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'>
+          <StaggerContainer className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8'>
             {steps.map((step, index) => {
               const IconComponent = step.icon;
 
               return (
-                <div key={step.id} className='relative group'>
+                <StaggerItem key={step.id} className='relative group'>
                   {/* Connecting line (desktop only) */}
                   {index < steps.length - 1 && (
                     <div className='hidden lg:block absolute top-12 left-[60%] w-[80%] h-px bg-linear-to-r from-[#d58058]/30 to-transparent' />
@@ -249,11 +251,12 @@ export default function Home() {
                       {step.description}
                     </p>
                   </div>
-                </div>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
 
+          <Reveal>
           {/* CTA */}
           <div className='flex justify-center mt-16'>
             <Link
@@ -266,8 +269,9 @@ export default function Home() {
               </Button>
             </Link>
           </div>
+          </Reveal>
         </div>
-      </section>
+      </section></Reveal>
     </div>
   );
 }

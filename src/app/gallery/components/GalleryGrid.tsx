@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { galleryImages } from "@/constants/gallery";
+import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 
 const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
 
@@ -27,11 +28,10 @@ export default function GalleryGrid() {
   return (
     <section className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-24'>
       {/* Grid */}
-      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4'>
+      <StaggerContainer className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4'>
         {galleryImages.map((img, index) => (
-          <button
+          <StaggerItem
             key={index}
-            onClick={() => setLightboxIndex(index)}
             className='group relative aspect-4/3 w-full overflow-hidden rounded-lg bg-neutral-900/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d58058]'
           >
             <Image
@@ -56,9 +56,9 @@ export default function GalleryGrid() {
                 )}
               </div>
             </div>
-          </button>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
 
       {/* Lightbox */}
       {lightboxIndex !== null && (

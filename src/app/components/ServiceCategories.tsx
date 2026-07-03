@@ -2,6 +2,7 @@ import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { serviceCategories } from "@/constants/services";
+import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 
 export default function ServiceCategories() {
   return (
@@ -18,10 +19,9 @@ export default function ServiceCategories() {
         </div>
 
         {/* Grid Cards 2x2 */}
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8'>
+        <StaggerContainer className='grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8'>
           {serviceCategories.map((service, index) => (
-            <Link
-              key={index}
+            <StaggerItem key={index}><Link
               href={service.link}
               className='group relative h-80 md:h-96 overflow-hidden flex items-end rounded-md'
             >
@@ -59,9 +59,9 @@ export default function ServiceCategories() {
                   />
                 </div>
               </div>
-            </Link>
+            </Link></StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

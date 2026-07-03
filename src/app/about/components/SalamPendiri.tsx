@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Reveal from "@/components/Reveal";
 
 function SalamPendiri() {
   return (
-    <div className=' bg-[#a38f7b]'>
+    <Reveal><div className=' bg-[#a38f7b]'>
       <div className='flex flex-col px-6 md:flex-row py-18 md:py-26 max-w-7xl mx-auto'>
         <div className='flex-1 flex text-neutral-900 flex-col justify-center md:pl-24'>
           <h1 className='text-3xl font-libre-baskerville uppercase'>
@@ -40,7 +41,7 @@ function SalamPendiri() {
           ></Image>
         </div>
       </div>
-    </div>
+    </div></Reveal>
   );
 }
 
