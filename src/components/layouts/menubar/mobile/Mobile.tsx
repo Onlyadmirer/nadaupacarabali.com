@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 
 function Mobile() {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
   const pathName = usePathname();
 
   useEffect(() => {
@@ -52,7 +53,7 @@ function Mobile() {
           className='w-full h-full bg-cover'
         ></Image>
       </div>
-      <Sheet>
+      <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button
             variant='ghost'
@@ -70,7 +71,9 @@ function Mobile() {
         >
           <SheetHeader>
             <SheetTitle className='sr-only'>Menu Navigasi</SheetTitle>
-            <SheetDescription className='sr-only'>Menu navigasi Nada Upacara Bali</SheetDescription>
+            <SheetDescription className='sr-only'>
+              Menu navigasi Nada Upacara Bali
+            </SheetDescription>
           </SheetHeader>
           <div className='flex flex-col pt-12 h-full gap-12 tracking-wider text-neutral-200 font-outfit font-medium text-lg items-center w-full'>
             {navLinks.map((nav) => {
@@ -82,6 +85,7 @@ function Mobile() {
                 <Link
                   key={nav.name}
                   href={nav.path}
+                  onClick={() => setOpen(false)}
                   className=' w-fit relative'
                 >
                   <p
