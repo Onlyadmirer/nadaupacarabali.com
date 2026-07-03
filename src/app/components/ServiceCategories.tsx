@@ -23,7 +23,7 @@ export default function ServiceCategories() {
             <Link
               key={index}
               href={service.link}
-              className='group relative h-80 md:h-96 overflow-hidden flex items-end rounded-xl'
+              className='group relative h-80 md:h-96 overflow-hidden flex items-end rounded-md'
             >
               {/* Background Image dengan efek Zoom saat di-hover */}
               <div className='absolute inset-0'>
@@ -41,7 +41,7 @@ export default function ServiceCategories() {
 
               {/* Konten Teks */}
               <div className='relative z-10 p-4 md:p-8 w-full'>
-                <h4 className='text-2xl font-libre-baskerville text-[#d58058] mb-2 transition-transform duration-500 group-hover:-translate-y-2'>
+                <h4 className='text-2xl font-outfit text-[#d58058] mb-2 transition-transform duration-500 group-hover:-translate-y-2'>
                   {service.title}
                 </h4>
 

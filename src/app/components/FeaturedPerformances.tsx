@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 export default function FeaturedPerformances() {
   // Data 3 pertunjukan unggulan (Featured)
@@ -27,7 +26,7 @@ export default function FeaturedPerformances() {
       link: "/catalog#prabangkara-hanoman",
     },
     {
-      id: "wayang-peteng",
+      id: "wayang-peteng-tradisi",
       title: "Wayang Peteng Tradisi",
       category: "Wayang Kulit Klasik Bali",
       categoryId: "wayang",
@@ -75,6 +74,8 @@ export default function FeaturedPerformances() {
                   src={item.image}
                   alt={item.title}
                   fill
+                  loading='eager'
+                  sizes='(max-width: 768px) 100vw 80vw'
                   className='object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105'
                 />
               </div>
@@ -87,7 +88,7 @@ export default function FeaturedPerformances() {
                 <p className='text-[#d58058] text-xs tracking-widest uppercase mb-2 font-medium'>
                   {item.category}
                 </p>
-                <h4 className='text-2xl font-serif text-white mb-3'>
+                <h4 className='text-2xl font-outfit text-white mb-3'>
                   {item.title}
                 </h4>
 
