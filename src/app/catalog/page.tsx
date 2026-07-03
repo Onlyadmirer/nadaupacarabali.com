@@ -20,7 +20,7 @@ export default function CatalogPage() {
   return (
     <main className='min-h-screen bg-neutral-950 text-neutral-50 relative overflow-hidden'>
       {/* Hero Section */}
-      <section className='relative h-[85vh] min-h-125 flex flex-col justify-center items-center text-center px-6 mb-12'>
+      <section className='relative min-h-screen flex flex-col justify-center items-center text-center px-6 mb-12'>
         <div className='absolute inset-0 z-0'>
           <Image
             src={image.img5}
