@@ -154,7 +154,7 @@ export default function Home() {
         <div className='flex-2 w-full'>
           <iframe
             className='w-full aspect-video'
-            src={`https://www.youtube.com/embed/-yp5DuntO9c`}
+            src={`https://www.youtube-nocookie.com/embed/-yp5DuntO9c`}
             allowFullScreen
             loading='lazy'
             title='Video Profile Nada Upacara Bali'
