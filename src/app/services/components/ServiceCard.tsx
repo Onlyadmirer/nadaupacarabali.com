@@ -108,7 +108,7 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
               className={`flex items-center justify-center ${service.sections.length % 2 === 0 ? "lg:col-span-2" : ""}`}
             >
               <Link href={`/catalog#${service.id}`} className='w-full'>
-                <Button className='font-outfit bg-[#a05530] hover:bg-[#7a3f20] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(160,85,48,0.2)] hover:shadow-[0_0_30px_rgba(122,63,32,0.4)]'>
+                <Button className='font-outfit bg-[#a05530] hover:bg-[#7a3f20] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase w-full transition-all duration-300 shadow-[0_0_20px_rgba(160,85,48,0.2)] hover:shadow-[0_0_30px_rgba(122,63,32,0.4)]'>
                   Lihat Katalog Pertunjukan
                 </Button>
               </Link>

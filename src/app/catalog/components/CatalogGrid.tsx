@@ -6,26 +6,20 @@ import CatalogCard from "./CatalogCard";
 import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 
 export default function CatalogGrid() {
-  const [activeFilter, setActiveFilter] = useState<string>(() => {
-    if (typeof window === "undefined") return "all";
-    const hash = window.location.hash.replace("#", "");
-    if (hash) {
-      const matchedItem = catalogData.find((item) => item.id === hash);
-      if (matchedItem) return "all";
-      const matched = catalogCategories.find((cat) => cat.serviceId === hash);
-      if (matched) return matched.id;
-    }
-    return "all";
-  });
+  const [activeFilter, setActiveFilter] = useState<string>("all");
 
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     if (hash) {
       const matchedItem = catalogData.find((item) => item.id === hash);
       if (matchedItem) {
+        setActiveFilter("all");
         requestAnimationFrame(() => {
           document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "center" });
         });
+      } else {
+        const matched = catalogCategories.find((cat) => cat.serviceId === hash);
+        if (matched) setActiveFilter(matched.id);
       }
     }
 

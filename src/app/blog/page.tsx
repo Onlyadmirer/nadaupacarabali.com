@@ -60,42 +60,46 @@ export default function BlogPage() {
       <section className='container mx-auto px-6 py-12 max-w-7xl'>
         <StaggerContainer className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
           {blogData.map((post) => (
-            <StaggerItem key={post.id}><BlogCard post={post} /></StaggerItem>
+            <StaggerItem key={post.id}>
+              <BlogCard post={post} />
+            </StaggerItem>
           ))}
         </StaggerContainer>
       </section>
 
       {/* CTA Section */}
-      <Reveal><section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
-        <div
-          className='absolute inset-0 -z-10 pointer-events-none'
-          style={{
-            background:
-              "radial-gradient(circle at center, rgba(178,116,87,0.08) 0%, transparent 70%)",
-          }}
-        ></div>
-        <div className='max-w-4xl mx-auto border border-[#b27457]/20 bg-neutral-900/60 p-12 md:p-20 rounded-2xl backdrop-blur-md relative overflow-hidden group'>
-          <div className='absolute top-0 right-0 w-32 h-32 bg-[#f09a73]/10 blur-3xl -z-10 rounded-full transition-transform duration-1000 group-hover:scale-150'></div>
-          <div className='absolute bottom-0 left-0 w-32 h-32 bg-[#d58058]/10 blur-3xl -z-10 rounded-full transition-transform duration-1000 group-hover:scale-150'></div>
+      <Reveal>
+        <section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
+          <div
+            className='absolute inset-0 -z-10 pointer-events-none'
+            style={{
+              background:
+                "radial-gradient(circle at center, rgba(178,116,87,0.08) 0%, transparent 70%)",
+            }}
+          ></div>
+          <div className='max-w-4xl mx-auto border border-[#b27457]/20 bg-neutral-900/60 py-12 px-6 md:px-20 md:py-20 rounded-2xl backdrop-blur-md relative overflow-hidden group'>
+            <div className='absolute top-0 right-0 w-32 h-32 bg-[#f09a73]/10 blur-3xl -z-10 rounded-full transition-transform duration-1000 group-hover:scale-150'></div>
+            <div className='absolute bottom-0 left-0 w-32 h-32 bg-[#d58058]/10 blur-3xl -z-10 rounded-full transition-transform duration-1000 group-hover:scale-150'></div>
 
-          <h2 className='font-libre-baskerville italic text-4xl lg:text-5xl mb-6 text-[#f09a73]'>
-            Ingin Tahu Lebih Banyak?
-          </h2>
-          <p className='font-cormorant-garamond text-neutral-300 text-lg lg:text-xl mb-12 font-light max-w-2xl mx-auto'>
-            Kami siap menjawab pertanyaan Anda seputar seni pertunjukan
-            tradisional Bali. Hubungi kami untuk diskusi lebih lanjut.
-          </p>
-          <Link
-            href='https://wa.me/6285119309088'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <Button className='font-outfit bg-[#a05530] hover:bg-[#7a3f20] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(160,85,48,0.2)] hover:shadow-[0_0_30px_rgba(122,63,32,0.4)]'>
-              Hubungi Kami Sekarang
-            </Button>
-          </Link>
-        </div>
-      </section></Reveal>
+            <h2 className='font-libre-baskerville italic text-4xl lg:text-5xl mb-6 text-[#f09a73]'>
+              Ingin Tahu Lebih Banyak?
+            </h2>
+            <p className='font-cormorant-garamond text-neutral-300 text-lg lg:text-xl mb-12 font-light max-w-2xl mx-auto'>
+              Kami siap menjawab pertanyaan Anda seputar seni pertunjukan
+              tradisional Bali. Hubungi kami untuk diskusi lebih lanjut.
+            </p>
+            <Link
+              href='https://wa.me/6285119309088'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <Button className='font-outfit bg-[#a05530] hover:bg-[#7a3f20] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(160,85,48,0.2)] hover:shadow-[0_0_30px_rgba(122,63,32,0.4)]'>
+                Hubungi Kami Sekarang
+              </Button>
+            </Link>
+          </div>
+        </section>
+      </Reveal>
     </main>
   );
 }

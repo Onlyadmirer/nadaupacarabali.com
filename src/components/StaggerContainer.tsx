@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 interface StaggerContainerProps {
   children: React.ReactNode;
@@ -15,6 +16,14 @@ export default function StaggerContainer({
   stagger = 0.1,
   delay = 0,
 }: StaggerContainerProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       initial='hidden'
@@ -40,6 +49,14 @@ export function StaggerItem({
   children: React.ReactNode;
   className?: string;
 }) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       variants={{
