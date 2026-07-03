@@ -26,7 +26,7 @@ export default function CatalogCard({ item }: CatalogCardProps) {
           alt={item.title}
           fill
           className='object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105'
-          sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+          sizes='(max-width: 640px) 100vw 80vw'
         />
         <div className='absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/20 to-transparent' />
         <div className='absolute inset-0 bg-neutral-950/10 group-hover:bg-transparent transition-colors duration-700' />

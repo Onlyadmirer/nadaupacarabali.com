@@ -47,6 +47,7 @@ function Mobile() {
           src={"/logo/logo.png"}
           alt='nada-upacara-bali-logo'
           fill
+          loading='eager'
           sizes='(max-width: 768px) 100vw 80vw'
           className='w-full h-full bg-cover'
         ></Image>
