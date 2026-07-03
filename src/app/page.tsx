@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import {
   ChevronRight,
@@ -9,10 +10,62 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import ServiceCategories from "./components/ServiceCategories";
-import FeaturedPerformances from "./components/FeaturedPerformances";
-import PreviewGallery from "./components/PreviewGallery";
 import { image } from "@/constants/images";
+
+const ServiceCategories = dynamic(
+  () => import("./components/ServiceCategories"),
+  {
+    loading: () => (
+      <section className='py-24 px-6'>
+        <div className='max-w-7xl mx-auto'>
+          <div className='animate-pulse space-y-6'>
+            <div className='h-8 bg-neutral-800 rounded w-64 mx-auto' />
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className='h-64 bg-neutral-800/50 rounded-xl' />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    ),
+  },
+);
+const FeaturedPerformances = dynamic(
+  () => import("./components/FeaturedPerformances"),
+  {
+    loading: () => (
+      <section className='py-24 px-6'>
+        <div className='max-w-7xl mx-auto'>
+          <div className='animate-pulse space-y-6'>
+            <div className='h-8 bg-neutral-800 rounded w-64 mx-auto' />
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className='h-80 bg-neutral-800/50 rounded-xl' />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    ),
+  },
+);
+const PreviewGallery = dynamic(() => import("./components/PreviewGallery"), {
+  loading: () => (
+    <section className='py-24 px-6'>
+      <div className='max-w-7xl mx-auto'>
+        <div className='animate-pulse space-y-6'>
+          <div className='h-8 bg-neutral-800 rounded w-64 mx-auto' />
+          <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className='aspect-square bg-neutral-800/50 rounded-xl' />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  ),
+});
 
 export const metadata: Metadata = {
   title: "Nada Upacara Bali | Balinese Creative-Cultural Service",
@@ -66,6 +119,7 @@ export default function Home() {
           sizes='100vw'
           className='w-full h-full object-[49%_20%] object-cover'
           priority
+          fetchPriority='high'
         />
         <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/90' />
         <div className='z-20 max-w-4xl mx-auto flex flex-col items-center mt-16'>
@@ -207,7 +261,7 @@ export default function Home() {
               target='_blank'
               rel='noopener noreferrer'
             >
-              <Button className='font-outfit bg-[#d58058] hover:bg-[#b27457] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(213,128,88,0.2)] hover:shadow-[0_0_30px_rgba(213,128,88,0.4)]'>
+              <Button className='font-outfit bg-[#a05530] hover:bg-[#7a3f20] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(160,85,48,0.2)] hover:shadow-[0_0_30px_rgba(122,63,32,0.4)]'>
                 Hubungi Kami Sekarang
               </Button>
             </Link>

@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { galleryImages } from "@/constants/gallery";
-import Lightbox from "./Lightbox";
+
+const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
 
 export default function GalleryGrid() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);

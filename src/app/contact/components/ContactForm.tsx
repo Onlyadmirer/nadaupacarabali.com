@@ -122,7 +122,7 @@ export default function ContactForm() {
 
           <Button
             type='submit'
-            className='font-outfit bg-[#d58058] hover:bg-[#b27457] text-white rounded-none px-8 md:px-12 py-7 text-xs lg:text-sm tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(213,128,88,0.2)] hover:shadow-[0_0_30px_rgba(213,128,88,0.4)] w-full md:w-auto'
+            className='font-outfit bg-[#a05530] hover:bg-[#7a3f20] text-white rounded-none px-8 md:px-12 py-7 text-xs lg:text-sm tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(160,85,48,0.2)] hover:shadow-[0_0_30px_rgba(122,63,32,0.4)] w-full md:w-auto'
           >
             Kirim via WhatsApp
           </Button>

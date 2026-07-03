@@ -26,7 +26,7 @@ export const blogData: BlogPost[] = [
       "Tidak hanya itu, struktur gamelan Bali yang terdiri dari instrumen berpasangan — dengan tuning yang sedikit berbeda — menghasilkan efek ombak atau nyanying yang khas. Ini melambangkan bahwa dalam kehidupan selalu ada dualitas: suka dan duka, siang dan malam, lahir dan mati. Namun dari perbedaan itu, justru lahir keindahan.",
       "Bagi masyarakat Bali, gamelan bukanlah sekadar hiburan. Ia adalah doa, identitas, dan pengingat akan keseimbangan hidup. Setiap denting palu pada bilah perunggu adalah sebuah renungan bahwa harmoni adalah tujuan tertinggi dalam kehidupan.",
     ],
-    image: "https://res.cloudinary.com/drldcq7wa/image/upload/v1782903146/IMG_4609_uu2bkp.jpg",
+    image: "https://res.cloudinary.com/drldcq7wa/image/upload/f_auto,q_auto/v1782903146/IMG_4609_uu2bkp.jpg",
   },
   {
     id: "panduan-memilih-tarian-untuk-upacara",
@@ -43,7 +43,7 @@ export const blogData: BlogPost[] = [
       "Sementara untuk upacara Pitra Yadnya (upacara kematian), tarian seperti Baris Gede dan musik Gambang sering digunakan. Yang terpenting adalah memastikan bahwa pertunjukan tidak bersifat menghibur berlebihan, melainkan mendukung suasana khidmat dan penghormatan kepada leluhur.",
       "Tips penting: selalu konsultasikan dengan pemangku adat atau penyedia jasa yang berpengalaman sebelum menentukan jenis pertunjukan. Nada Upacara Bali siap membantu Anda memilih tarian yang tepat sesuai dengan kebutuhan upacara adat Anda.",
     ],
-    image: "https://res.cloudinary.com/drldcq7wa/image/upload/v1782903144/IMG_4192_s9byjw.jpg",
+    image: "https://res.cloudinary.com/drldcq7wa/image/upload/f_auto,q_auto/v1782903144/IMG_4192_s9byjw.jpg",
   },
   {
     id: "mengenal-wayang-kulit-bali",
@@ -61,7 +61,7 @@ export const blogData: BlogPost[] = [
       "Cerita yang dibawakan pun khas: selain wiracarita Ramayana dan Mahabharata, wayang Bali juga sering membawakan cerita Calon Arang — kisah tentang seorang janda sakti dari abad ke-12 yang penuh dengan elemen magis dan filosofi tentang kebaikan melawan kejahatan.",
       "Kini, wayang kulit Bali terus berkembang. Inovasi seperti Wayang Peteng Inovatif yang memadukan layar proyektor dan efek visual modern membuktikan bahwa wayang mampu beradaptasi dengan zaman tanpa kehilangan esensinya sebagai warisan budaya luhur.",
     ],
-    image: "https://res.cloudinary.com/drldcq7wa/image/upload/v1782903144/IMG_4154_ihsqlg.jpg",
+    image: "https://res.cloudinary.com/drldcq7wa/image/upload/f_auto,q_auto/v1782903144/IMG_4154_ihsqlg.jpg",
   },
   {
     id: "tips-persiapan-pernikahan-adat-bali",
@@ -80,6 +80,6 @@ export const blogData: BlogPost[] = [
       "5. Busana Pengantin: Pilihlah busana adat Bali yang sesuai dengan jenis upacara. Untuk upacara mepandes atau mejauman, pengantin biasanya mengenakan kain prada dan sabuk wastra dengan hiasan kepala yang lengkap. Konsultasikan dengan penjahit busana adat yang berpengalaman agar hasilnya sempurna.",
       "Dengan persiapan yang matang, pernikahan adat Bali Anda tidak hanya akan menjadi momen yang indah secara visual, tetapi juga pengalaman spiritual yang mendalam bagi Anda, keluarga, dan para tamu. Nada Upacara Bali siap menjadi mitra Anda dalam menghadirkan pertunjukan seni yang memperkaya hari istimewa Anda.",
     ],
-    image: "https://res.cloudinary.com/drldcq7wa/image/upload/v1782903146/IMG_4544_iyveey.jpg",
+    image: "https://res.cloudinary.com/drldcq7wa/image/upload/f_auto,q_auto/v1782903146/IMG_4544_iyveey.jpg",
   },
 ];

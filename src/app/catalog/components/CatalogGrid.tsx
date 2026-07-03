@@ -70,8 +70,8 @@ export default function CatalogGrid() {
           onClick={() => handleFilterChange("all")}
           className={`font-outfit text-xs tracking-widest uppercase px-5 py-2.5 rounded-full border transition-all duration-300 ${
             activeFilter === "all"
-              ? "bg-[#d58058] text-white border-[#d58058]"
-              : "bg-transparent text-neutral-400 border-neutral-700 hover:border-[#d58058]/50 hover:text-[#d58058]"
+              ? "bg-[#a05530] text-white border-[#a05530]"
+              : "bg-transparent text-neutral-400 border-neutral-700 hover:border-[#a05530]/50 hover:text-[#a05530]"
           }`}
         >
           Semua

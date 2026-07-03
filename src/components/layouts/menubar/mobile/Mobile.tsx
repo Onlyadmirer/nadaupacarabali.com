@@ -48,7 +48,7 @@ function Mobile() {
           alt='nada-upacara-bali-logo'
           fill
           loading='eager'
-          sizes='(max-width: 768px) 100vw 80vw'
+          sizes='64px'
           className='w-full h-full bg-cover'
         ></Image>
       </div>
@@ -58,6 +58,7 @@ function Mobile() {
             variant='ghost'
             size={"icon-lg"}
             type='button'
+            aria-label='Buka menu navigasi'
             className='cursor-pointer hover:bg-transparent z-50'
           >
             <Menu className='w-full h-full scale-150 text-[#d58058]' />

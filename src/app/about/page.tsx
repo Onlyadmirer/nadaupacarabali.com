@@ -27,6 +27,7 @@ export default function AboutPage() {
             sizes='100vw'
             className='w-full h-full object-[49%_20%] object-cover'
             priority
+            fetchPriority='high'
           />
           <div className='absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/30 to-neutral-950/90' />
         </div>

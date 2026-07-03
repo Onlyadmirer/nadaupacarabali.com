@@ -23,9 +23,9 @@ export default function ContactCard({
         {icon}
       </div>
 
-      <h3 className='font-libre-baskerville italic text-xl lg:text-2xl text-[#f09a73] mb-3 leading-tight'>
+      <h2 className='font-libre-baskerville italic text-xl lg:text-2xl text-[#f09a73] mb-3 leading-tight'>
         {title}
-      </h3>
+      </h2>
 
       <p className='font-cormorant-garamond text-neutral-400 text-lg leading-relaxed mb-6 flex-1'>
         {description}
