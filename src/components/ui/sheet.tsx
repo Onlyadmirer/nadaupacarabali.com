@@ -75,7 +75,7 @@ function SheetContent({
               className='absolute group hover:bg-transparent top-4 right-4'
               size='icon-lg'
             >
-              <XIcon className='group-hover:text-amber-600 text-neutral-300 scale-150 transition-all duration-300' />
+              <XIcon className='group-hover:text-[#c05621] text-foreground scale-150 transition-all duration-300' />
               <span className='sr-only'>Close</span>
             </Button>
           </SheetPrimitive.Close>

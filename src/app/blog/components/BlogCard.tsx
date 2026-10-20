@@ -9,7 +9,7 @@ interface BlogCardProps {
 export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className='group block'>
-      <div className='bg-neutral-900/40 border border-neutral-800/60 rounded-xl overflow-hidden hover:border-[#d58058]/30 transition-all duration-500 h-full flex flex-col'>
+      <div className='bg-card border border-border rounded-xl overflow-hidden shadow-sm hover:border-[#c05621]/40 transition-all duration-500 h-full flex flex-col'>
         <div className='relative aspect-16/10 w-full overflow-hidden'>
           <Image
             src={post.image}
@@ -27,20 +27,20 @@ export default function BlogCard({ post }: BlogCardProps) {
         </div>
 
         <div className='p-6 lg:p-8 flex flex-col flex-1'>
-          <span className='font-outfit text-[11px] tracking-wide uppercase text-neutral-500 mb-3'>
+          <span className='font-outfit text-[11px] tracking-wide uppercase text-[#6f6055] mb-3'>
             {post.date}
           </span>
 
-          <h3 className='font-libre-baskerville italic text-xl lg:text-2xl text-[#f09a73] mb-3 leading-tight group-hover:underline decoration-[#d58058]/50 underline-offset-4 transition-all duration-300'>
+          <h3 className='font-libre-baskerville italic text-xl lg:text-2xl text-[#9a3412] mb-3 leading-tight group-hover:underline decoration-[#c05621]/40 underline-offset-4 transition-all duration-300'>
             {post.title}
           </h3>
 
-          <p className='font-outfit text-neutral-400 text-sm leading-relaxed line-clamp-3 flex-1'>
+          <p className='font-outfit text-[#6f6055] text-sm leading-relaxed line-clamp-3 flex-1'>
             {post.excerpt}
           </p>
 
-          <div className='mt-6 pt-4 border-t border-neutral-800/60'>
-            <span className='font-outfit text-xs tracking-[0.15em] uppercase text-[#d58058] group-hover:text-[#f09a73] transition-colors duration-300'>
+          <div className='mt-6 pt-4 border-t border-border'>
+            <span className='font-outfit text-xs tracking-[0.15em] uppercase text-[#c05621] group-hover:text-[#9a3412] transition-colors duration-300'>
               Baca Selengkapnya
             </span>
           </div>

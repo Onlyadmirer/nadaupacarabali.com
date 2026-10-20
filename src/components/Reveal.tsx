@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useHydrated } from "@/lib/useHydrated";
 
 interface RevealProps {
   children: React.ReactNode;
@@ -16,9 +16,7 @@ export default function Reveal({
   className,
   y = 40,
 }: RevealProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useHydrated();
 
   if (!mounted) {
     return <div className={className}>{children}</div>;

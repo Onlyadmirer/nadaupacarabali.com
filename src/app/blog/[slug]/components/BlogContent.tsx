@@ -9,17 +9,17 @@ export default function BlogContent({ post }: BlogContentProps) {
     <article className='max-w-3xl mx-auto'>
       <header className='text-center mb-16'>
         <div className='mb-4'>
-          <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#d58058] font-semibold'>
+          <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#c05621] font-semibold'>
             {post.category}
           </span>
         </div>
-        <h1 className='font-libre-baskerville italic text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#f09a73] tracking-tight leading-tight'>
+        <h1 className='font-libre-baskerville italic text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#9a3412] tracking-tight leading-tight'>
           {post.title}
         </h1>
         <div className='flex justify-center mb-6'>
           <div className='w-24 h-px bg-linear-to-r from-transparent via-[#d58058] to-transparent'></div>
         </div>
-        <time className='font-outfit text-sm tracking-wide uppercase text-neutral-500'>
+        <time className='font-outfit text-sm tracking-wide uppercase text-[#6f6055]'>
           {post.date}
         </time>
       </header>
@@ -30,9 +30,9 @@ export default function BlogContent({ post }: BlogContentProps) {
           return (
             <p
               key={index}
-              className={`font-outfit text-neutral-300 leading-relaxed ${
+              className={`font-outfit text-[#4e4239] leading-relaxed ${
                 isFirst
-                  ? "text-xl lg:text-2xl text-neutral-200 font-semibold"
+                  ? "text-xl lg:text-2xl text-foreground font-semibold"
                   : "text-lg lg:text-xl"
               }`}
             >

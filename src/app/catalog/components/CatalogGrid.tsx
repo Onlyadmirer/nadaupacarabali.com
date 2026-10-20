@@ -91,8 +91,8 @@ export default function CatalogGrid() {
           onClick={() => handleFilterChange("all")}
           className={`font-outfit text-xs tracking-widest uppercase px-5 py-2.5 rounded-full border transition-all duration-300 ${
             activeFilter === "all"
-              ? "bg-[#a05530] text-white border-[#a05530]"
-              : "bg-transparent text-neutral-400 border-neutral-700 hover:border-[#a05530]/50 hover:text-[#a05530]"
+              ? "bg-[#b4501f] text-white border-[#b4501f]"
+              : "bg-transparent text-[#6f6055] border-[#dccdc0] hover:border-[#c05621]/50 hover:text-[#c05621]"
           }`}
         >
           Semua
@@ -103,8 +103,8 @@ export default function CatalogGrid() {
             onClick={() => handleFilterChange(cat.id)}
             className={`font-outfit text-xs tracking-widest uppercase px-5 py-2.5 rounded-full border transition-all duration-300 ${
               activeFilter === cat.id
-                ? "bg-[#d58058] text-white border-[#d58058]"
-                : "bg-transparent text-neutral-400 border-neutral-700 hover:border-[#d58058]/50 hover:text-[#d58058]"
+                ? "bg-[#c05621] text-white border-[#c05621]"
+                : "bg-transparent text-[#6f6055] border-[#dccdc0] hover:border-[#c05621]/50 hover:text-[#c05621]"
             }`}
           >
             {cat.label}
@@ -114,20 +114,19 @@ export default function CatalogGrid() {
 
       {/* Grid */}
       {filteredItems.length > 0 ? (
-        // Tambahkan atribut key={activeFilter} di bawah ini 👇
         <StaggerContainer
           key={activeFilter}
           className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'
         >
           {filteredItems.map((item) => (
-            <StaggerItem key={item.id}>
+            <StaggerItem key={item.id} className='h-full'>
               <CatalogCard item={item} />
             </StaggerItem>
           ))}
         </StaggerContainer>
       ) : (
         <div className='text-center py-20'>
-          <p className='font-cormorant-garamond text-neutral-500 text-lg'>
+          <p className='font-cormorant-garamond text-[#6f6055] text-lg'>
             Tidak ada pertunjukan dalam kategori ini.
           </p>
         </div>

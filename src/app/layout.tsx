@@ -9,6 +9,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import MenuBar from "@/components/layouts/menubar/MenuBar";
 import Footer from "@/components/layouts/footer/Footer";
+import { contactInfo, siteUrl } from "@/constants/contact";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,10 +35,22 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Nada Upacara Bali | Balinese Creative-Cultural Service",
   description:
     "Cultural performance house Bali — pertunjukan seni tradisional Bali untuk upacara adat, pernikahan, corporate event, dan edukasi budaya.",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
+    type: "website",
+    siteName: "Nada Upacara Bali",
+    locale: "id_ID",
+    url: siteUrl,
     title: "Nada Upacara Bali | Balinese Creative-Cultural Service",
     description:
       "Cultural performance house yang menghadirkan pengalaman budaya Bali secara sakral, emosional, dan profesional.",
@@ -50,6 +63,15 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nada Upacara Bali | Balinese Creative-Cultural Service",
+    description:
+      "Cultural performance house yang menghadirkan pengalaman budaya Bali secara sakral, emosional, dan profesional.",
+    images: [
+      "https://res.cloudinary.com/drldcq7wa/image/upload/v1782903146/IMG_4609_uu2bkp.jpg",
+    ],
+  },
 };
 
 const jsonLd = {
@@ -58,18 +80,18 @@ const jsonLd = {
   name: "Nada Upacara Bali",
   description:
     "Cultural performance house yang menghadirkan pengalaman budaya Bali secara sakral, emosional, dan profesional.",
-  url: "https://nadaupacarabali.com",
-  logo: "https://nadaupacarabali.com/logo/logo.png",
+  url: siteUrl,
+  logo: `${siteUrl}/logo/logo.png`,
   contactPoint: {
     "@type": "ContactPoint",
-    telephone: "+62-851-1930-9088",
+    telephone: contactInfo.phone,
     contactType: "customer service",
     availableLanguage: ["Indonesian", "English"],
   },
   sameAs: [
-    "https://www.instagram.com/nadaupacarabali/",
-    "https://www.youtube.com/@NadaUpacaraBali",
-    "https://www.tiktok.com/@nadaupacarabali",
+    contactInfo.social.instagram,
+    contactInfo.social.youtube,
+    contactInfo.social.tiktok,
   ],
 };
 
@@ -92,18 +114,18 @@ export default function RootLayout({
       )}
     >
       <head>
-        <meta name='theme-color' content='#0a0a0a' />
-        <meta name='color-scheme' content='dark' />
+        <meta name='theme-color' content='#fbf7f2' />
+        <meta name='color-scheme' content='light' />
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className='min-h-full flex flex-col selection:bg-[#d58058] selection:text-white'>
+      <body className='min-h-full flex flex-col selection:bg-[#f09a73]/40 selection:text-[#2b211b]'>
         <MenuBar />
-        <main className="flex-1">
+        <div className='flex-1'>
           {children}
-        </main>
+        </div>
         <Footer />
       </body>
     </html>

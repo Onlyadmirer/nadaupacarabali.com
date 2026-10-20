@@ -3,9 +3,9 @@ import Reveal from "@/components/Reveal";
 
 function SalamPendiri() {
   return (
-    <Reveal><div className=' bg-[#a38f7b]'>
+    <Reveal><div className=' bg-[#f0e4d8]'>
       <div className='flex flex-col px-6 md:flex-row py-18 md:py-26 max-w-7xl mx-auto'>
-        <div className='flex-1 flex text-neutral-900 flex-col justify-center md:pl-24'>
+        <div className='flex-1 flex text-[#2b211b] flex-col justify-center md:pl-24'>
           <h1 className='text-3xl font-libre-baskerville uppercase'>
             Salam dari <span className='text-[#9f4a23]'>Pendiri</span>
           </h1>

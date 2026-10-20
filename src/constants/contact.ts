@@ -1,3 +1,6 @@
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://nadaupacarabali.com";
+
 export const contactInfo = {
   phone: "+62 851-1930-9088",
   phoneRaw: "6285119309088",
@@ -13,3 +16,10 @@ export const contactInfo = {
   },
   hours: "Senin - Sabtu, 08:00 - 20:00 WITA",
 } as const;
+
+/** Builds a WhatsApp chat link, optionally pre-filled with a message. */
+export function waLink(message?: string) {
+  return message
+    ? `${contactInfo.whatsapp}?text=${encodeURIComponent(message)}`
+    : contactInfo.whatsapp;
+}

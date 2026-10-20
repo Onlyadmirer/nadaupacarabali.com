@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nada Upacara Bali
 
-## Getting Started
+Website profil dan katalog untuk **Nada Upacara Bali**, cultural performance
+house di Denpasar yang menyediakan pertunjukan seni tradisional Bali — gamelan,
+tari, wayang, dan topeng sakral — untuk upacara adat, pernikahan, corporate
+event, dan program edukasi budaya.
 
-First, run the development server:
+Website ini bersifat lead-generation: pengunjung menjelajahi layanan dan katalog,
+lalu diarahkan ke WhatsApp untuk konsultasi dan pemesanan. Tidak ada transaksi
+atau pembayaran di dalam aplikasi.
+
+## Tech Stack
+
+| Lapisan | Teknologi |
+| --- | --- |
+| Framework | Next.js 16 (App Router) |
+| UI | React 19, Tailwind CSS v4, shadcn/ui |
+| Bahasa | TypeScript |
+| Animasi | `motion` (`motion/react`) |
+| Ikon | `lucide-react` |
+
+## Menjalankan Proyek
+
+Prasyarat: Node.js 20+ dan [Bun](https://bun.sh) (lockfile proyek memakai Bun).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
+bun run dev      # http://localhost:3000
+bun run build    # build production
+bun run start    # jalankan hasil build
+bun run lint     # ESLint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Jika memakai npm, hapus `bun.lock` terlebih dahulu agar tidak terjadi
+ketidakcocokan dependensi.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Variabel Lingkungan
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variabel | Wajib | Keterangan |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Tidak | Domain kanonik situs (dipakai untuk `metadataBase`, sitemap, robots, dan JSON-LD). Default: `https://nadaupacarabali.com`. |
 
-## Learn More
+Contoh `.env.local`:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+NEXT_PUBLIC_SITE_URL=https://nadaupacarabali.com
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Struktur Proyek
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/                    # Route App Router
+│   ├── layout.tsx          # Metadata global, font, JSON-LD, MenuBar & Footer
+│   ├── page.tsx            # Beranda
+│   ├── about/              # Tentang kami
+│   ├── services/           # Kategori layanan
+│   ├── catalog/            # Katalog + harga (filter & deep link via hash)
+│   ├── gallery/            # Galeri + lightbox
+│   ├── blog/               # Daftar blog + halaman [slug]
+│   ├── contact/            # Kontak + form WhatsApp
+│   ├── privacy-policy/
+│   ├── terms-of-service/
+│   ├── sitemap.ts          # Sitemap dinamis
+│   └── robots.ts           # Robots.txt
+├── components/
+│   ├── layouts/            # MenuBar & Footer
+│   ├── ui/                 # Komponen shadcn/ui
+│   ├── Reveal.tsx          # Animasi muncul saat scroll
+│   └── StaggerContainer.tsx
+├── constants/              # Sumber konten (tanpa CMS/database)
+│   ├── catalog.ts          # Item katalog + paket + harga
+│   ├── services.ts
+│   ├── gallery.ts
+│   ├── blog.ts
+│   ├── contact.ts          # Kontak, sosial, situs, helper waLink()
+│   └── images.ts
+└── lib/utils.ts            # cn() dan formatRupiah()
+```
 
-## Deploy on Vercel
+## Mengubah Konten
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Semua konten bersifat statis di `src/constants/`. Perubahan konten atau harga
+memerlukan commit dan deploy ulang.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Harga & paket**: `src/constants/catalog.ts` — setiap paket punya `price`
+  dalam Rupiah (tanpa pemisah). Harga "mulai dari" dihitung otomatis dari
+  paket termurah.
+- **Nomor WhatsApp / kontak**: `src/constants/contact.ts`. Gunakan helper
+  `waLink(pesan?)` untuk membuat tautan WhatsApp agar nomor tidak perlu
+  di-hardcode di komponen.
+- **Artikel blog**: `src/constants/blog.ts`. Halaman detail dibuat otomatis
+  lewat `generateStaticParams`.
+
+## Catatan
+
+- Panduan gaya, warna, dan tipografi ada di [`GEMINI.md`](./GEMINI.md).
+- Gambar eksternal diizinkan dari `res.cloudinary.com` (lihat `next.config.ts`).
