@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useHydrated } from "@/lib/useHydrated";
 
 interface StaggerContainerProps {
   children: React.ReactNode;
@@ -16,9 +16,7 @@ export default function StaggerContainer({
   stagger = 0.1,
   delay = 0,
 }: StaggerContainerProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useHydrated();
 
   if (!mounted) {
     return <div className={className}>{children}</div>;
@@ -50,9 +48,7 @@ export function StaggerItem({
   children: React.ReactNode;
   className?: string;
 } & React.ComponentPropsWithoutRef<typeof motion.div>) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  const mounted = useHydrated();
 
   if (!mounted) {
     return <div className={className}>{children}</div>;

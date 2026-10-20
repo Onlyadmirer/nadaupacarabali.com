@@ -14,13 +14,13 @@ const ContactForm = dynamic(() => import("./components/ContactForm"), {
   loading: () => (
     <section className='container mx-auto px-6 py-12 max-w-7xl'>
       <div className='max-w-3xl mx-auto'>
-        <div className='bg-neutral-900/50 rounded-2xl border border-neutral-800/60 p-12 animate-pulse'>
-          <div className='h-8 bg-neutral-800 rounded w-48 mx-auto mb-8' />
+        <div className='bg-card rounded-2xl border border-border p-12 animate-pulse'>
+          <div className='h-8 bg-[#f5eee6] rounded w-48 mx-auto mb-8' />
           <div className='space-y-6'>
-            <div className='h-12 bg-neutral-800 rounded' />
-            <div className='h-12 bg-neutral-800 rounded' />
-            <div className='h-32 bg-neutral-800 rounded' />
-            <div className='h-12 bg-neutral-800 rounded w-40 mx-auto' />
+            <div className='h-12 bg-[#f5eee6] rounded' />
+            <div className='h-12 bg-[#f5eee6] rounded' />
+            <div className='h-32 bg-[#f5eee6] rounded' />
+            <div className='h-12 bg-[#f5eee6] rounded w-40 mx-auto' />
           </div>
         </div>
       </div>
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className='min-h-screen bg-neutral-950 text-neutral-50 relative overflow-hidden'>
+    <main className='min-h-screen bg-background text-foreground relative overflow-hidden'>
       {/* Hero Section */}
-      <section className='relative h-[85vh] min-h-125 flex flex-col justify-center items-center text-center px-6 mb-12'>
+      <section className='relative h-screen min-h-125 flex flex-col justify-center items-center text-center px-6 mb-12'>
         <div className='absolute inset-0 z-0'>
           <Image
             src={image.img1}
@@ -134,7 +134,7 @@ export default function ContactPage() {
       <Reveal>
         <section className='container mx-auto px-6 py-12 max-w-7xl'>
           <div className='flex flex-wrap items-center justify-center gap-6'>
-            <span className='font-outfit uppercase tracking-[0.2em] text-xs text-neutral-400'>
+            <span className='font-outfit uppercase tracking-[0.2em] text-xs text-[#6f6055]'>
               Ikuti Kami
             </span>
             <div className='flex gap-4'>
@@ -142,7 +142,7 @@ export default function ContactPage() {
                 href={contactInfo.social.instagram}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='w-12 h-12 rounded-full border border-neutral-700/60 flex items-center justify-center text-neutral-400 hover:bg-[#d58058] hover:border-[#d58058] hover:text-white transition-all duration-300'
+                className='w-12 h-12 rounded-full border border-border flex items-center justify-center text-[#6f6055] hover:bg-[#c05621] hover:border-[#c05621] hover:text-white transition-all duration-300'
                 aria-label='Instagram'
               >
                 <svg
@@ -163,7 +163,7 @@ export default function ContactPage() {
                 href={contactInfo.social.youtube}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='w-12 h-12 rounded-full border border-neutral-700/60 flex items-center justify-center text-neutral-400 hover:bg-[#d58058] hover:border-[#d58058] hover:text-white transition-all duration-300'
+                className='w-12 h-12 rounded-full border border-border flex items-center justify-center text-[#6f6055] hover:bg-[#c05621] hover:border-[#c05621] hover:text-white transition-all duration-300'
                 aria-label='YouTube'
               >
                 <svg
@@ -183,7 +183,7 @@ export default function ContactPage() {
                 href={contactInfo.social.tiktok}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='w-12 h-12 rounded-full border border-neutral-700/60 flex items-center justify-center text-neutral-400 hover:bg-[#d58058] hover:border-[#d58058] hover:text-white transition-all duration-300'
+                className='w-12 h-12 rounded-full border border-border flex items-center justify-center text-[#6f6055] hover:bg-[#c05621] hover:border-[#c05621] hover:text-white transition-all duration-300'
                 aria-label='TikTok'
               >
                 <svg
@@ -210,17 +210,17 @@ export default function ContactPage() {
       <Reveal>
         <section className='container mx-auto px-6 py-12 max-w-5xl'>
           <div className='mb-8 text-center'>
-            <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#d58058] font-semibold'>
+            <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#c05621] font-semibold'>
               Lokasi
             </span>
-            <h2 className='font-libre-baskerville italic text-3xl md:text-4xl font-bold mt-2 text-[#f09a73]'>
+            <h2 className='font-libre-baskerville italic text-3xl md:text-4xl font-bold mt-2 text-[#9a3412]'>
               Temukan Kami
             </h2>
             <div className='flex justify-center mt-4 mb-2'>
               <div className='w-16 h-px bg-linear-to-r from-transparent via-[#d58058] to-transparent'></div>
             </div>
           </div>
-          <div className='h-105 w-full overflow-hidden rounded-xl border border-neutral-800/60'>
+          <div className='h-105 w-full overflow-hidden rounded-xl border border-border'>
             <iframe
               src={contactInfo.googleMapsEmbed}
               width='100%'
@@ -243,17 +243,17 @@ export default function ContactPage() {
             className='absolute inset-0 -z-10 pointer-events-none'
             style={{
               background:
-                "radial-gradient(circle at center, rgba(178,116,87,0.08) 0%, transparent 70%)",
+                "radial-gradient(circle at center, rgba(178,116,87,0.14) 0%, transparent 70%)",
             }}
           ></div>
-          <div className='max-w-4xl mx-auto border border-[#b27457]/20 bg-neutral-900/60 py-12 px-6 md:px-20 md:py-20 rounded-2xl backdrop-blur-md relative overflow-hidden group'>
+          <div className='max-w-4xl mx-auto border border-[#f3cdb6] bg-card shadow-sm py-12 px-6 md:px-20 md:py-20 rounded-2xl relative overflow-hidden group'>
             <div className='absolute top-0 right-0 w-32 h-32 bg-[#f09a73]/10 blur-3xl -z-10 rounded-full transition-transform duration-1000 group-hover:scale-150'></div>
             <div className='absolute bottom-0 left-0 w-32 h-32 bg-[#d58058]/10 blur-3xl -z-10 rounded-full transition-transform duration-1000 group-hover:scale-150'></div>
 
-            <h2 className='font-libre-baskerville italic text-4xl lg:text-5xl mb-6 text-[#f09a73]'>
+            <h2 className='font-libre-baskerville italic text-4xl lg:text-5xl mb-6 text-[#9a3412]'>
               Siap Bekerja Sama?
             </h2>
-            <p className='font-cormorant-garamond text-neutral-300 text-lg lg:text-xl mb-12 font-light max-w-2xl mx-auto'>
+            <p className='font-cormorant-garamond text-[#4e4239] text-lg lg:text-xl mb-12 font-light max-w-2xl mx-auto'>
               Jangan ragu untuk menghubungi kami. Tim Nada Upacara Bali siap
               membantu mewujudkan acara Anda dengan pertunjukan seni tradisional
               yang autentik dan profesional.
@@ -263,7 +263,7 @@ export default function ContactPage() {
               target='_blank'
               rel='noopener noreferrer'
             >
-              <Button className='font-outfit bg-[#a05530] hover:bg-[#7a3f20] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(160,85,48,0.2)] hover:shadow-[0_0_30px_rgba(122,63,32,0.4)]'>
+              <Button className='font-outfit bg-[#b4501f] hover:bg-[#8f3d16] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(180,80,31,0.2)] hover:shadow-[0_0_30px_rgba(143,61,22,0.4)]'>
                 Hubungi Kami Sekarang
               </Button>
             </Link>

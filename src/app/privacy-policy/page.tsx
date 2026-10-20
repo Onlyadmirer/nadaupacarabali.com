@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
+import { contactInfo } from "@/constants/contact";
 
 export const metadata: Metadata = {
   title: "Kebijakan Privasi | Nada Upacara Bali",
@@ -62,27 +63,27 @@ const sections = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <main className='min-h-screen bg-neutral-950 text-neutral-50 relative overflow-hidden'>
+    <main className='min-h-screen bg-background text-foreground relative overflow-hidden'>
       {/* Hero */}
-      <Reveal><section className='relative pt-32 pb-20 md:pb-28 px-6 border-b border-neutral-800/60'>
+      <Reveal><section className='relative pt-32 pb-20 md:pb-28 px-6 border-b border-border'>
         <div
           className='absolute inset-0 -z-10 pointer-events-none'
           style={{
             background:
-              "radial-gradient(circle at center, rgba(178,116,87,0.06) 0%, transparent 70%)",
+              "radial-gradient(circle at center, rgba(178,116,87,0.12) 0%, transparent 70%)",
           }}
         ></div>
         <div className='container mx-auto max-w-4xl text-center'>
-          <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#d58058] font-semibold'>
+          <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#c05621] font-semibold'>
             Legal
           </span>
-          <h1 className='font-libre-baskerville italic text-4xl md:text-5xl font-bold mt-4 mb-4 text-[#f09a73]'>
+          <h1 className='font-libre-baskerville italic text-4xl md:text-5xl font-bold mt-4 mb-4 text-[#9a3412]'>
             Kebijakan Privasi
           </h1>
           <div className='flex justify-center mb-6'>
             <div className='w-16 h-px bg-linear-to-r from-transparent via-[#d58058] to-transparent'></div>
           </div>
-          <p className='font-cormorant-garamond text-neutral-400 text-lg max-w-2xl mx-auto'>
+          <p className='font-cormorant-garamond text-[#6f6055] text-lg max-w-2xl mx-auto'>
             Nada Upacara Bali menghargai privasi Anda. Dokumen ini menjelaskan
             bagaimana kami menangani informasi pribadi Anda.
           </p>
@@ -95,11 +96,11 @@ export default function PrivacyPolicyPage() {
           <div className='space-y-12'>
             {sections.map((section, index) => (
               <div key={index}>
-                <h2 className='font-libre-baskerville italic text-2xl md:text-3xl text-[#d58058] mb-4'>
+                <h2 className='font-libre-baskerville italic text-2xl md:text-3xl text-[#c05621] mb-4'>
                   {section.title}
                 </h2>
                 {section.content && (
-                  <p className='font-cormorant-garamond text-neutral-300 text-lg leading-relaxed'>
+                  <p className='font-cormorant-garamond text-[#4e4239] text-lg leading-relaxed'>
                     {section.content}
                   </p>
                 )}
@@ -108,7 +109,7 @@ export default function PrivacyPolicyPage() {
                     {section.items.map((item, i) => (
                       <li
                         key={i}
-                        className='font-cormorant-garamond text-neutral-300 text-lg leading-relaxed flex items-start gap-3'
+                        className='font-cormorant-garamond text-[#4e4239] text-lg leading-relaxed flex items-start gap-3'
                       >
                         <span className='text-[#b27457] mt-1.5 shrink-0'>
                           ✦
@@ -119,26 +120,26 @@ export default function PrivacyPolicyPage() {
                   </ul>
                 )}
                 {section.contact && (
-                  <div className='mt-4 font-cormorant-garamond text-neutral-300 text-lg leading-relaxed space-y-1'>
-                    <p>WhatsApp: +62 851-1930-9088</p>
+                  <div className='mt-4 font-cormorant-garamond text-[#4e4239] text-lg leading-relaxed space-y-1'>
+                    <p>WhatsApp: {contactInfo.phone}</p>
                     <p>
                       Email:{" "}
                       <a
-                        href='mailto:nadaupacarabali@gmail.com'
-                        className='text-[#d58058] hover:text-[#f09a73] transition-colors'
+                        href={`mailto:${contactInfo.email}`}
+                        className='text-[#c05621] hover:text-[#9a3412] transition-colors'
                       >
-                        nadaupacarabali@gmail.com
+                        {contactInfo.email}
                       </a>
                     </p>
-                    <p>Denpasar, Bali, Indonesia</p>
+                    <p>{contactInfo.address}</p>
                   </div>
                 )}
               </div>
             ))}
           </div>
 
-          <div className='mt-16 pt-8 border-t border-neutral-800/60'>
-            <p className='font-cormorant-garamond text-neutral-500 text-sm'>
+          <div className='mt-16 pt-8 border-t border-border'>
+            <p className='font-cormorant-garamond text-[#8a7a6d] text-sm'>
               Terakhir diperbarui: Juli 2026
             </p>
           </div>

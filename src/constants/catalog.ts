@@ -1,5 +1,7 @@
 export interface CatalogPackage {
   name: string;
+  /** Harga paket dalam Rupiah, tanpa pemisah. */
+  price: number;
 }
 
 export interface CatalogItem {
@@ -34,10 +36,10 @@ export const catalogData: CatalogItem[] = [
     duration: "Max 3 Jam",
     image: image.img2,
     packages: [
-      { name: "Eka Swara" },
-      { name: "Dwi Nada" },
-      { name: "Nada Agung" },
-      { name: "Kumara Talenta" },
+      { name: "Eka Swara", price: 850000 },
+      { name: "Dwi Nada", price: 1250000 },
+      { name: "Nada Agung", price: 1650000 },
+      { name: "Kumara Talenta", price: 900000 },
     ],
   },
   {
@@ -50,10 +52,10 @@ export const catalogData: CatalogItem[] = [
     duration: "Max 3 Jam",
     image: image.img3,
     packages: [
-      { name: "Dwi Wicara" },
-      { name: "Catur Swara" },
-      { name: "Gender Bade" },
-      { name: "Kumara Gender" },
+      { name: "Dwi Wicara", price: 1500000 },
+      { name: "Catur Swara", price: 2200000 },
+      { name: "Gender Bade", price: 1500000 },
+      { name: "Kumara Gender", price: 900000 },
     ],
   },
   {
@@ -66,7 +68,7 @@ export const catalogData: CatalogItem[] = [
     duration: "2 - 3 Jam",
     image: "/images/catalog/gamelan.png",
     personnel: "12 Penabuh",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 4000000 }],
   },
   {
     id: "gamelan-semarandana-agung",
@@ -78,7 +80,7 @@ export const catalogData: CatalogItem[] = [
     duration: "2 - 3 Jam",
     image: "/images/catalog/gamelan.png",
     personnel: "23 Penabuh",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 8000000 }],
   },
   {
     id: "gamelan-angklung",
@@ -90,7 +92,7 @@ export const catalogData: CatalogItem[] = [
     duration: "2 - 3 Jam",
     image: "/images/catalog/gamelan.png",
     personnel: "18 Penabuh",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 4500000 }],
   },
   {
     id: "gamelan-selonding",
@@ -102,7 +104,7 @@ export const catalogData: CatalogItem[] = [
     duration: "2 - 3 Jam",
     image: "/images/catalog/gamelan-selonding.png",
     personnel: "8 Penabuh",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 3500000 }],
   },
   {
     id: "wayang-lemah",
@@ -114,7 +116,7 @@ export const catalogData: CatalogItem[] = [
     duration: "1 - 2 Jam",
     image: "/images/catalog/wayang-lemah.png",
     personnel: "1 Dalang & 2 Penabuh",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 5000000 }],
   },
   {
     id: "wayang-peteng-tradisi",
@@ -126,7 +128,7 @@ export const catalogData: CatalogItem[] = [
     duration: "1 - 2 Jam",
     image: "/images/catalog/wayang-peteng.png",
     personnel: "1 Dalang & 2 Penabuh",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 6000000 }],
   },
   {
     id: "wayang-peteng-inovatif",
@@ -138,7 +140,7 @@ export const catalogData: CatalogItem[] = [
     duration: "1 - 2 Jam",
     image: "/images/catalog/wayang-peteng.png",
     personnel: "1 Dalang & 2 Penabuh",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 7500000 }],
   },
   {
     id: "prabangkara-hanoman",
@@ -150,7 +152,7 @@ export const catalogData: CatalogItem[] = [
     duration: "5 Menit",
     image: "/images/catalog/prabangkara-hanoman.png",
     personnel: "1 Penari",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 1700000 }],
   },
   {
     id: "smaradahana",
@@ -162,7 +164,7 @@ export const catalogData: CatalogItem[] = [
     duration: "5 Menit",
     image: "/images/catalog/smaradahana.png",
     personnel: "2 Penari",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 2500000 }],
   },
   {
     id: "widyadari-panggih",
@@ -170,12 +172,12 @@ export const catalogData: CatalogItem[] = [
     category: "Tari Tradisional",
     title: "Widyadari Panggih",
     description:
-      "Tarian penyambutan sakral yang menggambarkan turunnya bidadari ke bumi. Dadarikan dengan gerakan anggun dan magis.",
+      "Tarian penyambutan sakral yang menggambarkan turunnya bidadari ke bumi. Ditarikan dengan gerakan anggun dan magis.",
     image: "/images/catalog/widyadari-panggih.png",
     duration: "5 Menit",
     packages: [
-      { name: "4 Penari" },
-      { name: "8 Penari" },
+      { name: "4 Penari", price: 3000000 },
+      { name: "8 Penari", price: 5500000 },
     ],
   },
   {
@@ -188,8 +190,8 @@ export const catalogData: CatalogItem[] = [
     image: "/images/catalog/tari-penyambutan.png",
     duration: "10 - 15 Menit",
     packages: [
-      { name: "5 Penari" },
-      { name: "10 Penari" },
+      { name: "5 Penari", price: 3000000 },
+      { name: "10 Penari", price: 6000000 },
     ],
   },
   {
@@ -202,7 +204,7 @@ export const catalogData: CatalogItem[] = [
     duration: "1 - 2 Jam",
     image: "/images/catalog/pajegan.png",
     personnel: "1 Penari",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 2000000 }],
   },
   {
     id: "topeng-panca",
@@ -213,7 +215,7 @@ export const catalogData: CatalogItem[] = [
       "Pertunjukan yang dibawakan beberapa penari dengan lima karakter utama, menghadirkan cerita yang lebih kaya dan dinamis.",
     duration: "1 - 2 Jam",
     image: "/images/catalog/panca.png",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 5000000 }],
   },
   {
     id: "sang-pajegan",
@@ -224,6 +226,11 @@ export const catalogData: CatalogItem[] = [
       "The Sacred Solo Mask Dance of Bali — menjelajahi tiga wajah utama budaya Bali dalam pertunjukan solo yang dramatis dan penuh makna.",
     duration: "15 Menit",
     image: "/images/services/international-events.png",
-    packages: [{ name: "Paket Lengkap" }],
+    packages: [{ name: "Paket Lengkap", price: 3000000 }],
   },
 ];
+
+/** Harga terendah dari seluruh paket sebuah item katalog. */
+export function getStartingPrice(item: CatalogItem): number {
+  return Math.min(...item.packages.map((pkg) => pkg.price));
+}

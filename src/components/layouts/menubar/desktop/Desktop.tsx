@@ -18,6 +18,9 @@ const rightNavItems = [
   { href: "/contact", label: "CONTACT" },
 ];
 
+// Halaman tanpa hero gambar: navbar harus langsung memakai latar terang.
+const NO_HERO_ROUTES = ["/privacy-policy", "/terms-of-service"];
+
 function Desktop() {
   const [scrolled, setScrolled] = useState(false);
   const pathName = usePathname();
@@ -31,11 +34,25 @@ function Desktop() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const solidNav =
+    scrolled || NO_HERO_ROUTES.some((route) => pathName.startsWith(route));
+  const linkColor = solidNav ? "text-[#4e4239]" : "text-white/90";
+  const linkHover = solidNav
+    ? "group-hover:text-[#c05621]"
+    : "group-hover:text-[#f5b892]";
+  const linkActive = solidNav ? "text-[#c05621]" : "text-[#f5b892]";
+  const underlineColor = solidNav ? "bg-[#c05621]" : "bg-[#f5b892]";
+
   return (
     <nav
-      className={`fixed w-full z-50 grid grid-cols-[1fr_auto_1fr] items-center px-6 py-2 transition-all duration-300 ${scrolled ? "bg-neutral-800/30 backdrop-blur-xl " : "bg-transparent"}`}
+      className={`fixed w-full z-50 grid grid-cols-[1fr_auto_1fr] items-center px-6 py-2 transition-all duration-300 ${
+        solidNav
+          ? "bg-background/85 backdrop-blur-xl border-b border-border"
+          : "bg-transparent"
+      }`}
     >
-      <div className='flex justify-end pr-12 gap-26 tracking-wider text-neutral-200 font-outfit font-medium text-sm items-center w-full'>
+      <div className='flex justify-end pr-12 gap-26 tracking-wider font-outfit font-medium text-sm items-center w-full'>
         {leftNavItems.map((item) => {
           const isActive =
             item.href === "/"
@@ -48,12 +65,12 @@ function Desktop() {
               className='group w-fit relative'
             >
               <span
-                className={` uppercase group-hover:text-[#b27457] transition-all duration-300 ${isActive ? "text-[#b27457]" : "text-neutral-300"}`}
+                className={` uppercase transition-all duration-300 ${linkHover} ${isActive ? linkActive : linkColor}`}
               >
                 {item.label}
               </span>
               <span
-                className={`absolute left-1/2 -translate-x-1/2 ease-in-out -bottom-1 h-px w-0 bg-[#b27457] transition-all duration-300 group-hover:w-full ${isActive ? "w-full" : ""}`}
+                className={`absolute left-1/2 -translate-x-1/2 ease-in-out -bottom-1 h-px w-0 ${underlineColor} transition-all duration-300 group-hover:w-full ${isActive ? "w-full" : ""}`}
               ></span>
             </Link>
           );
@@ -69,7 +86,7 @@ function Desktop() {
           className='w-full h-full bg-cover'
         ></Image>
       </div>
-      <div className='flex justify-start gap-26 pl-12 tracking-wider text-neutral-200 font-outfit font-medium text-sm items-center w-full'>
+      <div className='flex justify-start gap-26 pl-12 tracking-wider font-outfit font-medium text-sm items-center w-full'>
         {rightNavItems.map((item) => {
           const isActive =
             item.href === "/"
@@ -82,12 +99,12 @@ function Desktop() {
               className='group w-fit relative'
             >
               <span
-                className={` uppercase group-hover:text-[#b27457] transition-all duration-300 ${isActive ? "text-[#b27457]" : "text-neutral-300"}`}
+                className={` uppercase transition-all duration-300 ${linkHover} ${isActive ? linkActive : linkColor}`}
               >
                 {item.label}
               </span>
               <span
-                className={`absolute left-1/2 -translate-x-1/2 ease-in-out -bottom-1 h-px w-0 bg-[#b27457] transition-all duration-300 group-hover:w-full ${isActive ? "w-full" : ""}`}
+                className={`absolute left-1/2 -translate-x-1/2 ease-in-out -bottom-1 h-px w-0 ${underlineColor} transition-all duration-300 group-hover:w-full ${isActive ? "w-full" : ""}`}
               ></span>
             </Link>
           );

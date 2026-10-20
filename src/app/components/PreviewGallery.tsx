@@ -37,22 +37,22 @@ export default function PreviewGallery() {
     },
   ];
   return (
-    <section className='py-24 bg-neutral-950'>
+    <section className='py-24 bg-background'>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
         {/* Header Section */}
         <div className='flex flex-col md:flex-row md:items-end justify-between mb-12'>
           <div className='max-w-2xl'>
-            <h2 className='text-sm font-semibold tracking-widest text-amber-500 uppercase mb-3'>
+            <h2 className='text-sm font-semibold tracking-widest text-[#c05621] uppercase mb-3'>
               Cuplikan Momen
             </h2>
-            <h3 className='text-4xl md:text-5xl tracking-tight font-cormorant-garamond text-neutral-300'>
+            <h3 className='text-4xl md:text-5xl tracking-tight font-cormorant-garamond text-foreground'>
               Galeri & Visual
             </h3>
           </div>
           <div className='hidden md:block mt-6 md:mt-0'>
             <Link
               href='/gallery'
-              className='text-[#d58058] hover:text-amber-500 text-sm tracking-wider uppercase border-b border-[#d58058] pb-1 transition-colors'
+              className='text-[#c05621] hover:text-[#9a3412] text-sm tracking-wider uppercase border-b border-[#c05621] pb-1 transition-colors'
             >
               Lihat Semua Galeri
             </Link>
@@ -88,7 +88,7 @@ export default function PreviewGallery() {
         <div className='mt-10 flex justify-center md:hidden'>
           <Link
             href='/gallery'
-            className='px-6 py-3 border border-[#d58058] text-[#d58058] text-sm tracking-wider uppercase transition-colors rounded-sm'
+            className='px-6 py-3 border border-[#c05621] text-[#c05621] text-sm tracking-wider uppercase transition-colors rounded-sm'
           >
             Lihat Semua Galeri
           </Link>
