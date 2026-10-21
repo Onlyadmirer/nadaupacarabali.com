@@ -84,15 +84,15 @@ export default function CatalogGrid() {
   };
 
   return (
-    <section className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-24'>
+    <section className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-28 sm:py-32'>
       {/* Filter Tabs */}
-      <div className='flex flex-wrap gap-2 mb-12 justify-center'>
+      <div className='flex flex-wrap gap-2 mb-14 md:mb-16 justify-center'>
         <button
           onClick={() => handleFilterChange("all")}
-          className={`font-outfit text-xs tracking-widest uppercase px-5 py-2.5 rounded-full border transition-all duration-300 ${
+          className={`font-outfit text-xs tracking-[0.2em] uppercase px-6 py-2.5 rounded-full ring-1 transition-all duration-300 ${
             activeFilter === "all"
-              ? "bg-[#b4501f] text-white border-[#b4501f]"
-              : "bg-transparent text-[#6f6055] border-[#dccdc0] hover:border-[#c05621]/50 hover:text-[#c05621]"
+              ? "bg-primary text-primary-foreground ring-primary shadow-[0_10px_40px_-15px_rgba(139,94,60,0.9)]"
+              : "bg-transparent text-muted-foreground ring-border/70 hover:text-foreground hover:ring-primary/40"
           }`}
         >
           Semua
@@ -101,10 +101,10 @@ export default function CatalogGrid() {
           <button
             key={cat.id}
             onClick={() => handleFilterChange(cat.id)}
-            className={`font-outfit text-xs tracking-widest uppercase px-5 py-2.5 rounded-full border transition-all duration-300 ${
+            className={`font-outfit text-xs tracking-[0.2em] uppercase px-6 py-2.5 rounded-full ring-1 transition-all duration-300 ${
               activeFilter === cat.id
-                ? "bg-[#c05621] text-white border-[#c05621]"
-                : "bg-transparent text-[#6f6055] border-[#dccdc0] hover:border-[#c05621]/50 hover:text-[#c05621]"
+                ? "bg-primary text-primary-foreground ring-primary shadow-[0_10px_40px_-15px_rgba(139,94,60,0.9)]"
+                : "bg-transparent text-muted-foreground ring-border/70 hover:text-foreground hover:ring-primary/40"
             }`}
           >
             {cat.label}
@@ -125,8 +125,8 @@ export default function CatalogGrid() {
           ))}
         </StaggerContainer>
       ) : (
-        <div className='text-center py-20'>
-          <p className='font-cormorant-garamond text-[#6f6055] text-lg'>
+        <div className='text-center py-24'>
+          <p className='font-cormorant-garamond text-muted-foreground text-lg md:text-xl'>
             Tidak ada pertunjukan dalam kategori ini.
           </p>
         </div>

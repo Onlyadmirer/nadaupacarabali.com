@@ -45,13 +45,13 @@ export default function ServicesPage() {
               Pilar Layanan
             </span>
           </div>
-          <h1 className='font-libre-baskerville italic text-5xl md:text-7xl font-bold mb-6 text-[#f09a73] tracking-tight'>
+          <h1 className='font-libre-baskerville italic text-5xl md:text-7xl font-bold mb-6 text-neutral-100 tracking-tight'>
             Layanan Kami
           </h1>
           <div className='flex justify-center mb-8'>
-            <div className='w-24 h-px bg-linear-to-r from-transparent via-[#d58058] to-transparent'></div>
+            <div className='w-24 h-px bg-linear-to-r from-transparent via-[#f3d6b8]/60 to-transparent'></div>
           </div>
-          <p className='font-outfit md:max-w-4xl mx-auto text-lg md:text-xl text-neutral-300 leading-relaxed font-light'>
+          <p className='font-outfit md:max-w-4xl mx-auto text-lg md:text-xl text-neutral-300 leading-relaxed font-semibold'>
             Menghadirkan seni pertunjukan tradisional Bali dengan standar
             profesionalisme, ketepatan waktu, dan pelayanan premium untuk
             berbagai kebutuhan acara Anda.
@@ -83,15 +83,11 @@ export default function ServicesPage() {
             <h2 className='font-libre-baskerville italic text-4xl lg:text-5xl mb-6 text-[#9a3412]'>
               Siap Mewujudkan Acara Anda?
             </h2>
-            <p className='font-cormorant-garamond text-[#4e4239] text-lg lg:text-xl mb-12 font-light max-w-2xl mx-auto'>
+            <p className='font-cormorant-garamond text-[#4e4239] text-lg lg:text-xl mb-12 font-semibold max-w-2xl mx-auto'>
               Mari diskusikan kebutuhan pertunjukan untuk momen spesial Anda
               bersama tim Nada Upacara Bali.
             </p>
-            <Link
-              href={waLink()}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
+            <Link href={waLink()} target='_blank' rel='noopener noreferrer'>
               <Button className='font-outfit bg-[#b4501f] hover:bg-[#8f3d16] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(180,80,31,0.2)] hover:shadow-[0_0_30px_rgba(143,61,22,0.4)]'>
                 Hubungi Kami Sekarang
               </Button>

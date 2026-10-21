@@ -9,7 +9,7 @@ interface BlogCardProps {
 export default function BlogCard({ post }: BlogCardProps) {
   return (
     <Link href={`/blog/${post.slug}`} className='group block'>
-      <div className='bg-card border border-border rounded-xl overflow-hidden shadow-sm hover:border-[#c05621]/40 transition-all duration-500 h-full flex flex-col'>
+      <div className='bg-card border border-border rounded-sm overflow-hidden shadow-sm hover:border-[#c05621]/40 transition-all duration-500 h-128 md:h-146 flex flex-col'>
         <div className='relative aspect-16/10 w-full overflow-hidden'>
           <Image
             src={post.image}

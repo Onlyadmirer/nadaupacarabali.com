@@ -70,7 +70,7 @@ export default function PreviewGallery() {
           {previewImages.map((image, index) => (
             <StaggerItem
               key={index}
-              className={`group relative w-full h-full overflow-hidden rounded-md ${image.className}`}
+              className={`group relative w-full h-full overflow-hidden rounded-sm ${image.className}`}
             >
               <Image
                 src={image.src}

@@ -63,13 +63,13 @@ export default function ContactPage() {
               Kontak
             </span>
           </div>
-          <h1 className='font-libre-baskerville italic text-5xl md:text-7xl font-bold mb-6 text-[#f09a73] tracking-tight'>
+          <h1 className='font-libre-baskerville italic text-5xl md:text-7xl font-bold mb-6 text-neutral-100 tracking-tight'>
             Hubungi Kami
           </h1>
           <div className='flex justify-center mb-8'>
-            <div className='w-24 h-px bg-linear-to-r from-transparent via-[#d58058] to-transparent'></div>
+            <div className='w-24 h-px bg-linear-to-r from-transparent via-[#f3d6b8]/60 to-transparent'></div>
           </div>
-          <p className='font-outfit md:max-w-4xl mx-auto text-lg md:text-xl text-neutral-300 leading-relaxed font-light'>
+          <p className='font-outfit md:max-w-4xl mx-auto text-lg md:text-xl text-neutral-300 leading-relaxed font-semibold'>
             Kami siap mendengarkan kebutuhan Anda. Diskusikan acara,
             pertunjukan, atau kolaborasi seni bersama tim Nada Upacara Bali.
           </p>
@@ -253,7 +253,7 @@ export default function ContactPage() {
             <h2 className='font-libre-baskerville italic text-4xl lg:text-5xl mb-6 text-[#9a3412]'>
               Siap Bekerja Sama?
             </h2>
-            <p className='font-cormorant-garamond text-[#4e4239] text-lg lg:text-xl mb-12 font-light max-w-2xl mx-auto'>
+            <p className='font-cormorant-garamond text-[#4e4239] text-lg lg:text-xl mb-12 font-semibold max-w-2xl mx-auto'>
               Jangan ragu untuk menghubungi kami. Tim Nada Upacara Bali siap
               membantu mewujudkan acara Anda dengan pertunjukan seni tradisional
               yang autentik dan profesional.

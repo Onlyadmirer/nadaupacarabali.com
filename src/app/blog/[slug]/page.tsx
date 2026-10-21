@@ -93,15 +93,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <h2 className='font-libre-baskerville italic text-4xl lg:text-5xl mb-6 text-[#9a3412]'>
               Terinspirasi dengan Artikel Ini?
             </h2>
-            <p className='font-cormorant-garamond text-[#4e4239] text-lg lg:text-xl mb-12 font-light max-w-2xl mx-auto'>
+            <p className='font-cormorant-garamond text-[#4e4239] text-lg lg:text-xl mb-12 font-semibold max-w-2xl mx-auto'>
               Kami siap membantu mewujudkan acara Anda dengan pertunjukan seni
               tradisional Bali yang autentik dan profesional.
             </p>
-            <Link
-              href={waLink()}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
+            <Link href={waLink()} target='_blank' rel='noopener noreferrer'>
               <Button className='font-outfit bg-[#b4501f] hover:bg-[#8f3d16] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(180,80,31,0.2)] hover:shadow-[0_0_30px_rgba(143,61,22,0.4)]'>
                 Hubungi Kami Sekarang
               </Button>

@@ -35,24 +35,24 @@
 }
 
 :root {
-  --background: #fbf7f2;
-  --foreground: #2b211b;
+  --background: #f7f3ee;
+  --foreground: #1a140f;
   --card: #ffffff;
-  --card-foreground: #2b211b;
+  --card-foreground: #1a140f;
   --popover: #ffffff;
-  --popover-foreground: #2b211b;
-  --primary: #c05621;
+  --popover-foreground: #1a140f;
+  --primary: #8b5e3c;
   --primary-foreground: #ffffff;
-  --secondary: #f5eee6;
-  --secondary-foreground: #2b211b;
-  --muted: #f5eee6;
-  --muted-foreground: #6f6055;
-  --accent: #f3cdb6;
-  --accent-foreground: #7a3f20;
+  --secondary: #f3ebe3;
+  --secondary-foreground: #1a140f;
+  --muted: #f3ebe3;
+  --muted-foreground: #5c4f44;
+  --accent: #b89b5e;
+  --accent-foreground: #7b5e30;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #e9ded3;
-  --input: #e9ded3;
-  --ring: #c05621;
+  --border: #e6d9cc;
+  --input: #e6d9cc;
+  --ring: #8b5e3c;
   --radius: 0.625rem;
 }
 
@@ -68,7 +68,11 @@
   }
 
   *:focus-visible {
-    @apply outline-2 outline-offset-2 outline-[#c05621]/70;
+    @apply outline-2 outline-offset-2 outline-ring/70;
+  }
+
+  .text-balance {
+    text-wrap: balance;
   }
 }
 

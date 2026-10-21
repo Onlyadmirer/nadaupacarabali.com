@@ -66,7 +66,7 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
                 <h2 className='font-libre-baskerville italic text-4xl lg:text-5xl font-semibold mb-6 text-[#9a3412] leading-tight'>
                   {service.title}
                 </h2>
-                <p className='font-outfit text-[#4e4239] text-base leading-relaxed font-light'>
+                <p className='font-outfit text-[#4e4239] text-base leading-relaxed font-semibold'>
                   {service.description}
                 </p>
               </div>
@@ -84,12 +84,12 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
                   {section.title}
                 </h3>
                 {section.text && (
-                  <p className='font-outfit text-[#4e4239] leading-relaxed mb-5 font-light'>
+                  <p className='font-outfit text-[#4e4239] leading-relaxed mb-5 font-semibold'>
                     {section.text}
                   </p>
                 )}
                 {section.items && (
-                  <ul className='space-y-4 font-outfit text-[#4e4239] font-light'>
+                  <ul className='space-y-4 font-outfit text-[#4e4239] font-semibold'>
                     {section.items.map((item, itemIdx) => (
                       <li key={itemIdx} className='flex items-start group/item'>
                         <span className='text-[#c05621] mr-4 mt-1 text-sm transform transition-transform group-hover/item:scale-125'>

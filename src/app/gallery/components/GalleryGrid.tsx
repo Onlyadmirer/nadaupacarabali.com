@@ -28,12 +28,12 @@ export default function GalleryGrid() {
   return (
     <section className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-24'>
       {/* Grid */}
-      <StaggerContainer className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4'>
+      <StaggerContainer className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-1'>
         {galleryImages.map((img, index) => (
           <StaggerItem
             key={index}
             onClick={() => setLightboxIndex(index)}
-            className='group relative aspect-4/3 w-full overflow-hidden rounded-lg bg-[#f5eee6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c05621]'
+            className='group relative aspect-4/3 w-full overflow-hidden rounded-sm bg-[#f5eee6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c05621]'
           >
             <Image
               src={img.src}
