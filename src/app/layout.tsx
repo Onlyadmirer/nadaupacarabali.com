@@ -7,8 +7,6 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-import MenuBar from "@/components/layouts/menubar/MenuBar";
-import Footer from "@/components/layouts/footer/Footer";
 import { contactInfo, siteUrl } from "@/constants/contact";
 
 const inter = Inter({
@@ -122,11 +120,7 @@ export default function RootLayout({
         />
       </head>
       <body className='min-h-full flex flex-col selection:bg-[#f09a73]/40 selection:text-[#2b211b]'>
-        <MenuBar />
-        <div className='flex-1'>
-          {children}
-        </div>
-        <Footer />
+        {children}
       </body>
     </html>
   );

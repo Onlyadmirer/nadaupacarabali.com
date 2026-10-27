@@ -2,15 +2,15 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { getStartingPrice, type CatalogItem } from "@/constants/catalog";
+import { getStartingPrice, type CatalogItemView } from "@/types/catalog";
 import { waLink } from "@/constants/contact";
 import { formatRupiah } from "@/lib/utils";
 
 interface CatalogCardProps {
-  item: CatalogItem;
+  item: CatalogItemView;
 }
 
-function waMessage(item: CatalogItem): string {
+function waMessage(item: CatalogItemView): string {
   const text = `Halo, saya tertarik dengan pertunjukan *${item.title}* (${item.category}). Bisa informasikan detail harga dan ketersediaan?`;
   return waLink(text);
 }

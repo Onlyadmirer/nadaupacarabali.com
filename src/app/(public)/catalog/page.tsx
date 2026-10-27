@@ -6,7 +6,10 @@ import { image } from "@/constants/images";
 import CatalogGrid from "./components/CatalogGrid";
 import Reveal from "@/components/Reveal";
 import { siteUrl, waLink } from "@/constants/contact";
-import { catalogData, getStartingPrice } from "@/constants/catalog";
+import { getPublishedCatalog } from "@/lib/catalog";
+import { getStartingPrice } from "@/types/catalog";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Katalog Pertunjukan | Nada Upacara Bali",
@@ -19,12 +22,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function CatalogPage() {
+export default async function CatalogPage() {
+  const { categories, items } = await getPublishedCatalog();
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Katalog Pertunjukan Nada Upacara Bali",
-    itemListElement: catalogData.map((item, index) => ({
+    itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
       item: {
@@ -89,7 +94,7 @@ export default function CatalogPage() {
       </section>
 
       {/* Catalog Grid with Filter */}
-      <CatalogGrid />
+      <CatalogGrid categories={categories} items={items} />
 
       {/* CTA Section */}
       <Reveal>

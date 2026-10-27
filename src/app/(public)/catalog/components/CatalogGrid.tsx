@@ -1,11 +1,19 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
-import { catalogData, catalogCategories } from "@/constants/catalog";
+import type {
+  CatalogCategoryView,
+  CatalogItemView,
+} from "@/types/catalog";
 import CatalogCard from "./CatalogCard";
 import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 
-export default function CatalogGrid() {
+interface CatalogGridProps {
+  categories: CatalogCategoryView[];
+  items: CatalogItemView[];
+}
+
+export default function CatalogGrid({ categories, items }: CatalogGridProps) {
   const [activeFilter, setActiveFilter] = useState<string>("all");
 
   useEffect(() => {
@@ -17,7 +25,7 @@ export default function CatalogGrid() {
       }
 
       // 1) item id -> scroll to item and show all
-      const matchedItem = catalogData.find((item) => item.id === hash);
+      const matchedItem = items.find((item) => item.id === hash);
       if (matchedItem) {
         setActiveFilter("all");
         const scroll = () =>
@@ -30,16 +38,14 @@ export default function CatalogGrid() {
       }
 
       // 2) category id -> select category
-      const matchedCategoryById = catalogCategories.find(
-        (cat) => cat.id === hash,
-      );
+      const matchedCategoryById = categories.find((cat) => cat.id === hash);
       if (matchedCategoryById) {
         setActiveFilter(matchedCategoryById.id);
         return;
       }
 
       // 3) service id -> pick first category that belongs to this service
-      const matchedCategoryByService = catalogCategories.find(
+      const matchedCategoryByService = categories.find(
         (cat) => cat.serviceId === hash,
       );
       if (matchedCategoryByService) {
@@ -56,12 +62,12 @@ export default function CatalogGrid() {
     const onHashChange = () => applyHash(window.location.hash, 150);
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
-  }, []);
+  }, [categories, items]);
 
   const filteredItems = useMemo(() => {
-    if (activeFilter === "all") return catalogData;
-    return catalogData.filter((item) => item.categoryId === activeFilter);
-  }, [activeFilter]);
+    if (activeFilter === "all") return items;
+    return items.filter((item) => item.categoryId === activeFilter);
+  }, [activeFilter, items]);
 
   const handleFilterChange = (id: string) => {
     if (id === "all") {
@@ -71,7 +77,7 @@ export default function CatalogGrid() {
     }
 
     // id is category id: set filter and set hash to category id
-    const matchedCategory = catalogCategories.find((c) => c.id === id);
+    const matchedCategory = categories.find((c) => c.id === id);
     if (matchedCategory) {
       setActiveFilter(matchedCategory.id);
       window.history.replaceState(null, "", `#${matchedCategory.id}`);
@@ -97,7 +103,7 @@ export default function CatalogGrid() {
         >
           Semua
         </button>
-        {catalogCategories.map((cat) => (
+        {categories.map((cat) => (
           <button
             key={cat.id}
             onClick={() => handleFilterChange(cat.id)}
