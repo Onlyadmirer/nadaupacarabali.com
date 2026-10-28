@@ -16,19 +16,38 @@ const slugSchema = z
  * next/image only optimizes local files and hosts listed in next.config.ts.
  * Keep admin input within those bounds so the public page never breaks.
  */
+const ALLOWED_IMAGE_HOSTS = ["res.cloudinary.com"];
+const ALLOWED_IMAGE_HOST_SUFFIXES = [
+  ".public.blob.vercel-storage.com",
+  ".blob.vercel-storage.com",
+];
+
+function isAllowedImageUrl(value: string): boolean {
+  if (value.startsWith("/")) return !value.startsWith("//");
+
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:") return false;
+
+    return (
+      ALLOWED_IMAGE_HOSTS.includes(url.hostname) ||
+      ALLOWED_IMAGE_HOST_SUFFIXES.some((suffix) =>
+        url.hostname.endsWith(suffix),
+      )
+    );
+  } catch {
+    return false;
+  }
+}
+
 const imageSchema = z
   .string()
   .trim()
   .min(1, "URL gambar wajib diisi.")
-  .refine((value) => {
-    if (value.startsWith("/")) return true;
-    try {
-      const url = new URL(value);
-      return url.protocol === "https:" && url.hostname === "res.cloudinary.com";
-    } catch {
-      return false;
-    }
-  }, "Gunakan path lokal (/images/...) atau URL https://res.cloudinary.com/...");
+  .refine(
+    isAllowedImageUrl,
+    "Gunakan path lokal (/images/...), Cloudinary, atau URL Vercel Blob.",
+  );
 
 export const packageInputSchema = z.object({
   name: z.string().trim().min(1, "Nama paket wajib diisi.").max(80),

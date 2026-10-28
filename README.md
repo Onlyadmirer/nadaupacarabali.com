@@ -42,6 +42,7 @@ ketidakcocokan dependensi.
 | `DATABASE_URL` | Ya | Connection string PostgreSQL (Neon). Dipakai Prisma CLI dan Prisma Client. |
 | `ADMIN_PASSWORD` | Ya | Password untuk masuk ke panel admin `/admin`. |
 | `AUTH_SECRET` | Ya | Kunci HMAC untuk menandatangani cookie sesi admin. Buat dengan `openssl rand -base64 32`. |
+| `BLOB_READ_WRITE_TOKEN` | Ya | Token Vercel Blob untuk upload gambar katalog. |
 | `NEXT_PUBLIC_SITE_URL` | Tidak | Domain kanonik situs (dipakai untuk `metadataBase`, sitemap, robots, dan JSON-LD). Default: `https://nadaupacarabali.com`. |
 
 Contoh `.env`:
@@ -50,6 +51,7 @@ Contoh `.env`:
 DATABASE_URL=postgresql://user:password@host/db?sslmode=require
 ADMIN_PASSWORD=ganti-dengan-password-kuat
 AUTH_SECRET=hasil-openssl-rand-base64-32
+BLOB_READ_WRITE_TOKEN=vercel_blob_rw_...
 NEXT_PUBLIC_SITE_URL=https://nadaupacarabali.com
 ```
 
@@ -85,9 +87,21 @@ Catatan:
 
 - Item berstatus **draft** tidak tampil di `/catalog`.
 - Perubahan langsung memicu `revalidatePath` untuk halaman publik.
-- Gambar memakai URL: path lokal (`/images/...`) atau Cloudinary
-  (`res.cloudinary.com`). Host lain perlu ditambahkan ke `remotePatterns` di
-  `next.config.ts`.
+- Gambar diunggah dari perangkat lewat form item katalog. File dikonversi ke
+  WebP (maks. 1600 px, kualitas 82) lalu disimpan di Vercel Blob pada folder
+  `catalog/`. Batas unggah 4 MB (JPG, PNG, WebP, AVIF, HEIC).
+- Store Blob **public**: URL CDN Blob disimpan langsung. Store Blob **private**:
+  gambar disajikan lewat route `/media/catalog/...` (token hanya di server).
+  Keduanya terdeteksi otomatis saat upload. Untuk gambar katalog publik, store
+  public lebih hemat (tanpa Function per gambar).
+- Saat gambar diganti atau item dihapus, file lama di Vercel Blob ikut dihapus
+  jika tidak dipakai item lain. Gambar lama di `/images/...` dan Cloudinary
+  tidak disentuh.
+- URL bisa juga diisi manual (toggle **Tempel URL**): path lokal
+  (`/images/...`), Cloudinary (`res.cloudinary.com`), atau Vercel Blob. Host
+  lain perlu ditambahkan ke `remotePatterns` di `next.config.ts` dan ke
+  `ALLOWED_IMAGE_HOSTS`/`ALLOWED_IMAGE_HOST_SUFFIXES` di
+  `src/lib/validations/catalog.ts`.
 - Logout tersedia di sidebar. Menghapus cookie di browser juga mengakhiri sesi.
 
 ## Struktur Proyek
@@ -108,6 +122,8 @@ src/
 │   │   ├── privacy-policy/
 │   │   └── terms-of-service/
 │   ├── admin/              # Panel admin (login + panel terproteksi)
+│   ├── api/admin/upload/   # Endpoint upload gambar (auth + validasi)
+│   ├── media/[...path]/    # Penyaji gambar untuk store Blob private
 │   ├── sitemap.ts          # Sitemap dinamis
 │   └── robots.ts           # Robots.txt (admin di-disallow)
 ├── components/

@@ -3,7 +3,6 @@
 import { useActionState, useRef, useState } from "react";
 import Link from "next/link";
 import {
-  ImageIcon,
   Loader2,
   Plus,
   Save,
@@ -24,6 +23,7 @@ import {
 import { initialFormState } from "@/lib/form-state";
 import { formatRupiah } from "@/lib/utils";
 import { createCatalogItem, updateCatalogItem } from "../actions";
+import ImageUploader from "./ImageUploader";
 
 interface CategoryOption {
   id: string;
@@ -115,6 +115,7 @@ export default function ProductForm({ categories, item }: ProductFormProps) {
   const [slug, setSlug] = useState(item?.slug ?? "");
   const [slugTouched, setSlugTouched] = useState(editing);
   const [image, setImage] = useState(item?.image ?? "");
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   const nextKey = useRef(item?.packages.length ?? 1);
   const [packages, setPackages] = useState<PackageRow[]>(() => {
@@ -167,6 +168,7 @@ export default function ProductForm({ categories, item }: ProductFormProps) {
   return (
     <form action={formAction} className='space-y-5'>
       {item && <input type='hidden' name='id' value={item.id} />}
+      <input type='hidden' name='image' value={image} />
 
       {state.error && (
         <p
@@ -408,42 +410,13 @@ export default function ProductForm({ categories, item }: ProductFormProps) {
           </Card>
 
           <Card title='Gambar'>
-            <div className='space-y-3'>
-              <div className='relative aspect-video overflow-hidden rounded-lg bg-secondary ring-1 ring-border/70'>
-                {image ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={image}
-                    alt='Pratinjau gambar'
-                    className='size-full object-cover'
-                  />
-                ) : (
-                  <div className='flex size-full flex-col items-center justify-center gap-2 text-muted-foreground'>
-                    <ImageIcon className='size-6' />
-                    <p className='font-outfit text-[11px] tracking-[0.12em] uppercase'>
-                      Pratinjau gambar
-                    </p>
-                  </div>
-                )}
-              </div>
-
-              <div className='space-y-2'>
-                <Label htmlFor='image'>URL Gambar</Label>
-                <Input
-                  id='image'
-                  name='image'
-                  value={image}
-                  onChange={(event) => setImage(event.target.value)}
-                  placeholder='/images/catalog/gamelan.png'
-                  required
-                  aria-invalid={Boolean(errors.image)}
-                />
-                <p className='font-outfit text-xs text-muted-foreground'>
-                  Path lokal (<code className='font-mono'>/images/...</code>) atau
-                  Cloudinary (<code className='font-mono'>res.cloudinary.com</code>).
-                </p>
-                <FieldError message={errors.image} />
-              </div>
+            <ImageUploader
+              value={image}
+              onChange={setImage}
+              onBusyChange={setUploadingImage}
+            />
+            <div className='mt-2'>
+              <FieldError message={errors.image} />
             </div>
           </Card>
         </div>
@@ -460,10 +433,15 @@ export default function ProductForm({ categories, item }: ProductFormProps) {
         </Button>
         <Button
           type='submit'
-          disabled={pending}
+          disabled={pending || uploadingImage}
           className='font-outfit tracking-[0.12em] uppercase'
         >
-          {pending ? (
+          {uploadingImage ? (
+            <>
+              <Loader2 className='size-4 animate-spin' />
+              Menunggu gambar
+            </>
+          ) : pending ? (
             <>
               <Loader2 className='size-4 animate-spin' />
               Menyimpan

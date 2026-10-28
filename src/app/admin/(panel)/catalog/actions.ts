@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
+import { deleteBlobImage } from "@/lib/blob";
 import { prisma } from "@/lib/prisma";
 import type { FormState } from "@/lib/form-state";
 import {
@@ -55,6 +56,28 @@ async function resolveCategoryId(slug: string) {
   });
 
   return category?.id ?? null;
+}
+
+/**
+ * Removes an uploaded image from Blob storage once no other item references it.
+ * Local (/images) and Cloudinary URLs are ignored by `deleteBlobImage`.
+ */
+async function deleteImageIfUnused(
+  image: string | null | undefined,
+  excludeId?: string,
+) {
+  if (!image) return;
+
+  const usedBy = await prisma.catalogItem.count({
+    where: {
+      image,
+      ...(excludeId ? { NOT: { id: excludeId } } : {}),
+    },
+  });
+
+  if (usedBy === 0) {
+    await deleteBlobImage(image);
+  }
 }
 
 export async function createCatalogItem(
@@ -158,6 +181,15 @@ export async function updateCatalogItem(
     };
   }
 
+  const existing = await prisma.catalogItem.findUnique({
+    where: { id },
+    select: { image: true },
+  });
+
+  if (!existing) {
+    return { ok: false, error: "Item katalog tidak ditemukan." };
+  }
+
   try {
     await prisma.catalogItem.update({
       where: { id },
@@ -189,6 +221,10 @@ export async function updateCatalogItem(
     };
   }
 
+  if (existing.image && existing.image !== data.image) {
+    await deleteImageIfUnused(existing.image, id);
+  }
+
   revalidateCatalog();
   redirect("/admin/catalog?updated=1");
 }
@@ -205,12 +241,23 @@ export async function deleteCatalogItem(
     return { ok: false, error: "ID item tidak valid." };
   }
 
+  const existing = await prisma.catalogItem.findUnique({
+    where: { id },
+    select: { image: true },
+  });
+
+  if (!existing) {
+    return { ok: false, error: "Item katalog tidak ditemukan." };
+  }
+
   try {
     await prisma.catalogItem.delete({ where: { id } });
   } catch (error) {
     console.error("Gagal menghapus item katalog:", error);
     return { ok: false, error: "Item gagal dihapus. Silakan coba lagi." };
   }
+
+  await deleteImageIfUnused(existing.image);
 
   revalidateCatalog();
   redirect("/admin/catalog?deleted=1");
