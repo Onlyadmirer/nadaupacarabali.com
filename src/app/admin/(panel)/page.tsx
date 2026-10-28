@@ -80,7 +80,7 @@ export default async function AdminDashboardPage() {
 
         {recent.items.length === 0 ? (
           <div className='rounded-xl border border-dashed border-border bg-card/60 px-6 py-14 text-center'>
-            <p className='font-cormorant-garamond text-lg text-muted-foreground'>
+            <p className='font-body text-lg text-muted-foreground'>
               Belum ada item katalog. Mulai dengan menambahkan pertunjukan
               pertama.
             </p>

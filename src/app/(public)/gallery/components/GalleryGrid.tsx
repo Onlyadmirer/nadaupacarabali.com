@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { galleryImages } from "@/constants/gallery";
 import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
+import Container from "@/components/site/Container";
 
 const Lightbox = dynamic(() => import("./Lightbox"), { ssr: false });
 
@@ -26,42 +27,45 @@ export default function GalleryGrid() {
   }, []);
 
   return (
-    <section className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl py-24'>
-      {/* Grid */}
-      <StaggerContainer className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-1'>
-        {galleryImages.map((img, index) => (
-          <StaggerItem
-            key={index}
-            onClick={() => setLightboxIndex(index)}
-            className='group relative aspect-4/3 w-full overflow-hidden rounded-sm bg-[#f5eee6] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c05621]'
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              className='object-cover transition-transform duration-700 ease-in-out group-hover:scale-105'
-              sizes='(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw'
-            />
-            <div className='absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-500' />
+    <section className='section-spacing'>
+      <Container>
+        <StaggerContainer className='grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4'>
+          {galleryImages.map((img, index) => (
+            <StaggerItem key={`${img.src}-${index}`}>
+              <button
+                type='button'
+                onClick={() => setLightboxIndex(index)}
+                aria-label={`Buka foto: ${img.alt}`}
+                aria-haspopup='dialog'
+                className='group relative aspect-4/3 w-full overflow-hidden rounded-xl bg-secondary text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background'
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className='object-cover transition-transform duration-700 ease-out group-hover:scale-105'
+                  sizes='(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw'
+                />
+                <div className='absolute inset-0 bg-neutral-950/0 transition-colors duration-300 group-hover:bg-neutral-950/45 group-focus-visible:bg-neutral-950/45' />
 
-            {/* Hover Caption */}
-            <div className='absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out'>
-              <div className='bg-black/70 backdrop-blur-sm rounded-lg px-3 py-2'>
-                <p className='font-cormorant-garamond text-white text-sm text-left leading-tight'>
-                  {img.alt}
-                </p>
-                {img.category && (
-                  <span className='font-outfit text-[10px] tracking-widest uppercase text-[#d58058] mt-1 block'>
-                    {img.category}
-                  </span>
-                )}
-              </div>
-            </div>
-          </StaggerItem>
-        ))}
-      </StaggerContainer>
+                <div className='absolute inset-x-0 bottom-0 translate-y-2 p-3 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100'>
+                  <div className='rounded-lg bg-neutral-950/75 px-3 py-2 backdrop-blur-sm'>
+                    <p className='font-body text-xs leading-snug text-white'>
+                      {img.alt}
+                    </p>
+                    {img.category && (
+                      <span className='mt-1 block font-ui text-[10px] tracking-[0.18em] text-gold-soft uppercase'>
+                        {img.category}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </button>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+      </Container>
 
-      {/* Lightbox */}
       {lightboxIndex !== null && (
         <Lightbox
           images={galleryImages}

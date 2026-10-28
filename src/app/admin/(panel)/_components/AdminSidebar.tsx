@@ -40,7 +40,7 @@ function Brand() {
       <p className='font-outfit text-[10px] tracking-[0.4em] text-primary uppercase'>
         Nada Upacara Bali
       </p>
-      <p className='font-libre-baskerville mt-1 text-xl text-foreground italic'>
+      <p className='font-heading mt-1 text-xl text-foreground italic'>
         Panel Admin
       </p>
     </div>

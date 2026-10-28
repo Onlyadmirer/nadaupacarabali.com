@@ -8,44 +8,47 @@ interface BlogCardProps {
 
 export default function BlogCard({ post }: BlogCardProps) {
   return (
-    <Link href={`/blog/${post.slug}`} className='group block'>
-      <div className='bg-card border border-border rounded-sm overflow-hidden shadow-sm hover:border-[#c05621]/40 transition-all duration-500 h-128 md:h-146 flex flex-col'>
+    <Link href={`/blog/${post.slug}`} className='group block h-full'>
+      <article className='flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_70px_-45px_rgba(139,94,60,0.55)]'>
         <div className='relative aspect-16/10 w-full overflow-hidden'>
           <Image
             src={post.image}
             alt={post.title}
             fill
-            className='object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105'
-            sizes='(max-width: 640px) 100vw 80vw'
+            className='object-cover transition-transform duration-700 ease-out group-hover:scale-105'
+            sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
           />
-          <div className='absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/20 to-transparent' />
+          <div className='absolute inset-0 bg-linear-to-t from-neutral-950/80 via-neutral-950/15 to-transparent' />
           <div className='absolute top-4 left-4'>
-            <span className='font-outfit text-[10px] tracking-widest uppercase text-white bg-black/50 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10'>
+            <span className='rounded-full border border-white/20 bg-neutral-950/50 px-3 py-1.5 font-ui text-[10px] tracking-[0.16em] text-white uppercase backdrop-blur'>
               {post.category}
             </span>
           </div>
         </div>
 
-        <div className='p-6 lg:p-8 flex flex-col flex-1'>
-          <span className='font-outfit text-[11px] tracking-wide uppercase text-[#6f6055] mb-3'>
+        <div className='flex flex-1 flex-col p-6 lg:p-7'>
+          <time className='font-ui text-[11px] tracking-[0.14em] text-muted-foreground uppercase'>
             {post.date}
-          </span>
+          </time>
 
-          <h3 className='font-libre-baskerville italic text-xl lg:text-2xl text-[#9a3412] mb-3 leading-tight group-hover:underline decoration-[#c05621]/40 underline-offset-4 transition-all duration-300'>
+          <h3 className='mt-3 font-heading text-xl leading-tight font-semibold text-foreground transition-colors duration-200 group-hover:text-primary lg:text-2xl'>
             {post.title}
           </h3>
 
-          <p className='font-outfit text-[#6f6055] text-sm leading-relaxed line-clamp-3 flex-1'>
+          <p className='mt-3 line-clamp-3 flex-1 font-body text-sm leading-relaxed text-muted-foreground'>
             {post.excerpt}
           </p>
 
-          <div className='mt-6 pt-4 border-t border-border'>
-            <span className='font-outfit text-xs tracking-[0.15em] uppercase text-[#c05621] group-hover:text-[#9a3412] transition-colors duration-300'>
+          <div className='mt-6 border-t border-border pt-4'>
+            <span className='inline-flex items-center gap-2 font-ui text-xs font-semibold tracking-[0.14em] text-primary uppercase'>
               Baca Selengkapnya
+              <span aria-hidden='true' className='transition-transform duration-200 group-hover:translate-x-0.5'>
+                &rarr;
+              </span>
             </span>
           </div>
         </div>
-      </div>
+      </article>
     </Link>
   );
 }

@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Reveal from "@/components/Reveal";
-import { contactInfo } from "@/constants/contact";
+import LegalPage from "@/components/site/LegalPage";
 
 export const metadata: Metadata = {
   title: "Syarat & Ketentuan | Nada Upacara Bali",
   description:
-    "Syarat dan ketentuan layanan Nada Upacara Bali — panduan pemesanan, pembayaran, pembatalan, dan hak serta kewajiban pengguna.",
+    "Syarat dan ketentuan layanan Nada Upacara Bali: panduan pemesanan, pembayaran, pembatalan, dan hak serta kewajiban pengguna.",
 };
 
 const sections = [
@@ -80,88 +79,11 @@ const sections = [
 
 export default function TermsOfServicePage() {
   return (
-    <main className='min-h-screen bg-background text-foreground relative overflow-hidden'>
-      {/* Hero */}
-      <Reveal><section className='relative pt-32 pb-20 md:pb-28 px-6 border-b border-border'>
-        <div
-          className='absolute inset-0 -z-10 pointer-events-none'
-          style={{
-            background:
-              "radial-gradient(circle at center, rgba(178,116,87,0.12) 0%, transparent 70%)",
-          }}
-        ></div>
-        <div className='container mx-auto max-w-4xl text-center'>
-          <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#c05621] font-semibold'>
-            Legal
-          </span>
-          <h1 className='font-libre-baskerville italic text-4xl md:text-5xl font-bold mt-4 mb-4 text-[#9a3412]'>
-            Syarat & Ketentuan
-          </h1>
-          <div className='flex justify-center mb-6'>
-            <div className='w-16 h-px bg-linear-to-r from-transparent via-[#d58058] to-transparent'></div>
-          </div>
-          <p className='font-cormorant-garamond text-[#6f6055] text-lg max-w-2xl mx-auto'>
-            Dengan menggunakan layanan Nada Upacara Bali, Anda menyetujui syarat
-            dan ketentuan yang berlaku.
-          </p>
-        </div>
-      </section></Reveal>
-
-      {/* Content */}
-      <Reveal><section className='py-16 md:py-24 px-6'>
-        <div className='container mx-auto max-w-4xl'>
-          <div className='space-y-12'>
-            {sections.map((section, index) => (
-              <div key={index}>
-                <h2 className='font-libre-baskerville italic text-2xl md:text-3xl text-[#c05621] mb-4'>
-                  {section.title}
-                </h2>
-                {section.content && (
-                  <p className='font-cormorant-garamond text-[#4e4239] text-lg leading-relaxed'>
-                    {section.content}
-                  </p>
-                )}
-                {section.items && (
-                  <ul className='mt-3 space-y-2'>
-                    {section.items.map((item, i) => (
-                      <li
-                        key={i}
-                        className='font-cormorant-garamond text-[#4e4239] text-lg leading-relaxed flex items-start gap-3'
-                      >
-                        <span className='text-[#b27457] mt-1.5 shrink-0'>
-                          ✦
-                        </span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {section.contact && (
-                  <div className='mt-4 font-cormorant-garamond text-[#4e4239] text-lg leading-relaxed space-y-1'>
-                    <p>WhatsApp: {contactInfo.phone}</p>
-                    <p>
-                      Email:{" "}
-                      <a
-                        href={`mailto:${contactInfo.email}`}
-                        className='text-[#c05621] hover:text-[#9a3412] transition-colors'
-                      >
-                        {contactInfo.email}
-                      </a>
-                    </p>
-                    <p>{contactInfo.address}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className='mt-16 pt-8 border-t border-border'>
-            <p className='font-cormorant-garamond text-[#8a7a6d] text-sm'>
-              Terakhir diperbarui: Juli 2026
-            </p>
-          </div>
-        </div>
-      </section></Reveal>
-    </main>
+    <LegalPage
+      title='Syarat & Ketentuan'
+      description='Dengan menggunakan layanan Nada Upacara Bali, Anda menyetujui syarat dan ketentuan yang berlaku.'
+      updatedAt='Juli 2026'
+      sections={sections}
+    />
   );
 }

@@ -21,7 +21,7 @@ export default function PageHeader({
             {eyebrow}
           </p>
         )}
-        <h1 className='font-libre-baskerville mt-1.5 text-3xl text-foreground italic sm:text-4xl'>
+        <h1 className='font-heading mt-1.5 text-3xl text-foreground italic sm:text-4xl'>
           {title}
         </h1>
         {description && (

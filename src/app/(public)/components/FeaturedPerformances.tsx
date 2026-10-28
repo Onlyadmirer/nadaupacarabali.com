@@ -1,102 +1,91 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
+import Container from "@/components/site/Container";
+import SectionHeading from "@/components/site/SectionHeading";
+
+const featured = [
+  {
+    id: "sang-pajegan",
+    title: "Sang Pajegan",
+    category: "The Sacred Solo Mask Dance",
+    description:
+      "Pertunjukan solo dramatis yang menjelajahi tiga wajah utama budaya Bali melalui tarian topeng sakral.",
+    image: "/images/featured/sang-pajegan.png",
+    link: "/catalog#sang-pajegan",
+  },
+  {
+    id: "prabangkara-hanoman",
+    title: "Prabangkara Hanoman",
+    category: "Tari Pengiring Pengantin",
+    description:
+      "Tarian solo dinamis yang membawakan karakter suci dan kuat untuk membuka jalur prosesi mempelai.",
+    image: "/images/featured/prabangkara-hanoman.png",
+    link: "/catalog#prabangkara-hanoman",
+  },
+  {
+    id: "wayang-peteng-tradisi",
+    title: "Wayang Peteng Tradisi",
+    category: "Wayang Kulit Klasik Bali",
+    description:
+      "Pertunjukan wayang dengan kelir dan lampu damar yang menghadirkan suasana magis khas Bali.",
+    image: "/images/featured/wayang-peteng.png",
+    link: "/catalog#wayang-peteng-tradisi",
+  },
+];
 
 export default function FeaturedPerformances() {
-  // Data 3 pertunjukan unggulan (Featured)
-  const featured = [
-    {
-      id: "sang-pajegan",
-      title: "Sang Pajegan",
-      category: "The Sacred Solo Mask Dance",
-      categoryId: "topeng-sakral",
-      description:
-        "Pertunjukan solo dramatis yang menjelajahi tiga wajah utama budaya Bali melalui tarian topeng sakral.",
-      image: "/images/featured/sang-pajegan.png",
-      link: "/catalog#sang-pajegan",
-    },
-    {
-      id: "prabangkara-hanoman",
-      title: "Prabangkara Hanoman",
-      category: "Tari Pengiring Pengantin",
-      categoryId: "tari-tradisional",
-      description:
-        "Tarian solo dinamis yang membawakan karakter suci dan kuat untuk membuka jalur prosesi mempelai.",
-      image: "/images/featured/prabangkara-hanoman.png",
-      link: "/catalog#prabangkara-hanoman",
-    },
-    {
-      id: "wayang-peteng-tradisi",
-      title: "Wayang Peteng Tradisi",
-      category: "Wayang Kulit Klasik Bali",
-      categoryId: "wayang",
-      description:
-        "Pertunjukan wayang dengan kelir dan lampu damar yang menghadirkan suasana magis khas Bali.",
-      image: "/images/featured/wayang-peteng.png",
-      link: "/catalog#wayang-peteng-tradisi",
-    },
-  ];
-
   return (
-    <section className='py-28 sm:py-32 bg-secondary/70'>
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl'>
-        {/* Header Section */}
-        <div className='flex flex-1 w-full flex-col md:flex-row md:items-end justify-between mb-14 md:mb-16 border-b border-border/70 pb-8'>
-          <div className='max-w-2xl'>
-            <h2 className='text-sm font-semibold tracking-[0.2em] text-primary uppercase mb-4'>
-              Mahakarya Kami
-            </h2>
-            <h3 className='text-4xl md:text-5xl lg:text-6xl tracking-tight font-cormorant-garamond text-foreground text-balance'>
-              Featured Performances
-            </h3>
-          </div>
-          <div className='mt-6 md:mt-0'>
+    <section className='section-spacing bg-secondary/60'>
+      <Container>
+        <SectionHeading
+          align='left'
+          eyebrow='Mahakarya Kami'
+          title='Featured Performances'
+          description='Tiga pertunjukan pilihan yang paling sering diminta untuk momen istimewa.'
+          className='mb-12 border-b border-border/70 pb-8 md:mb-16'
+          action={
             <Link
               href='/catalog'
-              className='group inline-flex items-center gap-2 text-primary hover:text-primary/80 text-sm tracking-[0.2em] uppercase transition-colors'
+              className='group inline-flex min-h-11 items-center gap-2 font-ui text-xs font-semibold tracking-[0.18em] text-primary uppercase transition-colors hover:text-primary-hover'
             >
               Lihat Semua Katalog
-              <ChevronRight className='h-4 w-4 transition-transform group-hover:translate-x-1' />
+              <ChevronRight
+                className='size-4 transition-transform group-hover:translate-x-1'
+                aria-hidden='true'
+              />
             </Link>
-          </div>
-        </div>
+          }
+        />
 
-        {/* 3-Column Grid Layout */}
-        <StaggerContainer className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-          {featured.map((item, index) => (
-            <StaggerItem key={index}>
+        <StaggerContainer className='grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8'>
+          {featured.map((item) => (
+            <StaggerItem key={item.id}>
               <Link
                 href={item.link}
-                className='group block relative h-[26rem] w-full overflow-hidden rounded-sm ring-1 ring-border/60 shadow-[0_30px_80px_-40px_rgba(139,94,60,0.6)] transition-all duration-700 hover:-translate-y-1'
+                className='group relative flex h-[26rem] w-full items-end overflow-hidden rounded-2xl shadow-[0_30px_80px_-40px_rgba(139,94,60,0.55)] ring-1 ring-border/70 transition-all duration-300 hover:-translate-y-1'
               >
-                {/* Gambar Background */}
                 <div className='absolute inset-0'>
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    loading='eager'
-                    sizes='(max-width: 768px) 100vw 80vw'
-                    className='object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105'
+                    sizes='(max-width: 768px) 100vw, 33vw'
+                    className='object-cover transition-transform duration-700 ease-out group-hover:scale-105'
                   />
                 </div>
 
-                {/* Gradient Overlay dari bawah (lebih gelap di bawah untuk teks) */}
-                <div className='absolute inset-0 bg-linear-to-t from-black/95 via-black/60 to-transparent transition-opacity duration-700 group-hover:opacity-95'></div>
+                <div className='absolute inset-0 bg-linear-to-t from-neutral-950/95 via-neutral-950/55 to-transparent' />
 
-                {/* Konten Teks di bagian bawah kartu */}
-                <div className='absolute inset-x-0 bottom-0 p-8 flex flex-col justify-end gap-2'>
-                  <p className='text-[#f3d6b8] text-xs tracking-[0.25em] uppercase font-medium'>
+                <div className='relative z-10 flex w-full flex-col gap-2 p-6 md:p-7'>
+                  <p className='font-ui text-[11px] font-semibold tracking-[0.22em] text-gold-soft uppercase'>
                     {item.category}
                   </p>
-                  <h4 className='text-2xl md:text-3xl font-outfit tracking-wide text-white'>
+                  <h3 className='font-heading text-2xl leading-tight font-semibold text-white md:text-3xl'>
                     {item.title}
-                  </h4>
-
-                  {/* Deskripsi */}
-                  <p className='text-white/80 text-sm leading-relaxed transition-all duration-700 group-hover:text-white/90'>
+                  </h3>
+                  <p className='font-body text-sm leading-relaxed text-white/80'>
                     {item.description}
                   </p>
                 </div>
@@ -104,7 +93,7 @@ export default function FeaturedPerformances() {
             </StaggerItem>
           ))}
         </StaggerContainer>
-      </div>
+      </Container>
     </section>
   );
 }

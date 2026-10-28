@@ -15,7 +15,7 @@ export default async function NewCatalogItemPage() {
 
       {categories.length === 0 ? (
         <div className='rounded-xl bg-card px-6 py-12 text-center ring-1 ring-border/70'>
-          <p className='font-cormorant-garamond text-lg text-muted-foreground'>
+          <p className='font-body text-lg text-muted-foreground'>
             Belum ada kategori. Buat kategori terlebih dahulu sebelum menambah
             item katalog.
           </p>

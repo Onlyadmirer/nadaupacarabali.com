@@ -18,16 +18,16 @@ export default function ContactCard({
   action,
 }: ContactCardProps) {
   return (
-    <div className='group bg-card border border-border rounded-xl p-8 shadow-sm hover:border-[#c05621]/40 transition-all duration-500 flex flex-col'>
-      <div className='w-12 h-12 rounded-lg bg-[#c05621]/10 flex items-center justify-center text-[#c05621] mb-5 group-hover:bg-[#c05621]/15 transition-colors duration-300'>
+    <div className='group flex h-full flex-col rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_70px_-45px_rgba(139,94,60,0.55)] md:p-8'>
+      <div className='mb-5 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-200 group-hover:bg-primary/15'>
         {icon}
       </div>
 
-      <h2 className='font-libre-baskerville italic text-xl lg:text-2xl text-[#9a3412] mb-3 leading-tight'>
+      <h3 className='font-heading text-xl leading-tight font-semibold text-foreground lg:text-2xl'>
         {title}
-      </h2>
+      </h3>
 
-      <p className='font-outfit text-[#6f6055] text-lg leading-relaxed mb-6 flex-1'>
+      <p className='mt-3 flex-1 font-body text-sm leading-relaxed text-muted-foreground'>
         {description}
       </p>
 
@@ -36,10 +36,10 @@ export default function ContactCard({
           href={action.href}
           target={action.external ? "_blank" : undefined}
           rel={action.external ? "noopener noreferrer" : undefined}
-          className='font-outfit text-xs tracking-[0.15em] uppercase text-[#c05621] hover:text-[#9a3412] transition-colors duration-300 inline-flex items-center gap-2 group/link'
+          className='mt-6 inline-flex min-h-11 items-center gap-2 font-ui text-xs font-semibold tracking-[0.14em] text-primary uppercase transition-colors hover:text-primary-hover'
         >
           {action.label}
-          <span className='transition-transform duration-300 group-hover/link:translate-x-1'>
+          <span aria-hidden='true' className='transition-transform duration-200 group-hover:translate-x-0.5'>
             &rarr;
           </span>
         </a>

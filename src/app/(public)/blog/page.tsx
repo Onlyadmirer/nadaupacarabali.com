@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { blogData } from "@/constants/blog";
 import { image } from "@/constants/images";
 import BlogCard from "./components/BlogCard";
+import PageHero from "@/components/site/PageHero";
+import Container from "@/components/site/Container";
+import SectionHeading from "@/components/site/SectionHeading";
+import CtaBanner from "@/components/site/CtaBanner";
 import Reveal from "@/components/Reveal";
 import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
 import { waLink } from "@/constants/contact";
@@ -12,7 +13,7 @@ import { waLink } from "@/constants/contact";
 export const metadata: Metadata = {
   title: "Blog | Nada Upacara Bali",
   description:
-    "Jelajahi artikel seputar seni pertunjukan tradisional Bali — gamelan, tari, wayang, upacara adat, dan wedding tradisi Bali.",
+    "Jelajahi artikel seputar seni pertunjukan tradisional Bali, mulai dari gamelan, tari, wayang, upacara adat, hingga wedding tradisi Bali.",
   openGraph: {
     title: "Blog | Nada Upacara Bali",
     description:
@@ -22,81 +23,43 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <main className='min-h-screen bg-background text-foreground relative overflow-hidden'>
-      {/* Hero Section */}
-      <section className='relative min-h-screen flex flex-col justify-center items-center text-center px-6 mb-12'>
-        <div className='absolute min-h-screen inset-0 z-0'>
-          <Image
-            src={image.img7}
-            alt='Blog Nada Upacara Bali'
-            fill
-            sizes='100vw'
-            className='object-cover w-full h-full object-[50%_20%]'
-            priority
-            fetchPriority='high'
-          />
-          <div className='absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/90' />
-        </div>
+    <main className='min-h-screen bg-background text-foreground'>
+      <PageHero
+        image={image.img7}
+        alt='Artikel dan wawasan seni Bali'
+        eyebrow='Blog'
+        title='Artikel & Wawasan'
+        description='Jelajahi wawasan seputar seni dan budaya tradisional Bali, mulai dari filosofi gamelan, tari sakral, hingga panduan pernikahan adat.'
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Blog" }]}
+      />
 
-        <Reveal className='relative z-10 max-w-4xl mx-auto flex flex-col items-center'>
-          <div className='mb-4'>
-            <span className='font-outfit uppercase tracking-[0.2em] text-sm text-[#d58058] font-semibold'>
-              Blog
-            </span>
-          </div>
-          <h1 className='font-libre-baskerville italic text-5xl md:text-7xl font-bold mb-6 text-neutral-100 tracking-tight'>
-            Artikel & Wawasan
-          </h1>
-          <div className='flex justify-center mb-8'>
-            <div className='w-24 h-px bg-linear-to-r from-transparent via-[#f3d6b8]/60 to-transparent'></div>
-          </div>
-          <p className='font-outfit md:max-w-4xl mx-auto text-lg md:text-xl text-neutral-300 leading-relaxed font-semibold'>
-            Jelajahi wawasan seputar seni dan budaya tradisional Bali — dari
-            filosofi gamelan, tari sakral, hingga panduan pernikahan adat.
-          </p>
-        </Reveal>
+      <section className='section-spacing'>
+        <Container>
+          <Reveal>
+            <SectionHeading
+              eyebrow='Tulisan Terbaru'
+              title='Wawasan dari Panggung'
+              description='Catatan, panduan, dan cerita di balik pertunjukan seni tradisional Bali.'
+              className='mb-12'
+            />
+          </Reveal>
+
+          <StaggerContainer className='grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8'>
+            {blogData.map((post) => (
+              <StaggerItem key={post.id} className='h-full'>
+                <BlogCard post={post} />
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </Container>
       </section>
 
-      {/* Blog Grid */}
-      <section className='container mx-auto px-6 py-12 max-w-7xl'>
-        <StaggerContainer className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
-          {blogData.map((post) => (
-            <StaggerItem key={post.id}>
-              <BlogCard post={post} />
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-      </section>
-
-      {/* CTA Section */}
-      <Reveal>
-        <section className='container mx-auto px-6 py-32 text-center max-w-7xl relative'>
-          <div
-            className='absolute inset-0 -z-10 pointer-events-none'
-            style={{
-              background:
-                "radial-gradient(circle at center, rgba(178,116,87,0.14) 0%, transparent 70%)",
-            }}
-          ></div>
-          <div className='max-w-4xl mx-auto border border-[#f3cdb6] bg-card shadow-sm py-12 px-6 md:px-20 md:py-20 rounded-2xl relative overflow-hidden group'>
-            <div className='absolute top-0 right-0 w-32 h-32 bg-[#f09a73]/10 blur-3xl -z-10 rounded-full transition-transform duration-1000 group-hover:scale-150'></div>
-            <div className='absolute bottom-0 left-0 w-32 h-32 bg-[#d58058]/10 blur-3xl -z-10 rounded-full transition-transform duration-1000 group-hover:scale-150'></div>
-
-            <h2 className='font-libre-baskerville italic text-4xl lg:text-5xl mb-6 text-[#9a3412]'>
-              Ingin Tahu Lebih Banyak?
-            </h2>
-            <p className='font-cormorant-garamond text-[#4e4239] text-lg lg:text-xl mb-12 font-semibold max-w-2xl mx-auto'>
-              Kami siap menjawab pertanyaan Anda seputar seni pertunjukan
-              tradisional Bali. Hubungi kami untuk diskusi lebih lanjut.
-            </p>
-            <Link href={waLink()} target='_blank' rel='noopener noreferrer'>
-              <Button className='font-outfit bg-[#b4501f] hover:bg-[#8f3d16] text-white rounded-none px-6 md:px-12 py-7 text-xs lg:text-base tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(180,80,31,0.2)] hover:shadow-[0_0_30px_rgba(143,61,22,0.4)]'>
-                Hubungi Kami Sekarang
-              </Button>
-            </Link>
-          </div>
-        </section>
-      </Reveal>
+      <CtaBanner
+        title='Ingin Tahu Lebih Banyak?'
+        description='Kami siap menjawab pertanyaan Anda seputar seni pertunjukan tradisional Bali. Hubungi kami untuk diskusi lebih lanjut.'
+        href={waLink()}
+        external
+      />
     </main>
   );
 }

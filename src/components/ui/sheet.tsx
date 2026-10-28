@@ -37,7 +37,7 @@ function SheetOverlay({
     <SheetPrimitive.Overlay
       data-slot='sheet-overlay'
       className={cn(
-        "fixed inset-0 z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
+        "fixed inset-0 z-50 bg-black/40 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
         className,
       )}
       {...props}
@@ -72,11 +72,11 @@ function SheetContent({
           <SheetPrimitive.Close data-slot='sheet-close' asChild>
             <Button
               variant='ghost'
-              className='absolute group hover:bg-transparent top-4 right-4'
-              size='icon-lg'
+              className='group absolute top-4 right-4 hover:bg-secondary'
+              size='icon'
             >
-              <XIcon className='group-hover:text-[#c05621] text-foreground scale-150 transition-all duration-300' />
-              <span className='sr-only'>Close</span>
+              <XIcon className='size-5 text-foreground transition-colors duration-300 group-hover:text-primary' />
+              <span className='sr-only'>Tutup</span>
             </Button>
           </SheetPrimitive.Close>
         )}

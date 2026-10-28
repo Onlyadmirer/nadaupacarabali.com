@@ -1,135 +1,242 @@
 "use client";
 
 import { useState } from "react";
+import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { contactInfo } from "@/constants/contact";
 import Reveal from "@/components/Reveal";
+import Container from "@/components/site/Container";
+import SectionHeading from "@/components/site/SectionHeading";
+
+type FormFields = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
+type FormErrors = Partial<Record<keyof FormFields, string>>;
+
+const initialForm: FormFields = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+};
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<FormFields>(initialForm);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [status, setStatus] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: undefined }));
+    setStatus("");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const text = `Halo, saya ${formData.name || "..."}\n\n${formData.subject ? `Subjek: ${formData.subject}\n\n` : ""}${formData.message || ""}\n\n${formData.email ? `Email saya: ${formData.email}` : ""}`;
-    window.open(
+  const validate = (): FormErrors => {
+    const nextErrors: FormErrors = {};
+
+    if (!formData.name.trim()) {
+      nextErrors.name = "Nama wajib diisi.";
+    }
+    if (
+      formData.email.trim() &&
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())
+    ) {
+      nextErrors.email = "Format email belum valid.";
+    }
+    if (!formData.message.trim()) {
+      nextErrors.message = "Pesan wajib diisi.";
+    }
+
+    return nextErrors;
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const nextErrors = validate();
+    setErrors(nextErrors);
+
+    const firstError = Object.keys(nextErrors)[0];
+    if (firstError) {
+      document.getElementById(firstError)?.focus();
+      return;
+    }
+
+    const text = `Halo, saya ${formData.name}\n\n${
+      formData.subject ? `Subjek: ${formData.subject}\n\n` : ""
+    }${formData.message}\n\n${formData.email ? `Email saya: ${formData.email}` : ""}`;
+
+    const opened = window.open(
       `https://wa.me/${contactInfo.phoneRaw}?text=${encodeURIComponent(text)}`,
       "_blank",
+      "noopener,noreferrer",
+    );
+
+    setStatus(
+      opened
+        ? "WhatsApp dibuka di tab baru. Silakan lanjutkan percakapan di sana."
+        : "Popup diblokir browser. Izinkan popup atau hubungi kami langsung via WhatsApp.",
     );
   };
 
   return (
     <Reveal>
-      <section className='container mx-auto px-6 py-12 max-w-7xl'>
-        <div className='max-w-3xl mx-auto'>
-          <div className='text-center mb-12'>
-            <h2 className='font-libre-baskerville italic text-4xl lg:text-5xl mb-4 text-[#9a3412]'>
-              Kirim Pesan
-            </h2>
-            <div className='flex justify-center mb-6'>
-              <div className='w-16 h-px bg-linear-to-r from-transparent via-[#d58058] to-transparent'></div>
-            </div>
-            <p className='font-cormorant-garamond text-[#6f6055] text-lg'>
-              Isi form di bawah dan pesan Anda akan langsung terkirim ke
-              WhatsApp kami.
-            </p>
-          </div>
+      <section className='section-spacing'>
+        <Container className='max-w-3xl'>
+          <SectionHeading
+            eyebrow='Formulir Pesan'
+            title='Kirim Pesan'
+            description='Isi formulir di bawah dan pesan Anda akan langsung diteruskan ke WhatsApp kami.'
+            className='mb-10'
+          />
 
           <form
             onSubmit={handleSubmit}
-            className='border border-border bg-card shadow-sm rounded-xl p-8 lg:p-12 space-y-6'
+            noValidate
+            className='space-y-6 rounded-2xl border border-border bg-card p-6 shadow-sm md:p-10'
           >
-            <div className='grid md:grid-cols-2 gap-6'>
+            <div className='grid gap-6 md:grid-cols-2'>
               <div>
-                <label
+                <Label
                   htmlFor='name'
-                  className='font-outfit text-xs tracking-[0.15em] uppercase text-[#6f6055] block mb-2'
+                  className='mb-2 font-ui text-[11px] font-semibold tracking-[0.16em] text-muted-foreground uppercase'
                 >
-                  Nama
-                </label>
-                <input
+                  Nama <span className='text-destructive'>*</span>
+                </Label>
+                <Input
                   type='text'
                   id='name'
                   name='name'
                   value={formData.name}
                   onChange={handleChange}
-                  className='w-full bg-white border border-[#dccdc0] rounded-lg px-4 py-3 text-[#2b211b] font-cormorant-garamond text-lg placeholder:text-[#a5968a] focus:outline-none focus:border-[#c05621]/60 transition-colors duration-300'
+                  autoComplete='name'
+                  required
+                  aria-invalid={Boolean(errors.name)}
+                  aria-describedby={errors.name ? "name-error" : undefined}
                   placeholder='Masukkan nama Anda'
                 />
+                {errors.name && (
+                  <p
+                    id='name-error'
+                    role='alert'
+                    className='mt-1.5 font-body text-xs text-destructive'
+                  >
+                    {errors.name}
+                  </p>
+                )}
               </div>
+
               <div>
-                <label
+                <Label
                   htmlFor='email'
-                  className='font-outfit text-xs tracking-[0.15em] uppercase text-[#6f6055] block mb-2'
+                  className='mb-2 font-ui text-[11px] font-semibold tracking-[0.16em] text-muted-foreground uppercase'
                 >
                   Email
-                </label>
-                <input
+                </Label>
+                <Input
                   type='email'
                   id='email'
                   name='email'
                   value={formData.email}
                   onChange={handleChange}
-                  className='w-full bg-white border border-[#dccdc0] rounded-lg px-4 py-3 text-[#2b211b] font-cormorant-garamond text-lg placeholder:text-[#a5968a] focus:outline-none focus:border-[#c05621]/60 transition-colors duration-300'
+                  autoComplete='email'
+                  aria-invalid={Boolean(errors.email)}
+                  aria-describedby={errors.email ? "email-error" : undefined}
                   placeholder='Masukkan email Anda'
                 />
+                {errors.email && (
+                  <p
+                    id='email-error'
+                    role='alert'
+                    className='mt-1.5 font-body text-xs text-destructive'
+                  >
+                    {errors.email}
+                  </p>
+                )}
               </div>
             </div>
 
             <div>
-              <label
+              <Label
                 htmlFor='subject'
-                className='font-outfit text-xs tracking-[0.15em] uppercase text-[#6f6055] block mb-2'
+                className='mb-2 font-ui text-[11px] font-semibold tracking-[0.16em] text-muted-foreground uppercase'
               >
                 Subjek
-              </label>
-              <input
+              </Label>
+              <Input
                 type='text'
                 id='subject'
                 name='subject'
                 value={formData.subject}
                 onChange={handleChange}
-                className='w-full bg-white border border-[#dccdc0] rounded-lg px-4 py-3 text-[#2b211b] font-cormorant-garamond text-lg placeholder:text-[#a5968a] focus:outline-none focus:border-[#c05621]/60 transition-colors duration-300'
                 placeholder='Masukkan subjek pesan'
               />
             </div>
 
             <div>
-              <label
+              <Label
                 htmlFor='message'
-                className='font-outfit text-xs tracking-[0.15em] uppercase text-[#6f6055] block mb-2'
+                className='mb-2 font-ui text-[11px] font-semibold tracking-[0.16em] text-muted-foreground uppercase'
               >
-                Pesan
-              </label>
-              <textarea
+                Pesan <span className='text-destructive'>*</span>
+              </Label>
+              <Textarea
                 id='message'
                 name='message'
                 rows={5}
                 value={formData.message}
                 onChange={handleChange}
-                className='w-full bg-white border border-[#dccdc0] rounded-lg px-4 py-3 text-[#2b211b] font-cormorant-garamond text-lg placeholder:text-[#a5968a] focus:outline-none focus:border-[#c05621]/60 transition-colors duration-300 resize-none'
-                placeholder='Tulis pesan Anda di sini...'
+                required
+                aria-invalid={Boolean(errors.message)}
+                aria-describedby={errors.message ? "message-error" : undefined}
+                placeholder='Ceritakan kebutuhan acara Anda...'
               />
+              {errors.message && (
+                <p
+                  id='message-error'
+                  role='alert'
+                  className='mt-1.5 font-body text-xs text-destructive'
+                >
+                  {errors.message}
+                </p>
+              )}
             </div>
 
-            <Button
-              type='submit'
-              className='font-outfit bg-[#b4501f] hover:bg-[#8f3d16] text-white rounded-none px-8 md:px-12 py-7 text-xs lg:text-sm tracking-[0.2em] uppercase transition-all duration-300 shadow-[0_0_20px_rgba(180,80,31,0.2)] hover:shadow-[0_0_30px_rgba(143,61,22,0.4)] w-full '
-            >
-              Kirim via WhatsApp
-            </Button>
+            <div className='flex flex-col gap-3'>
+              <Button
+                type='submit'
+                size='lg'
+                className='w-full rounded-full'
+              >
+                Kirim via WhatsApp
+                <MessageCircle className='size-4' aria-hidden='true' />
+              </Button>
+              <p className='text-center font-body text-xs leading-relaxed text-muted-foreground'>
+                Pesan akan dibuka di WhatsApp. Kami tidak menyimpan data
+                formulir di server.
+              </p>
+              {status && (
+                <p
+                  role='status'
+                  aria-live='polite'
+                  className='rounded-lg bg-secondary px-3 py-2 text-center font-body text-sm text-foreground'
+                >
+                  {status}
+                </p>
+              )}
+            </div>
           </form>
-        </div>
+        </Container>
       </section>
     </Reveal>
   );

@@ -48,7 +48,7 @@ export const catalogData: CatalogItem[] = [
     category: "Gamelan & Musik Tradisional",
     title: "Gender Wayang",
     description:
-      "Pertunjukan musik tradisional Bali yang dimainkan dengan alat musik bilah perunggu. Suaranya lembut, berlapis, dan khas — sering digunakan dalam upacara Dewa Yadnya, Manusa Yadnya, dan Pitra Yadnya.",
+      "Pertunjukan musik tradisional Bali yang dimainkan dengan alat musik bilah perunggu. Suaranya lembut, berlapis, dan khas, sering digunakan dalam upacara Dewa Yadnya, Manusa Yadnya, dan Pitra Yadnya.",
     duration: "Max 3 Jam",
     image: image.img3,
     packages: [
@@ -186,7 +186,7 @@ export const catalogData: CatalogItem[] = [
     category: "Tari Tradisional",
     title: "Tari Penyambutan",
     description:
-      "Tari Pendet, Tari Sekar Jagat, atau Tari Cendrawasih — tarian penyambutan khas Bali yang penuh kehangatan dan keindahan.",
+      "Tari Pendet, Tari Sekar Jagat, atau Tari Cendrawasih, tarian penyambutan khas Bali yang penuh kehangatan dan keindahan.",
     image: "/images/catalog/tari-penyambutan.png",
     duration: "10 - 15 Menit",
     packages: [
@@ -223,7 +223,7 @@ export const catalogData: CatalogItem[] = [
     category: "Topeng & Pertunjukan Sakral",
     title: "Sang Pajegan",
     description:
-      "The Sacred Solo Mask Dance of Bali — menjelajahi tiga wajah utama budaya Bali dalam pertunjukan solo yang dramatis dan penuh makna.",
+      "The Sacred Solo Mask Dance of Bali: menjelajahi tiga wajah utama budaya Bali dalam pertunjukan solo yang dramatis dan penuh makna.",
     duration: "15 Menit",
     image: "/images/services/international-events.png",
     packages: [{ name: "Paket Lengkap", price: 3000000 }],

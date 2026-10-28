@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Libre_Baskerville,
-  Outfit,
-  Inter,
-  Cormorant_Garamond,
-} from "next/font/google";
+import { Cormorant_Garamond, Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { contactInfo, siteUrl } from "@/constants/contact";
@@ -15,28 +10,24 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-const libreBaskerville = Libre_Baskerville({
-  variable: "--font-baskerville",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-});
 const outfit = Outfit({
   variable: "--font-outfit-font",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
 });
+
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["300", "400", "700"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Nada Upacara Bali | Balinese Creative-Cultural Service",
   description:
-    "Cultural performance house Bali — pertunjukan seni tradisional Bali untuk upacara adat, pernikahan, corporate event, dan edukasi budaya.",
+    "Cultural performance house Bali yang menghadirkan pertunjukan seni tradisional Bali untuk upacara adat, pernikahan, corporate event, dan edukasi budaya.",
   alternates: {
     canonical: "/",
   },
@@ -104,22 +95,27 @@ export default function RootLayout({
       className={cn(
         "h-full",
         "antialiased",
-        libreBaskerville.variable,
-        outfit.variable,
         "font-sans",
         inter.variable,
+        outfit.variable,
         cormorantGaramond.variable,
       )}
     >
       <head>
-        <meta name='theme-color' content='#fbf7f2' />
+        <meta name='theme-color' content='#f8f4ef' />
         <meta name='color-scheme' content='light' />
         <script
           type='application/ld+json'
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className='min-h-full flex flex-col selection:bg-[#f09a73]/40 selection:text-[#2b211b]'>
+      <body className='min-h-full flex flex-col'>
+        <a
+          href='#main-content'
+          className='sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:font-ui focus:text-sm focus:text-primary-foreground'
+        >
+          Lewati ke konten utama
+        </a>
         {children}
       </body>
     </html>

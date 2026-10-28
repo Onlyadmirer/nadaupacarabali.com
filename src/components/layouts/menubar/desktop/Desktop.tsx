@@ -4,22 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
-const leftNavItems = [
-  { href: "/", label: "HOME" },
-  { href: "/about", label: "ABOUT US" },
-  { href: "/services", label: "SERVICES & EXPERIENCES" },
-];
-
-const rightNavItems = [
-  { href: "/catalog", label: "CATALOG" },
-  { href: "/gallery", label: "GALLERY" },
-  { href: "/blog", label: "BLOG" },
-  { href: "/contact", label: "CONTACT" },
-];
-
-// Halaman tanpa hero gambar: navbar harus langsung memakai latar terang.
-const NO_HERO_ROUTES = ["/privacy-policy", "/terms-of-service"];
+import {
+  isActivePath,
+  leftNavItems,
+  noHeroRoutes,
+  rightNavItems,
+} from "../nav-items";
 
 function Desktop() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,85 +17,99 @@ function Desktop() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 12);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const solidNav =
-    scrolled || NO_HERO_ROUTES.some((route) => pathName.startsWith(route));
-  const linkColor = solidNav ? "text-[#4e4239]" : "text-white/90";
+    scrolled || noHeroRoutes.some((route) => pathName.startsWith(route));
+  const linkColor = solidNav ? "text-foreground/75" : "text-white/85";
   const linkHover = solidNav
-    ? "group-hover:text-[#c05621]"
-    : "group-hover:text-[#f5b892]";
-  const linkActive = solidNav ? "text-[#c05621]" : "text-[#f5b892]";
-  const underlineColor = solidNav ? "bg-[#c05621]" : "bg-[#f5b892]";
+    ? "group-hover:text-primary"
+    : "group-hover:text-gold-soft";
+  const linkActive = solidNav ? "text-primary" : "text-gold-soft";
+  const underlineColor = solidNav ? "bg-primary" : "bg-gold-soft";
 
   return (
     <nav
-      className={`fixed w-full z-50 grid grid-cols-[1fr_auto_1fr] items-center px-6 py-2 transition-all duration-300 ${
+      aria-label='Navigasi utama'
+      className={`fixed z-50 grid w-full grid-cols-[1fr_auto_1fr] items-center px-4 py-2 transition-all duration-400 xl:px-6 ${
         solidNav
-          ? "bg-background/85 backdrop-blur-xl border-b border-border"
-          : "bg-transparent"
+          ? "border-b border-border bg-background/90 backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent py-4"
       }`}
     >
-      <div className='flex justify-end pr-12 gap-26 tracking-wider font-outfit font-medium text-sm items-center w-full'>
+      <div className='flex w-full items-center justify-end gap-6 pr-6 font-ui text-[11px] font-medium tracking-[0.14em] xl:gap-10 xl:pr-10 xl:text-xs'>
         {leftNavItems.map((item) => {
-          const isActive =
-            item.href === "/"
-              ? pathName === "/"
-              : pathName.startsWith(item.href);
+          const isActive = isActivePath(pathName, item.href);
           return (
             <Link
               key={item.href}
               href={item.href}
-              className='group w-fit relative'
+              aria-current={isActive ? "page" : undefined}
+              className='group relative w-fit py-2'
             >
               <span
-                className={` uppercase transition-all duration-300 ${linkHover} ${isActive ? linkActive : linkColor}`}
+                className={`uppercase transition-colors duration-200 ${linkHover} ${
+                  isActive ? linkActive : linkColor
+                }`}
               >
                 {item.label}
               </span>
               <span
-                className={`absolute left-1/2 -translate-x-1/2 ease-in-out -bottom-1 h-px w-0 ${underlineColor} transition-all duration-300 group-hover:w-full ${isActive ? "w-full" : ""}`}
-              ></span>
+                aria-hidden='true'
+                className={`absolute -bottom-0.5 left-1/2 h-px w-0 -translate-x-1/2 transition-all duration-300 group-hover:w-full ${underlineColor} ${
+                  isActive ? "w-full" : ""
+                }`}
+              />
             </Link>
           );
         })}
       </div>
-      <div className='h-18 w-18 overflow-hidden flex justify-center relative'>
+
+      <Link
+        href='/'
+        aria-label='Beranda Nada Upacara Bali'
+        className='relative flex size-16 items-center justify-center overflow-hidden rounded-full transition-opacity hover:opacity-90'
+      >
         <Image
-          src={"/logo/logo.png"}
-          alt='nada-upacara-bali-logo'
+          src='/logo/logo.png'
+          alt='Logo Nada Upacara Bali'
           fill
-          loading='eager'
-          sizes='72px'
-          className='w-full h-full bg-cover'
-        ></Image>
-      </div>
-      <div className='flex justify-start gap-26 pl-12 tracking-wider font-outfit font-medium text-sm items-center w-full'>
+          priority
+          sizes='64px'
+          className='object-contain'
+        />
+      </Link>
+
+      <div className='flex w-full items-center justify-start gap-6 pl-6 font-ui text-[11px] font-medium tracking-[0.14em] xl:gap-10 xl:pl-10 xl:text-xs'>
         {rightNavItems.map((item) => {
-          const isActive =
-            item.href === "/"
-              ? pathName === "/"
-              : pathName.startsWith(item.href);
+          const isActive = isActivePath(pathName, item.href);
           return (
             <Link
               key={item.href}
               href={item.href}
-              className='group w-fit relative'
+              aria-current={isActive ? "page" : undefined}
+              className='group relative w-fit py-2'
             >
               <span
-                className={` uppercase transition-all duration-300 ${linkHover} ${isActive ? linkActive : linkColor}`}
+                className={`uppercase transition-colors duration-200 ${linkHover} ${
+                  isActive ? linkActive : linkColor
+                }`}
               >
                 {item.label}
               </span>
               <span
-                className={`absolute left-1/2 -translate-x-1/2 ease-in-out -bottom-1 h-px w-0 ${underlineColor} transition-all duration-300 group-hover:w-full ${isActive ? "w-full" : ""}`}
-              ></span>
+                aria-hidden='true'
+                className={`absolute -bottom-0.5 left-1/2 h-px w-0 -translate-x-1/2 transition-all duration-300 group-hover:w-full ${underlineColor} ${
+                  isActive ? "w-full" : ""
+                }`}
+              />
             </Link>
           );
         })}

@@ -9,7 +9,9 @@ export default function PublicLayout({
   return (
     <>
       <MenuBar />
-      <div className='flex-1'>{children}</div>
+      <div id='main-content' tabIndex={-1} className='flex-1 outline-none'>
+        {children}
+      </div>
       <Footer />
     </>
   );

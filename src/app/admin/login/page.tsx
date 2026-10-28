@@ -26,7 +26,11 @@ export default async function LoginPage({
   );
 
   return (
-    <main className='relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-6 py-16'>
+    <main
+      id='main-content'
+      tabIndex={-1}
+      className='relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-6 py-16 outline-none'
+    >
       <div
         aria-hidden
         className='pointer-events-none absolute inset-0'
@@ -48,7 +52,7 @@ export default async function LoginPage({
           <p className='font-outfit mt-8 text-[11px] tracking-[0.4em] text-primary uppercase'>
             Nada Upacara Bali
           </p>
-          <h1 className='font-libre-baskerville mt-3 text-4xl text-foreground italic'>
+          <h1 className='font-heading mt-3 text-4xl text-foreground italic'>
             Panel Admin
           </h1>
           <p className='font-outfit mt-3 text-sm text-muted-foreground'>

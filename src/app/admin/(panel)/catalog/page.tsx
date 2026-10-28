@@ -180,7 +180,7 @@ export default async function CatalogListPage({
             {data.items.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={5} className='py-16 text-center'>
-                  <p className='font-cormorant-garamond text-lg text-muted-foreground'>
+                  <p className='font-body text-lg text-muted-foreground'>
                     {hasFilters
                       ? "Tidak ada item yang cocok dengan filter."
                       : "Belum ada item katalog."}

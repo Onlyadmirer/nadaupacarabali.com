@@ -7,24 +7,35 @@
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  --font-sans: var(--font-inter);
-  --font-cormorant-garamond: var(--font-cormorant);
-  --font-outfit: var(--font-outfit-font);
-  --font-libre-baskerville: var(--font-baskerville);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-strong: var(--accent-strong);
+  --color-gold-soft: var(--gold-soft);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-inter);
+  --font-body: var(--font-inter);
+  --font-display: var(--font-cormorant);
+  --font-heading: var(--font-cormorant);
+  --font-ui: var(--font-outfit-font);
+
+  /* Backwards-compatible aliases used across the existing codebase. */
+  --font-cormorant-garamond: var(--font-cormorant);
+  --font-libre-baskerville: var(--font-cormorant);
+  --font-outfit: var(--font-outfit-font);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -35,7 +46,7 @@
 }
 
 :root {
-  --background: #f7f3ee;
+  --background: #f8f4ef;
   --foreground: #1a140f;
   --card: #ffffff;
   --card-foreground: #1a140f;
@@ -43,47 +54,108 @@
   --popover-foreground: #1a140f;
   --primary: #8b5e3c;
   --primary-foreground: #ffffff;
-  --secondary: #f3ebe3;
+  --primary-hover: #744c30;
+  --secondary: #f1e8de;
   --secondary-foreground: #1a140f;
-  --muted: #f3ebe3;
+  --muted: #f1e8de;
   --muted-foreground: #5c4f44;
   --accent: #b89b5e;
-  --accent-foreground: #7b5e30;
+  --accent-foreground: #2b211b;
+  --accent-strong: #9a3412;
+  --gold-soft: #f3d6b8;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #e6d9cc;
-  --input: #e6d9cc;
+  --border: #e3d5c7;
+  --input: #a3917f;
   --ring: #8b5e3c;
-  --radius: 0.625rem;
+  --radius: 0.75rem;
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
-  html {
-    @apply font-sans;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   *:focus-visible {
     @apply outline-2 outline-offset-2 outline-ring/70;
   }
 
-  .text-balance {
-    text-wrap: balance;
+  ::selection {
+    background: var(--gold-soft);
+    color: var(--foreground);
   }
 }
 
+@layer components {
+  .page-container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-spacing {
+    @apply py-20 md:py-28;
+  }
+
+  .prose-brand {
+    @apply font-body text-base leading-relaxed text-muted-foreground md:text-lg;
+  }
+}
+
+/* Themed scrollbar instead of the previous black track on a light site. */
+html {
+  scrollbar-color: var(--primary) var(--background);
+}
+
 ::-webkit-scrollbar {
-  @apply w-1;
+  width: 4px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-[#000000];
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply rounded-full bg-[#4c4c4c];
+  background: color-mix(in srgb, var(--primary) 65%, var(--background));
+  border: 2px solid var(--background);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

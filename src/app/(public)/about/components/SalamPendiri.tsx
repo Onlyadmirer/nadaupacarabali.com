@@ -1,53 +1,53 @@
 import Image from "next/image";
-import Reveal from "@/components/Reveal";
 
 function SalamPendiri() {
   return (
-    <Reveal>
-      <div className=' bg-[#f0e4d8]'>
-        <div className='max-w-7xl mx-auto md:pl-24 py-4 md:pt-8 '>
-          <h1 className='text-3xl font-libre-baskerville uppercase px-6 pt-4'>
-            Salam dari <span className='text-[#9f4a23]'>Pendiri</span>
-          </h1>
-        </div>
-        <div className='flex flex-col-reverse px-6  md:flex-row pb-18 md:pb-26 max-w-7xl mx-auto'>
-          <div className='flex-1 flex text-[#2b211b] flex-col justify-center md:justify-start md:pl-24'>
-            <h2 className='font-outfit'>I Made Mahotama Warmasuta</h2>
-            <p className='mt-4 font-cormorant-garamond text-xl tracking-tight'>
+    <section className='rounded-3xl bg-secondary/70 px-6 py-12 md:px-12 md:py-16'>
+      <div className='grid items-center gap-10 md:grid-cols-[1fr_auto]'>
+        <div>
+          <p className='font-ui text-xs font-semibold tracking-[0.22em] text-primary uppercase'>
+            Salam dari Pendiri
+          </p>
+          <h2 className='mt-3 font-heading text-3xl font-semibold text-foreground md:text-4xl'>
+            I Made Mahotama Warmasuta
+          </h2>
+
+          <div className='mt-6 space-y-4 font-body text-base leading-relaxed text-muted-foreground'>
+            <p>
               Selamat datang di Nada Upacara Bali. Kami adalah perusahaan
               penyedia pertunjukan seni tradisional Bali mulai dari Rindik,
               Gender Wayang, Semar Pegulingan, Selonding, Angklung Bali, hingga
               pertunjukan Wayang, Joged Bumbung, dan berbagai tari tradisional
-              lainnya.{" "}
+              lainnya.
             </p>
-            <p className='mt-4 font-cormorant-garamond text-xl tracking-tight'>
-              <span className='text-[#8c360e]'>Visi kami sederhana:</span>{" "}
-              <br />
+            <p>
+              <span className='font-semibold text-foreground'>
+                Visi kami sederhana:
+              </span>{" "}
               menjaga seni Bali tetap hidup dengan rasa yang sakral, penuh rasa,
-              dan profesional.{" "}
+              dan profesional.
             </p>
-            <p className='mt-4 font-cormorant-garamond text-xl tracking-tight'>
+            <p>
               Saya percaya seni Bali pantas dihormati, tidak hanya lewat karya,
               tapi juga lewat sikap. Kami berkomitmen menjaga standar berpakaian
-              rapi, hadir tepat waktu, tampil dengan penuh tanggung jawab. Nada
-              Upacara Bali hadir untuk menjembatani tradisi dengan kebutuhan
-              masa kini. Untuk upacara adat, pernikahan, acara perusahaan,
-              hingga pertunjukan berskala internasional kami siap menghadirkan
-              seni pertunjukan terbaik.
+              rapi, hadir tepat waktu, dan tampil dengan penuh tanggung jawab.
+              Nada Upacara Bali hadir untuk menjembatani tradisi dengan
+              kebutuhan masa kini.
             </p>
           </div>
-          <div className='flex-1 flex py-4 items-center justify-center'>
-            <Image
-              src={"/images/mahotama.png"}
-              alt='mahotama-warmasuta'
-              width={260}
-              height={260}
-              className='rounded-full'
-            ></Image>
-          </div>
+        </div>
+
+        <div className='flex justify-center md:justify-end'>
+          <Image
+            src='/images/mahotama.png'
+            alt='I Made Mahotama Warmasuta, pendiri Nada Upacara Bali'
+            width={288}
+            height={288}
+            className='size-64 rounded-full border-4 border-card object-cover shadow-[0_24px_70px_-40px_rgba(139,94,60,0.55)] md:size-72'
+          />
         </div>
       </div>
-    </Reveal>
+    </section>
   );
 }
 

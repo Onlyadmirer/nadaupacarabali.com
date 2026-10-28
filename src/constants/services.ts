@@ -64,7 +64,7 @@ export const servicesData: Service[] = [
     title: "Corporate & International Events",
     image: "/images/services/image.png",
     description:
-      "Presenting Balinese culture in refined and elegant settings. Bali dikenal di mata dunia sebagai pulau dengan seni dan budaya yang memikat. Kami menghadirkan kekayaan tersebut dalam format yang terstruktur, rapi, dan siap panggung, untuk memenuhi kebutuhan event modern — dari acara formal perusahaan hingga perhelatan internasional.",
+      "Presenting Balinese culture in refined and elegant settings. Bali dikenal di mata dunia sebagai pulau dengan seni dan budaya yang memikat. Kami menghadirkan kekayaan tersebut dalam format yang terstruktur, rapi, dan siap panggung, untuk memenuhi kebutuhan event modern, mulai dari acara formal perusahaan hingga perhelatan internasional.",
     sections: [
       {
         title: "Layanan yang Kami Tawarkan:",

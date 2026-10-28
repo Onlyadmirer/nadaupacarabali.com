@@ -300,7 +300,7 @@ export default function CategoriesManager({
             {categories.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={5} className='py-16 text-center'>
-                  <p className='font-cormorant-garamond text-lg text-muted-foreground'>
+                  <p className='font-body text-lg text-muted-foreground'>
                     Belum ada kategori.
                   </p>
                 </TableCell>
@@ -350,7 +350,7 @@ export default function CategoriesManager({
       <Dialog open={open} onOpenChange={handleOpenChange}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle className='font-libre-baskerville text-2xl italic'>
+            <DialogTitle className='font-heading text-2xl italic'>
               {editing ? "Edit Kategori" : "Tambah Kategori"}
             </DialogTitle>
             <DialogDescription className='font-outfit'>

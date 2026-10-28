@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { useHydrated } from "@/lib/useHydrated";
 
 interface StaggerContainerProps {
@@ -17,8 +17,9 @@ export default function StaggerContainer({
   delay = 0,
 }: StaggerContainerProps) {
   const mounted = useHydrated();
+  const reduceMotion = useReducedMotion();
 
-  if (!mounted) {
+  if (!mounted || reduceMotion) {
     return <div className={className}>{children}</div>;
   }
 
@@ -26,7 +27,7 @@ export default function StaggerContainer({
     <motion.div
       initial='hidden'
       whileInView='visible'
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-10px" }}
       variants={{
         hidden: {},
         visible: {
@@ -49,8 +50,9 @@ export function StaggerItem({
   className?: string;
 } & React.ComponentPropsWithoutRef<typeof motion.div>) {
   const mounted = useHydrated();
+  const reduceMotion = useReducedMotion();
 
-  if (!mounted) {
+  if (!mounted || reduceMotion) {
     return <div className={className}>{children}</div>;
   }
 

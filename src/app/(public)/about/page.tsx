@@ -1,148 +1,141 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import SalamPendiri from "./components/SalamPendiri";
 import { image } from "@/constants/images";
 import Reveal from "@/components/Reveal";
 import StaggerContainer, { StaggerItem } from "@/components/StaggerContainer";
+import PageHero from "@/components/site/PageHero";
+import Container from "@/components/site/Container";
+import SectionHeading from "@/components/site/SectionHeading";
+import CtaBanner from "@/components/site/CtaBanner";
+import { waLink } from "@/constants/contact";
 
 export const metadata: Metadata = {
   title: "Tentang Kami | Nada Upacara Bali",
   description:
-    "Mengenal lebih dekat Nada Upacara Bali — cultural performance house yang menghadirkan seni pertunjukan tradisional Bali secara sakral, emosional, dan profesional.",
+    "Mengenal lebih dekat Nada Upacara Bali, cultural performance house yang menghadirkan seni pertunjukan tradisional Bali secara sakral, emosional, dan profesional.",
   openGraph: {
     title: "Tentang Kami | Nada Upacara Bali",
     description:
-      "Mengenal lebih dekat Nada Upacara Bali — cultural performance house yang menghadirkan seni pertunjukan tradisional Bali.",
+      "Mengenal lebih dekat Nada Upacara Bali, cultural performance house yang menghadirkan seni pertunjukan tradisional Bali.",
   },
 };
 
+const values = [
+  {
+    number: "01",
+    title: "Pionir Seni Tradisi Profesional",
+    description:
+      "Memadukan nilai budaya tradisional Bali yang luhur dengan etika kerja dan manajemen modern yang sistematis.",
+  },
+  {
+    number: "02",
+    title: "Standar Layanan Premium",
+    description:
+      "Kami menjaga kualitas mulai dari kerapian penampilan, tata busana panggung, hingga ketepatan waktu hadir.",
+  },
+  {
+    number: "03",
+    title: "Pelestarian Budaya Relevan",
+    description:
+      "Fokus pelestarian budaya kami sajikan dengan gaya elegan yang tetap relevan dan memukau di acara masa kini.",
+  },
+];
+
 export default function AboutPage() {
   return (
-    <main className='min-h-screen bg-background text-foreground selection:bg-[#f09a73]/40 selection:text-[#2b211b] pb-24'>
-      {/* Hero Section */}
-      <section className='relative h-screen flex flex-col justify-center items-center text-center px-4 mb-24'>
-        <div className='absolute inset-0 z-0'>
-          <Image
-            src={image.aboutBg}
-            alt='Nada Upacara Bali Team'
-            fill
-            sizes='100vw'
-            className='w-full h-full object-[49%_20%] object-cover'
-            priority
-            fetchPriority='high'
-          />
-          <div className='absolute inset-0 bg-linear-to-t from-neutral-950 via-neutral-950/30 to-neutral-950/90' />
-        </div>
-        <Reveal className='relative z-10 max-w-4xl mx-auto flex flex-col items-center mt-24'>
-          <span className='text-[#f5b892] font-outfit uppercase tracking-[0.2em] text-sm font-semibold mb-4'>
-            Mengenal Lebih Dekat
-          </span>
-          <h1 className='text-5xl md:text-7xl font-libre-baskerville italic text-neutral-100 mb-6'>
-            Tentang Kami
-          </h1>
-          <p className='text-[#ffffff] tracking-[0.3em] text-xs md:text-sm uppercase mb-4 font-semibold'>
-            {"• Sakral • Penuh Rasa • Profesional •"}
-          </p>
-        </Reveal>
-      </section>
+    <main className='min-h-screen bg-background text-foreground'>
+      <PageHero
+        image={image.aboutBg}
+        alt='Tim Nada Upacara Bali'
+        eyebrow='Mengenal Lebih Dekat'
+        title='Tentang Kami'
+        description='Cultural performance house yang lahir dari kecintaan pada seni tradisional Bali, menghadirkan pertunjukan yang sakral, penuh rasa, dan profesional.'
+        size='full'
+        objectPosition='49% 20%'
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Tentang Kami" }]}
+      />
 
-      {/* Main Content Sections */}
-      <div className=' mx-auto flex flex-col gap-24'>
-        {/* Section 2: Sejarah & Filosofi */}
-        <Reveal>
-          <section className='max-w-4xl px-6 mx-auto text-center'>
-            <h2 className='text-sm font-outfit font-semibold tracking-[0.2em] text-[#c05621] uppercase mb-4'>
-              Sejarah & Filosofi
-            </h2>
-            <h3 className='text-4xl md:text-5xl font-cormorant-garamond text-foreground mb-8 leading-tight'>
-              Tradisi Bertemu{" "}
-              <span className='text-[#6f6055] italic'>Elegansi</span>
-            </h3>
-            <p className='text-[#4e4239] font-cormorant-garamond text-xl leading-relaxed mb-6 font-semibold'>
-              Nada Upacara Bali adalah kelompok seni pertunjukan yang lahir dari
-              keinginan sederhana: menghadirkan seni tradisional Bali dengan
-              standar profesional.
-            </p>
-            <p className='text-[#6f6055] font-cormorant-garamond text-lg leading-relaxed mb-8'>
-              Berawal dari komunitas kecil pecinta musik tradisional, kami
-              berkembang menjadi penyedia pertunjukan seni yang dipercaya di
-              berbagai upacara adat, pernikahan, dan event modern. Kami percaya
-              bahwa seni tidak hanya untuk dilestarikan, tapi juga dihormati.
-            </p>
-            <div className='bg-[#f5eee6] border-l-4 border-[#b27457] p-8 mt-12 text-left'>
-              <p className='text-[#4e4239] font-cormorant-garamond text-2xl italic leading-relaxed'>
-                &quot;Filosofi kami sederhana: setiap nada dan gerak harus
-                membawa makna, disajikan dengan keindahan, kesakralan, dan
-                disiplin profesional.&quot;
-              </p>
-            </div>
+      <div className='section-spacing'>
+        <Container className='flex flex-col gap-20 md:gap-28'>
+          <section className='mx-auto max-w-3xl text-center'>
+            <Reveal>
+              <SectionHeading
+                eyebrow='Sejarah & Filosofi'
+                title={
+                  <>
+                    Tradisi Bertemu{" "}
+                    <span className='text-primary italic'>Elegansi</span>
+                  </>
+                }
+              />
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className='mt-8 space-y-6 text-left'>
+                <p className='font-body text-lg leading-relaxed font-medium text-foreground md:text-xl'>
+                  Nada Upacara Bali adalah kelompok seni pertunjukan yang lahir
+                  dari keinginan sederhana: menghadirkan seni tradisional Bali
+                  dengan standar profesional.
+                </p>
+                <p className='prose-brand'>
+                  Berawal dari komunitas kecil pecinta musik tradisional, kami
+                  berkembang menjadi penyedia pertunjukan seni yang dipercaya di
+                  berbagai upacara adat, pernikahan, dan event modern. Kami
+                  percaya bahwa seni tidak hanya untuk dilestarikan, tapi juga
+                  dihormati.
+                </p>
+                <blockquote className='rounded-2xl border-l-4 border-primary bg-secondary/70 p-6 md:p-8'>
+                  <p className='font-heading text-xl leading-relaxed text-foreground italic md:text-2xl'>
+                    &quot;Filosofi kami sederhana: setiap nada dan gerak harus
+                    membawa makna, disajikan dengan keindahan, kesakralan, dan
+                    disiplin profesional.&quot;
+                  </p>
+                </blockquote>
+              </div>
+            </Reveal>
           </section>
-        </Reveal>
 
-        <Reveal>
-          <SalamPendiri />
-        </Reveal>
-        {/* Section 3: Keunikan Kami */}
-        <Reveal>
-          <section className='max-w-7xl px-6 mx-auto'>
-            <div className='text-center mb-12'>
-              <h2 className='text-sm font-outfit font-semibold tracking-[0.2em] text-[#c05621] uppercase mb-4'>
-                Keunikan Kami
-              </h2>
-              <h3 className='text-3xl md:text-4xl font-cormorant-garamond text-foreground'>
-                Nilai Tambah Kami
-              </h3>
-            </div>
+          <Reveal>
+            <SalamPendiri />
+          </Reveal>
 
-            <StaggerContainer className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-              <StaggerItem>
-                <div className='group bg-card border border-border p-8 rounded-lg shadow-sm hover:bg-[#fff9f3] hover:border-[#c05621]/40 transition-all duration-500'>
-                  <div className='text-4xl font-libre-baskerville text-[#e9ded3] group-hover:text-[#c05621] transition-colors duration-500 mb-6'>
-                    01
+          <section>
+            <Reveal>
+              <SectionHeading
+                eyebrow='Keunikan Kami'
+                title='Nilai Tambah Kami'
+                description='Tiga hal yang membuat setiap penampilan Nada Upacara Bali terasa berbeda.'
+                className='mb-12'
+              />
+            </Reveal>
+
+            <StaggerContainer className='grid grid-cols-1 gap-6 md:grid-cols-3'>
+              {values.map((value) => (
+                <StaggerItem key={value.number}>
+                  <div className='group h-full rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_70px_-45px_rgba(139,94,60,0.55)] md:p-8'>
+                    <div className='font-heading text-4xl text-border transition-colors duration-300 group-hover:text-primary'>
+                      {value.number}
+                    </div>
+                    <h3 className='mt-5 font-ui text-sm font-semibold tracking-[0.08em] text-foreground uppercase'>
+                      {value.title}
+                    </h3>
+                    <p className='mt-3 font-body text-sm leading-relaxed text-muted-foreground'>
+                      {value.description}
+                    </p>
                   </div>
-                  <h4 className='font-outfit text-foreground font-medium tracking-wide mb-3'>
-                    Pionir Seni Tradisi Profesional
-                  </h4>
-                  <p className='font-cormorant-garamond text-[#6f6055] text-lg leading-relaxed'>
-                    Memadukan nilai budaya tradisional Bali yang luhur dengan
-                    etika kerja dan manajemen modern yang sistematis.
-                  </p>
-                </div>
-              </StaggerItem>
-
-              <StaggerItem>
-                <div className='group bg-card border border-border p-8 rounded-lg shadow-sm hover:bg-[#fff9f3] hover:border-[#c05621]/40 transition-all duration-500'>
-                  <div className='text-4xl font-libre-baskerville text-[#e9ded3] group-hover:text-[#c05621] transition-colors duration-500 mb-6'>
-                    02
-                  </div>
-                  <h4 className='font-outfit text-foreground font-medium tracking-wide mb-3'>
-                    Standar Layanan Premium
-                  </h4>
-                  <p className='font-cormorant-garamond text-[#6f6055] text-lg leading-relaxed'>
-                    Kami menjaga kualitas mulai dari kerapian penampilan, tata
-                    busana panggung, hingga ketepatan waktu hadir.
-                  </p>
-                </div>
-              </StaggerItem>
-
-              <StaggerItem>
-                <div className='group bg-card border border-border p-8 rounded-lg shadow-sm hover:bg-[#fff9f3] hover:border-[#c05621]/40 transition-all duration-500'>
-                  <div className='text-4xl font-libre-baskerville text-[#e9ded3] group-hover:text-[#c05621] transition-colors duration-500 mb-6'>
-                    03
-                  </div>
-                  <h4 className='font-outfit text-foreground font-medium tracking-wide mb-3'>
-                    Pelestarian Budaya Relevan
-                  </h4>
-                  <p className='font-cormorant-garamond text-[#6f6055] text-lg leading-relaxed'>
-                    Fokus pelestarian budaya kami sajikan dengan gaya elegan
-                    yang tetap relevan dan memukau di acara masa kini.
-                  </p>
-                </div>
-              </StaggerItem>
+                </StaggerItem>
+              ))}
             </StaggerContainer>
           </section>
-        </Reveal>
+        </Container>
       </div>
+
+      <CtaBanner
+        title='Ingin Berkolaborasi dengan Kami?'
+        description='Ceritakan konsep acara Anda, dan tim kami akan membantu menyusun pertunjukan yang paling sesuai.'
+        href={waLink()}
+        external
+      />
     </main>
   );
 }

@@ -2,7 +2,13 @@
 
 import { useEffect, useCallback } from "react";
 import Image from "next/image";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import type { GalleryImage } from "@/constants/gallery";
 
 interface LightboxProps {
@@ -21,95 +27,84 @@ export default function Lightbox({
   onNext,
 }: LightboxProps) {
   const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      switch (e.key) {
-        case "Escape":
-          onClose();
-          break;
-        case "ArrowLeft":
-          onPrev();
-          break;
-        case "ArrowRight":
-          onNext();
-          break;
-      }
+    (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") onPrev();
+      if (event.key === "ArrowRight") onNext();
     },
-    [onClose, onPrev, onNext]
+    [onNext, onPrev],
   );
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
-    document.body.classList.add("overflow-hidden");
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.classList.remove("overflow-hidden");
-    };
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
 
   const current = images[currentIndex];
 
   return (
-    <div
-      className='fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md'
-      onClick={onClose}
-    >
-      {/* Close Button */}
-      <button
-        onClick={onClose}
-        className='absolute top-6 right-6 z-10 text-white/70 hover:text-white transition-colors'
-        aria-label='Tutup'
+    <Dialog open onOpenChange={(open) => !open && onClose()}>
+      <DialogContent
+        showCloseButton={false}
+        className='flex h-svh w-screen max-w-none flex-col overflow-hidden rounded-none border-0 bg-neutral-950 p-0 text-white ring-0 sm:max-w-none'
       >
-        <X className='w-8 h-8' />
-      </button>
+        <DialogTitle className='sr-only'>{current.alt}</DialogTitle>
+        <DialogDescription className='sr-only'>
+          Galeri foto Nada Upacara Bali. Gunakan tombol panah untuk berpindah
+          foto dan tombol Escape untuk menutup.
+        </DialogDescription>
 
-      {/* Counter */}
-      <div className='absolute top-6 left-6 font-outfit text-sm text-white/60 tracking-wider'>
-        {currentIndex + 1} / {images.length}
-      </div>
+        <div className='flex items-center justify-between px-4 py-3 md:px-8'>
+          <p
+            className='font-ui text-xs tracking-[0.2em] text-white/70'
+            aria-live='polite'
+          >
+            {currentIndex + 1} / {images.length}
+          </p>
+          <button
+            type='button'
+            onClick={onClose}
+            aria-label='Tutup galeri'
+            className='inline-flex size-11 items-center justify-center rounded-full text-white/75 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70'
+          >
+            <X className='size-6' aria-hidden='true' />
+          </button>
+        </div>
 
-      {/* Previous */}
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onPrev();
-        }}
-        className='absolute left-4 md:left-8 z-10 text-white/60 hover:text-white transition-colors'
-        aria-label='Sebelumnya'
-      >
-        <ChevronLeft className='w-10 h-10' />
-      </button>
+        <div className='relative flex flex-1 items-center justify-center px-4 pb-4 md:px-16'>
+          <button
+            type='button'
+            onClick={onPrev}
+            aria-label='Foto sebelumnya'
+            className='absolute left-1 z-10 inline-flex size-11 items-center justify-center rounded-full bg-neutral-900/70 text-white/80 transition-colors hover:bg-neutral-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 md:left-6'
+          >
+            <ChevronLeft className='size-7' aria-hidden='true' />
+          </button>
 
-      {/* Image */}
-      <div
-        className='relative w-full max-w-5xl max-h-[85vh] mx-4 md:mx-16 aspect-video'
-        onClick={(e) => e.stopPropagation()}
-      >
-        <Image
-          src={current.src}
-          alt={current.alt}
-          fill
-          className='object-contain'
-          priority
-          sizes='(max-width: 768px) 100vw, 80vw'
-        />
-      </div>
+          <div className='relative h-[70svh] w-full max-w-5xl'>
+            <Image
+              src={current.src}
+              alt={current.alt}
+              fill
+              className='object-contain'
+              priority
+              sizes='(max-width: 768px) 100vw, 80vw'
+            />
+          </div>
 
-      {/* Next */}
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onNext();
-        }}
-        className='absolute right-4 md:right-8 z-10 text-white/60 hover:text-white transition-colors'
-        aria-label='Selanjutnya'
-      >
-        <ChevronRight className='w-10 h-10' />
-      </button>
+          <button
+            type='button'
+            onClick={onNext}
+            aria-label='Foto selanjutnya'
+            className='absolute right-1 z-10 inline-flex size-11 items-center justify-center rounded-full bg-neutral-900/70 text-white/80 transition-colors hover:bg-neutral-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 md:right-6'
+          >
+            <ChevronRight className='size-7' aria-hidden='true' />
+          </button>
+        </div>
 
-      {/* Caption */}
-      <div className='absolute bottom-6 left-1/2 -translate-x-1/2 font-cormorant-garamond text-white/70 text-lg text-center max-w-lg px-4'>
-        {current.alt}
-      </div>
-    </div>
+        <p className='mx-auto max-w-2xl px-4 pb-6 text-center font-body text-sm text-white/70'>
+          {current.alt}
+        </p>
+      </DialogContent>
+    </Dialog>
   );
 }

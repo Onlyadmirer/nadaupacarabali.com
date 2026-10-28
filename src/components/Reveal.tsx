@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { useHydrated } from "@/lib/useHydrated";
 
 interface RevealProps {
@@ -17,8 +17,9 @@ export default function Reveal({
   y = 40,
 }: RevealProps) {
   const mounted = useHydrated();
+  const reduceMotion = useReducedMotion();
 
-  if (!mounted) {
+  if (!mounted || reduceMotion) {
     return <div className={className}>{children}</div>;
   }
 

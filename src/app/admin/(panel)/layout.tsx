@@ -36,7 +36,7 @@ export default async function AdminPanelLayout({
           </Link>
         </header>
 
-        <main className='mx-auto w-full max-w-6xl px-4 pt-6 pb-16 sm:px-6 lg:px-10 lg:pt-10'>
+        <main id='main-content' tabIndex={-1} className='mx-auto w-full max-w-6xl px-4 pt-6 pb-16 outline-none sm:px-6 lg:px-10 lg:pt-10'>
           {children}
         </main>
       </div>
