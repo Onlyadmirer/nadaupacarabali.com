@@ -1,6 +1,4 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Dependencies
 /node_modules
 /.pnp
 .pnp.*
@@ -9,41 +7,63 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+/.pnpm-store
 
-# testing
-/coverage
-
-# next.js
+# Next.js build output
 /.next/
 /out/
-
-# production
 /build
 
-# misc
-.DS_Store
-*.pem
+# Testing
+/coverage
 
-# debug
+# Environment
+.env*
+!.env.example
+
+# Vercel
+/.vercel/
+
+# Generated files
+/src/generated/prisma
+*.tsbuildinfo
+next-env.d.ts
+
+# Local uploads
+/public/uploads/
+/uploads/
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
+/logs/
 
-# env files (can opt-in for committing if needed)
-.env*
-!.env.example
+# Cache
+/.turbo/
+/.eslintcache
 
-# vercel
-.vercel
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Editors
+/.idea/
+/.vscode/
 
-.opencode
-.GEMINI.md
-.claude
-.windsurf
-.agents
-/src/generated/prisma
+# Local AI tooling
+/.opencode/
+/.agents/
+/.claude/
+/.windsurf/
+GEMINI.md
+AGENTS.md
+skills-lock.json
+
+# Certificates
+*.pem
+*.p12
+*.pfx
