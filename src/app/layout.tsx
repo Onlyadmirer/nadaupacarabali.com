@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { contactInfo, siteUrl } from "@/constants/contact";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -110,6 +111,7 @@ export default function RootLayout({
         />
       </head>
       <body className='min-h-full flex flex-col'>
+        <NextTopLoader color='#f3d6b8' />
         <a
           href='#main-content'
           className='sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:font-ui focus:text-sm focus:text-primary-foreground'
